@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
@@ -8,11 +8,13 @@ const LoginPage = lazy(() => import('./pages/loginPage'));
 const App = () => {
   return (
     <>
-      <Switch>
-        <Route path="/register" component={RegisterPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route path="/home" component={DashboardPage} />
-      </Switch>
+      <Suspense fallback={<p>Load...</p>}>
+        <Switch>
+          <Route path="/register" component={RegisterPage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route path="/home" component={DashboardPage} />
+        </Switch>
+      </Suspense>
     </>
   );
 };
