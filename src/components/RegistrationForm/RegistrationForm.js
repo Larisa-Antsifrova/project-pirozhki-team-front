@@ -8,7 +8,7 @@ import Label from '../Label';
 import Input from '../Input';
 import Button from '../Button';
 
-export default function RegisterView() {
+export default function RegisterForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -35,10 +35,10 @@ export default function RegisterView() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log('submit');
-    // if (!email || !password) {
-    //   alert('Some areas are empty!');
-    //   return;
-    // }
+    if (!email || !password) {
+      alert('Some areas are empty!');
+      return;
+    }
     dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
