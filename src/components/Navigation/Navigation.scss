@@ -1,0 +1,16 @@
+@import 'stylesheet/shared.scss';
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  margin: 10px;
+  font-weight: 400;
+  color: $black-color;
+}
+.link:hover {
+  font-weight: 700;
+}
+.activeLink {
+  font-weight: 700;
+}
