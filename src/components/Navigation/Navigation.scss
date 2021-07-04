@@ -14,3 +14,13 @@
 .activeLink {
   font-weight: 700;
 }
+
+.icon-navifation {
+  fill: $indigo-other-color;
+}
+.icon-navifation:hover,
+.icon-navifation:active {
+  fill: $indigo-accent-color;
+  border-radius: 7px;
+  box-shadow: 1px 4px 4px $indigo-accent-color;
+}
