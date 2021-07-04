@@ -1,0 +1,23 @@
+@import 'stylesheet/shared.scss';
+
+.Modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $modale-background-color;
+}
+
+.Modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  width: 100%;
+  padding: 12px;
+  padding-bottom: 50px;
+  background-color: $white-color;
+  border-radius: 10px;
+}

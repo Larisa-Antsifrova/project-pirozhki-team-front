@@ -1,7 +1,14 @@
 import React from 'react';
+import Title from '../components/Title';
+import RegistrationForm from '../components/RegistrationForm';
 
 const RegisterPage = () => {
-  return <h2>RegisterPage</h2>;
+  return (
+    <>
+      <Title text={'Finance App'} />
+      <RegistrationForm />
+    </>
+  );
 };
 
 export default RegisterPage;
