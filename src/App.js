@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
 const RegisterPage = lazy(() => import('./pages/registerPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
+const ErrorPage = lazy(() => import('./pages/errorPage'));
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
         <Switch>
           <Route path="/register" component={RegisterPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route path="/home" component={DashboardPage} />
+          <Route path="/dashboard" component={DashboardPage} />
+          <Route path="/" component={ErrorPage} />
         </Switch>
       </Suspense>
     </>
