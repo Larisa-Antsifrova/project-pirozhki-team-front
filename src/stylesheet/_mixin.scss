@@ -1,0 +1,15 @@
+@mixin transition($property) {
+  transition: $property $time-tranforming $timing-function;
+}
+
+@mixin flex($box-form, $alight-form) {
+  display: $box-form;
+  align-items: center;
+  justify-content: $alight-form;
+}
+
+@mixin font($fweight, $lheight, $lspacing) {
+  font-weight: $fweight;
+  line-height: $lheight;
+  letter-spacing: $lspacing;
+}
