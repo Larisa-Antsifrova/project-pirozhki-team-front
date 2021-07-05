@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Spinner from './components/Spinner';
+import Container from './components/Container';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
 const RegisterPage = lazy(() => import('./pages/registerPage'));
@@ -9,7 +10,7 @@ const ErrorPage = lazy(() => import('./pages/errorPage'));
 
 const App = () => {
   return (
-    <>
+    <Container>
       <Suspense fallback={<Spinner />}>
         <Switch>
           <Route path="/register" component={RegisterPage} />
@@ -18,7 +19,7 @@ const App = () => {
           <Route path="/" component={ErrorPage} />
         </Switch>
       </Suspense>
-    </>
+    </Container>
   );
 };
 export default App;
