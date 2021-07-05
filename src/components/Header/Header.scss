@@ -1,0 +1,50 @@
+@import 'stylesheet/shared.scss';
+
+.header {
+  @media screen and (min-width: 320px) {
+    display: flex;
+    width: 320px;
+    height: 60px;
+    padding: 15px 20px;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    width: 768px;
+    height: 80px;
+    padding: 20px 40px;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    width: 1280px;
+    padding: 20px 85px;
+  }
+}
+.header__logo {
+  // background-image: url('../../images/sprite.svg#wallet-mobile-icon');
+  @media screen and (min-width: 320px) {
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    display: inline-block;
+  }
+  @media screen and (min-width: 768px) {
+    height: 40px;
+    width: 40px;
+  }
+}
+.header__title {
+  @media screen and (min-width: 320px) {
+    margin-left: 16px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 30px;
+  }
+}
