@@ -9,7 +9,7 @@
   }
 }
 
-.link {
+.navLink {
   display: inline-block;
   font-family: $secondary-font;
   text-decoration: none;
@@ -17,13 +17,13 @@
   font-weight: 400;
   color: $black-color;
 }
-.link:hover {
+.navLink:hover {
   font-weight: 700;
 }
-.activeLink {
+.navActiveLink {
   font-weight: 700;
 }
-.link:last-child {
+.navActiveLink:last-child {
   @include for-size(tablet) {
     display: none;
   }
@@ -36,11 +36,11 @@
     margin-right: 40px;
   }
 }
-.icon-navifation {
+.iconNavigation {
   fill: $indigo-other-color;
 }
-.icon-navifation:hover,
-.icon-navifation:active {
+.iconNavigation:hover,
+.iconNavigation:active {
   fill: $indigo-accent-color;
   border-radius: 7px;
   box-shadow: 1px 4px 4px $indigo-accent-color;

@@ -9,10 +9,10 @@ export default function Navigation() {
       <NavLink
         to="/dashboard/home"
         exact
-        className="link"
-        activeClassName="activeLink"
+        className="navLink"
+        activeClassName="navActiveLink"
       >
-        <svg className="icon-navifation" width="38" height="38">
+        <svg className="iconNavigation" width="38" height="38">
           <use href={sprite + '#main-page-mobile-icon'} />
         </svg>
         <span className="description">Главная</span>
@@ -21,10 +21,10 @@ export default function Navigation() {
       <NavLink
         to="/dashboard/diagram"
         exact
-        className="link"
-        activeClassName="activeLink"
+        className="navLink"
+        activeClassName="navActiveLink"
       >
-        <svg className="icon-navifation" width="38" height="38">
+        <svg className="iconNavigation" width="38" height="38">
           <use href={sprite + '#statistics-page-mobile-icon'} />
         </svg>
         <span className="description">Статистика</span>
@@ -32,10 +32,10 @@ export default function Navigation() {
       <NavLink
         to="/dashboard/currency"
         exact
-        className="link"
-        activeClassName="activeLink"
+        className="navLink"
+        activeClassName="navActiveLink"
       >
-        <svg className="icon-navifation" width="38" height="38">
+        <svg className="iconNavigation" width="38" height="38">
           <use href={sprite + '#currency-page-mobile-icon'} />
         </svg>
       </NavLink>
