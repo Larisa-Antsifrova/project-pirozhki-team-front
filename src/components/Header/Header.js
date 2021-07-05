@@ -1,8 +1,9 @@
 import React from 'react';
 import './Header.scss';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import sprite from '../../images/sprite.svg';
 import { useMediaPredicate } from 'react-media-hook';
+import ModalLogout from '../ModalLogout/ModalLogout';
 
 const Header = () => {
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
@@ -20,6 +21,7 @@ const Header = () => {
         )}
       </span>
       <span className="header__title">Wallet</span>
+      <ModalLogout />
     </header>
   );
 };
