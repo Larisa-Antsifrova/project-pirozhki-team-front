@@ -15,6 +15,7 @@ const DashboardPage = () => {
         <div>
           <h2>DashboardPage mobile</h2>
           <p>Navigation for mobile screen size</p>
+          <Navigation />
         </div>
       )}
     </>
