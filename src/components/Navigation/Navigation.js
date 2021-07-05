@@ -15,7 +15,7 @@ export default function Navigation() {
         <svg className="iconNavigation" width="38" height="38">
           <use href={sprite + '#main-page-mobile-icon'} />
         </svg>
-        <span className="description">Главная</span>
+        <span className="navDescription">Главная</span>
       </NavLink>
 
       <NavLink
@@ -27,8 +27,9 @@ export default function Navigation() {
         <svg className="iconNavigation" width="38" height="38">
           <use href={sprite + '#statistics-page-mobile-icon'} />
         </svg>
-        <span className="description">Статистика</span>
+        <span className="navDescription">Статистика</span>
       </NavLink>
+
       <NavLink
         to="/dashboard/currency"
         exact
