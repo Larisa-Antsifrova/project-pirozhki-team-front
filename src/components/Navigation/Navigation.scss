@@ -1,16 +1,63 @@
 @import 'stylesheet/shared.scss';
 
-.link {
-  display: inline-block;
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: 13px 67px;
+  @include for-size(tablet) {
+    flex-direction: column;
+  }
+}
+
+.navLink {
+  display: flex;
+  font-family: $secondary-font;
   text-decoration: none;
-  padding: 12px;
-  margin: 10px;
+  font-size: 18px;
   font-weight: 400;
   color: $black-color;
+  margin: 10px;
 }
-.link:hover {
+.navActiveLink {
   font-weight: 700;
 }
-.activeLink {
-  font-weight: 700;
+
+.navActiveLink > .iconNavigation {
+  fill: $indigo-accent-color;
+  border-radius: 7px;
+  box-shadow: 1px 4px 4px $indigo-accent-color;
+  @include for-size(tablet) {
+    border-radius: 3px;
+  }
 }
+
+.navLink:last-child {
+  @include for-size(tablet) {
+    display: none;
+  }
+}
+.navDescription {
+  display: none;
+
+  @include for-size(tablet) {
+    display: block;
+    margin-left: 20px;
+  }
+}
+.iconNavigation {
+  fill: $indigo-other-color;
+  margin: 3px;
+  @include for-size(tablet) {
+    width: 18px;
+    height: 18px;
+  }
+}
+// .iconNavigation:hover,
+// .iconNavigation:active {
+//   fill: $indigo-accent-color;
+//   border-radius: 7px;
+//   box-shadow: 1px 4px 4px $indigo-accent-color;
+//   @include for-size(tablet) {
+//     border-radius: 2px;
+//   }
+// }
