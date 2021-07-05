@@ -19,8 +19,7 @@
     padding: 20px 85px;
   }
 }
-.header__logo {
-  // background-image: url('../../images/sprite.svg#wallet-mobile-icon');
+.headerLogo {
   @media screen and (min-width: 320px) {
     height: 30px;
     width: 30px;
@@ -33,7 +32,7 @@
     width: 40px;
   }
 }
-.header__title {
+.headerTitle {
   @media screen and (min-width: 320px) {
     margin-left: 16px;
     font-family: Poppins;
