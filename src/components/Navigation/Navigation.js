@@ -5,14 +5,14 @@ import sprite from '../../images/sprite.svg';
 
 export default function Navigation() {
   return (
-    <nav>
+    <nav className="navigation">
       <NavLink
         to="/dashboard/home"
         exact
         className="link"
         activeClassName="activeLink"
       >
-        <svg class="icon-navifation" width="38" height="38">
+        <svg className="icon-navifation" width="38" height="38">
           <use href={sprite + '#main-page-mobile-icon'} />
         </svg>
         <span className="description">Главная</span>
@@ -24,7 +24,7 @@ export default function Navigation() {
         className="link"
         activeClassName="activeLink"
       >
-        <svg class="icon-navifation" width="38" height="38">
+        <svg className="icon-navifation" width="38" height="38">
           <use href={sprite + '#statistics-page-mobile-icon'} />
         </svg>
         <span className="description">Статистика</span>
@@ -35,7 +35,7 @@ export default function Navigation() {
         className="link"
         activeClassName="activeLink"
       >
-        <svg class="icon-navifation" width="38" height="38">
+        <svg className="icon-navifation" width="38" height="38">
           <use href={sprite + '#currency-page-mobile-icon'} />
         </svg>
       </NavLink>
