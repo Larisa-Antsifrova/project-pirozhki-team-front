@@ -1,6 +1,6 @@
 @import 'stylesheet/shared.scss';
 
-.link {
+.navLink {
   display: inline-block;
   text-decoration: none;
   padding: 12px;
@@ -8,9 +8,9 @@
   font-weight: 400;
   color: $black-color;
 }
-.link:hover {
+.navLink:hover {
   font-weight: 700;
 }
-.activeLink {
+.navActiveLink {
   font-weight: 700;
 }
