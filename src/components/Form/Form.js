@@ -3,7 +3,7 @@ import './Form.scss';
 import PropTypes from 'prop-types';
 
 const Form = ({ autoComplete, children, onSubmit }) => (
-  <form autoComplete={autoComplete} className="Form" onSubmit={onSubmit}>
+  <form autoComplete={autoComplete} className="form" onSubmit={onSubmit}>
     {children}
   </form>
 );

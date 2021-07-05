@@ -5,15 +5,20 @@ import './Navigation.scss';
 export default function Navigation() {
   return (
     <nav>
-      <NavLink to="/home" exact className="link" activeClassName="activeLink">
+      <NavLink
+        to="/home"
+        exact
+        className="navLink"
+        activeClassName="navActiveLink"
+      >
         Главная
       </NavLink>
 
       <NavLink
         to="/diagram"
         exact
-        className="link"
-        activeClassName="activeLink"
+        className="navLink"
+        activeClassName="navActiveLink"
       >
         Статистика
       </NavLink>

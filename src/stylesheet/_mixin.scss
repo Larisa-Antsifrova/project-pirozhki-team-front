@@ -13,3 +13,27 @@
   line-height: $lheight;
   letter-spacing: $lspacing;
 }
+
+@mixin for-size($range) {
+  $phone: 320px;
+  $tablet: 768px;
+  $desktop: 1280px;
+
+  @if $range == phone-responsive {
+    @media (max-width: #{$phone - 1}) {
+      @content;
+    }
+  } @else if $range == phone {
+    @media (min-width: $phone) {
+      @content;
+    }
+  } @else if $range == tablet {
+    @media (min-width: $tablet) {
+      @content;
+    }
+  } @else if $range == desktop {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}

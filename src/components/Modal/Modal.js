@@ -22,8 +22,8 @@ export default function Modal({ onClose, children }) {
   };
 
   return createPortal(
-    <div className="Modal__backdrop" onClick={handleBackdropClick}>
-      <div className="Modal__content">{children}</div>
+    <div className="modalBackdrop" onClick={handleBackdropClick}>
+      <div className="modalContent">{children}</div>
     </div>,
     modalRoot,
   );

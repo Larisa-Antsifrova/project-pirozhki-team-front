@@ -1,6 +1,6 @@
 @import 'stylesheet/shared.scss';
 
-.Modal__backdrop {
+.modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@
   background-color: $modale-background-color;
 }
 
-.Modal__content {
+.modalContent {
   position: absolute;
   top: 50%;
   left: 50%;
