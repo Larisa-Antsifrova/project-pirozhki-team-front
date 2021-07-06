@@ -1,5 +1,15 @@
 @import 'stylesheet/shared.scss';
 
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 36px;
+  @include for-size(tablet) {
+    padding-bottom: 60px;
+  }
+}
 .regForm {
   display: inline-flex;
   flex-direction: column;
@@ -7,7 +17,9 @@
   align-items: center;
   margin-top: 50px;
 }
-
+.error {
+  color: $rose-color;
+}
 .titleForm {
   font-family: $secondary-font;
   color: $black-color;
@@ -18,28 +30,6 @@
   @include for-size(tablet) {
     margin-left: 20px;
   }
-}
-
-.textInput {
-  width: 280px;
-  height: 34px;
-  margin: 40px 0px;
-  border: 0px;
-  border-bottom: 1px solid $gray-table-string-color;
-  @include for-size(tablet) {
-    width: 410px;
-  }
-}
-.formElement {
-  position: relative;
-}
-
-.iconFormElement {
-  line-height: 0;
-  position: absolute;
-  top: 40%;
-  left: 10px;
-  fill: $fill-color;
 }
 
 .regBtn {

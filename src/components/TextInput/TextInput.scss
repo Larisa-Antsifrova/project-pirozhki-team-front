@@ -1,0 +1,36 @@
+@import 'stylesheet/shared.scss';
+
+.formElement {
+  position: relative;
+  margin: 20px 0px;
+}
+
+.textInput {
+  width: 280px;
+  height: 34px;
+  padding-left: 54px;
+  border: 0px;
+  outline: none;
+  border-bottom: 1px solid $gray-table-string-color;
+  background-color: transparent;
+
+  &:focus,
+  &:hover {
+    border-bottom: 1px solid $indigo-accent-color;
+
+    & ~ .iconFormElement {
+      fill: $indigo-other-color;
+    }
+  }
+  @include for-size(tablet) {
+    width: 410px;
+  }
+}
+
+.iconFormElement {
+  line-height: 0;
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  fill: $fill-color;
+}
