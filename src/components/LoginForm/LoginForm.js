@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import sprite from '../../images/sprite.svg';
 import Title from '../Title';
 import Form from '../Form';
 import Label from '../Label';
@@ -25,7 +26,16 @@ export default function LoginForm() {
   const { email, password } = INITIAL_STATE;
   return (
     <div>
-      <Title text={'Wallet'} />
+      <Title
+        text={
+          <>
+            <svg className="iconNavigation" width="38" height="38">
+              <use href={sprite + '#wallet-icon'} />
+            </svg>
+            <span className="titleForm">Wallet</span>
+          </>
+        }
+      />
       <Form onSubmit={handleSubmit} autoComplete={'off'}>
         <Label>
           <Input
