@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import ReactModal from 'react-modal';
 import './ModalLogout.scss';
+import { useMediaPredicate } from 'react-media-hook';
 import sprite from '../../images/sprite.svg';
 import isModalLogoutOpenActions from '../../redux/isModalLogoutOpen/isModalLogoutOpenActions';
 import selectors from '../../redux/isModalLogoutOpen/isModalLogoutOpenSelectors';
@@ -11,6 +12,8 @@ const ModalLogout = () => {
   const isModalOpen = useSelector(state => selectors.isModalLogoutOpen(state));
   const onToggleModal = () => dispatch(isModalLogoutOpenActions());
 
+  const biggerThan767 = useMediaPredicate('(min-width: 768px)');
+
   const logout = () => {
     dispatch(operations.logout());
     onToggleModal();
@@ -20,6 +23,12 @@ const ModalLogout = () => {
   return (
     <>
       <button className="logoutBtn" onClick={onToggleModal}>
+        {biggerThan767 && (
+          <svg className="stickIcon">
+            <use href={`${sprite}#stick`} />
+          </svg>
+        )}
+
         <svg className="logoutIcon">
           <use href={`${sprite}#logout-icon`} />
         </svg>
