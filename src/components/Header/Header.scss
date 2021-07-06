@@ -26,6 +26,7 @@
     background-repeat: no-repeat;
     background-size: auto 100%;
     display: inline-block;
+    cursor: pointer;
   }
   @media screen and (min-width: 768px) {
     height: 40px;
@@ -42,9 +43,13 @@
     line-height: 1.5;
     display: flex;
     align-items: center;
-    margin-right: auto;
+    cursor: pointer;
   }
   @media screen and (min-width: 768px) {
     font-size: 30px;
   }
+}
+.headerWrapper {
+  display: flex;
+  margin-right: auto;
 }
