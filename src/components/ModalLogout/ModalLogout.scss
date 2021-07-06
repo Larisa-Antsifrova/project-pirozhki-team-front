@@ -9,11 +9,28 @@
       display: none;
     }
   }
+  @media screen and (min-width: 768px) {
+    .logoutText {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .stickIcon {
+    width: 1px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 15px;
+  }
 
   .logoutIcon {
     width: 18px;
     height: 18px;
-    margin-right: 10px;
+    vertical-align: middle;
+    margin-bottom: 2px;
+    @media screen and (min-width: 768px) {
+      margin-right: 10px;
+    }
   }
 }
 

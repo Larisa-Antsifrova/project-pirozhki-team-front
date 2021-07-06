@@ -1,47 +1,44 @@
-// import {
-//   configureStore,
-//   getDefaultMiddleware,
-//   combineReducers,
-// } from '@reduxjs/toolkit';
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// import { authReducer } from './auth';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReducer';
+import auth from './auth/authReducer';
+import finance from './finance/financeReducer';
 
-// const myMiddleWare = store => next => action => {
-//   next(action);
-// };
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+];
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-//   myMiddleWare,
-// ];
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const store = configureStore({
+  reducer: {
+    isModalLogoutOpen: isModalLogoutOpenReducer,
+    auth: persistReducer(persistConfig, auth),
+    finance,
+  },
+  devTools: process.env.NODE_ENV === 'development',
+  middleware,
+});
 
-// const store = configureStore({
-//   reducer: combineReducers({
-//     auth: persistReducer(authPersistConfig, authReducer),
-//   }),
-//   middleware,
-//   devTools: process.env.NODE_ENV === 'development',
-// });
+const persistor = persistStore(store);
 
-// const persistStor = persistStore(store);
-// export default { store, persistStor };
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { store, persistor };
