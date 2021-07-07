@@ -42,17 +42,20 @@ export default function RegisterForm() {
     name: yup.string().min(1).max(12, 'Не более 12 символов'),
   });
 
-  const handleSubmit = ({ email, password, name }) => {
-    const newUser = { email, password, name };
-    dispatch(operation.register(newUser));
-    reset();
-  };
-
-  const reset = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
+  const onSubmit = (
+    { email, password, name },
+    { setSubmitting, setErrors, setStatus, resetForm },
+  ) => {
+    try {
+      const newUser = { email, password, name };
+      dispatch(operation.register(newUser));
+      resetForm({});
+      setStatus({ success: true });
+    } catch (error) {
+      setStatus({ success: false });
+      setSubmitting(false);
+      setErrors({ submit: error.message });
+    }
   };
 
   return (
@@ -74,7 +77,7 @@ export default function RegisterForm() {
           validationSchema={validationShema}
           validateOnBlur
           validateOnChange
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
         >
           <Form className="regForm">
             <TextInput
