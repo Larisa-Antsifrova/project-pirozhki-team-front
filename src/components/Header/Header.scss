@@ -2,21 +2,14 @@
 
 .header {
   @media screen and (min-width: 320px) {
-    display: flex;
-    width: 320px;
     height: 60px;
-    padding: 15px 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   @media screen and (min-width: 768px) {
-    display: flex;
-    width: 768px;
     height: 80px;
-    padding: 20px 40px;
-  }
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    width: 1280px;
-    padding: 20px 85px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 .headerLogo {
@@ -49,7 +42,12 @@
     font-size: 30px;
   }
 }
+
 .headerWrapper {
+  display: flex;
+}
+
+.headerLink {
   display: flex;
   margin-right: auto;
 }
