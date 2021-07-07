@@ -1,0 +1,39 @@
+@import 'stylesheet/shared.scss';
+
+.balance {
+  width: 280px;
+  height: 80px;
+  padding: 8px 40px 13px 40px;
+
+  background: $white-color;
+  border-radius: 30px;
+
+  @media screen and (min-width: 768px) {
+    width: 334px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 350px;
+  }
+}
+
+.balanceTitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+
+  color: $gray-text-color;
+}
+
+.balanceTotal {
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+
+  color: $black-color;
+}
+
+.balanceSymbol {
+  font-family: Poppins;
+  font-weight: normal;
+}
