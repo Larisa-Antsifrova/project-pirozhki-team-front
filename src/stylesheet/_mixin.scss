@@ -1,5 +1,5 @@
 @mixin transition($property) {
-  transition: $property $time-tranforming $timing-function;
+  transition: $property $time-transforming $timing-function;
 }
 
 @mixin flex($box-form, $alight-form) {
