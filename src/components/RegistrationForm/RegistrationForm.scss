@@ -1,0 +1,57 @@
+@import 'stylesheet/shared.scss';
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 36px;
+  @include for-size(tablet) {
+    padding-bottom: 60px;
+  }
+}
+.regForm {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.error {
+  color: $rose-color;
+}
+.titleForm {
+  font-family: $secondary-font;
+  color: $black-color;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 16px;
+  @include for-size(tablet) {
+    margin-left: 20px;
+  }
+}
+
+.regBtn {
+  color: $white-color;
+  background-color: $green-accent-color-color;
+  @include for-size(tablet) {
+    width: 300px;
+  }
+}
+
+.loginlink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 280px;
+  border-radius: 20px;
+  background: $white-color;
+  color: $indigo-accent-color;
+  border: 1px solid $indigo-accent-color;
+
+  @include for-size(tablet) {
+    width: 300px;
+  }
+}

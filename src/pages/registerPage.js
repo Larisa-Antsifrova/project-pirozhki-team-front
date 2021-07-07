@@ -5,7 +5,7 @@ import RegistrationForm from '../components/RegistrationForm';
 const RegisterPage = () => {
   return (
     <>
-      <Title text={'Finance App'} />
+      <Title text={<span className="titleApp">Finance App</span>} />
       <RegistrationForm />
     </>
   );
