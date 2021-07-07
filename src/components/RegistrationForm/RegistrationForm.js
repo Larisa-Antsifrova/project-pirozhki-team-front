@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form } from 'formik';
@@ -13,16 +13,11 @@ import operation from '../../redux/auth/authOperations';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
   const INITIAL_VALUES = {
-    email,
-    password,
-    confirmPassword,
-    name,
+    email: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
   };
 
   const validationShema = yup.object({
@@ -42,13 +37,6 @@ export default function RegisterForm() {
     name: yup.string().min(1).max(12, 'Не более 12 символов'),
   });
 
-  const reset = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-  };
-
   const onSubmit = (
     { email, password, name },
     { setSubmitting, setErrors, setStatus, resetForm },
@@ -56,7 +44,6 @@ export default function RegisterForm() {
     try {
       const newUser = { email, password, name };
       dispatch(operation.register(newUser));
-      reset();
       resetForm({});
       setStatus({ success: true });
     } catch (error) {
