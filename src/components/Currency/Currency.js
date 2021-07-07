@@ -1,38 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './Currency.scss';
-// import axios from 'axios';
+import axios from 'axios';
 
 const Currency = () => {
   const [error, setError] = useState(null);
   const [currency, setCurrency] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  //   const currencyPrivat = async () => {
-  //     try {
-  //       let response = await axios.get(
-  //         'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
-  //       );
-  //       console.log(response.data);
-  //       return response.data;
-  //     } catch (e) {
-  //       console.log(`😱 I can't believe it: ${e}`);
-  //     }
-  //   };
+  async function getCurrency() {
+    try {
+      let response = await axios.get(
+        'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
+      );
+      const result = await response.data;
+      setIsLoaded(true);
+      setCurrency(result);
+    } catch (e) {
+      setIsLoaded(true);
+      setError(error);
+    }
+  }
 
   useEffect(() => {
-    fetch('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
-      .then(res => res.json())
-      .then(
-        result => {
-          setIsLoaded(true);
-          setCurrency(result);
-          console.log(result);
-        },
-        error => {
-          setIsLoaded(true);
-          setError(error);
-        },
-      );
+    getCurrency();
   }, []);
 
   const currencyFiltered = currency.filter(curr => {
