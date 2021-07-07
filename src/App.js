@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
 import operations from './redux/auth/authOperations';
-import ModalLogout from './components/ModalLogout';
+// import ModalLogout from './components/ModalLogout';
+import Chart from './components/Chart';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
 const RegisterPage = lazy(() => import('./pages/registerPage'));
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="/register" component={RegisterPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/dashboard" component={DashboardPage} />
-          <Route path="/" component={ModalLogout} />
+          <Route path="/" component={Chart} />
         </Switch>
       </Suspense>
     </>
