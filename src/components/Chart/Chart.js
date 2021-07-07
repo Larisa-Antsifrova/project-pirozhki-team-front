@@ -5,65 +5,7 @@ defaults.plugins.title.display = true;
 defaults.plugins.legend.display = false;
 defaults.font.family = 'Poppins';
 
-const Chart = () => {
-  const tempData = [
-    {
-      name: 'Машина',
-      value: 40,
-      income: false,
-      color: '#6e78e8',
-    },
-    {
-      name: 'Продукты',
-      value: 50,
-      income: false,
-      color: '#4a56e2',
-    },
-    {
-      name: 'Забота о себе',
-      value: 60,
-      income: false,
-      color: '#81e1ff',
-    },
-    {
-      name: 'Забота о детях',
-      value: 70,
-      income: false,
-      color: '#24cca7',
-    },
-    {
-      name: 'Товары для дома',
-      value: 80,
-      income: false,
-      color: '#00ad84',
-    },
-    {
-      name: 'Образование',
-      value: 90,
-      income: false,
-      color: '#c5baff',
-    },
-    {
-      name: 'Досуг',
-      value: 100,
-      income: false,
-      color: '#fd9498',
-    },
-    {
-      name: 'Другие расходы',
-      value: 110,
-      income: false,
-      color: '#ffd8d0',
-    },
-    {
-      name: 'Основные расходы',
-      value: 150,
-      income: false,
-      color: '#fed057',
-    },
-  ];
-
-  const totalBalance = '$ 23.000';
+const Chart = ({ tempData, totalBalance }) => {
   const centerText = [
     {
       beforeDraw: function (chart) {
