@@ -10,12 +10,10 @@ const DashboardPage = () => {
       <Header />
       {biggerThan767 ? (
         <div>
-          <h2>DashboardPage tablet/desktop</h2>
           <Navigation />
         </div>
       ) : (
         <div>
-          <h2>DashboardPage mobile</h2>
           <Navigation />
         </div>
       )}
