@@ -5,7 +5,7 @@
   height: 80px;
   padding: 8px 40px 13px 40px;
 
-  background: #ffffff;
+  background: $white-color;
   border-radius: 30px;
 
   @media screen and (min-width: 768px) {
@@ -34,5 +34,6 @@
 }
 
 .balanceSymbol {
+  font-family: Poppins;
   font-weight: normal;
 }
