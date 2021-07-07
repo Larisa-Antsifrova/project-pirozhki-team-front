@@ -42,6 +42,13 @@ export default function RegisterForm() {
     name: yup.string().min(1).max(12, 'Не более 12 символов'),
   });
 
+  const reset = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+  };
+
   const onSubmit = (
     { email, password, name },
     { setSubmitting, setErrors, setStatus, resetForm },
@@ -49,6 +56,7 @@ export default function RegisterForm() {
     try {
       const newUser = { email, password, name };
       dispatch(operation.register(newUser));
+      reset();
       resetForm({});
       setStatus({ success: true });
     } catch (error) {
