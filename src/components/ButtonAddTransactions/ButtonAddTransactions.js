@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import isModalAddTransactionOpenActions from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
 import selectors from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenSelectors';
-import Container from '../Container';
 import ModalAddTransaction from '../ModalAddTransaction';
 import Modal from '../Modal';
 import './ButtonAddTransactions.scss';
@@ -17,15 +16,13 @@ const ButtonAddTransactions = () => {
 
   return (
     <>
-      <Container>
-        <div className="add-transactions-container">
-          <button
-            className="add-transactions__button"
-            type="button"
-            onClick={onToggleModal}
-          ></button>
-        </div>
-      </Container>
+      <div className="add-transactions-container">
+        <button
+          className="add-transactions__button"
+          type="button"
+          onClick={onToggleModal}
+        ></button>
+      </div>
 
       {isModalAddTransactionOpen && (
         <Modal onClose={onToggleModal}>

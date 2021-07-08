@@ -12,17 +12,6 @@ const DashboardPage = () => {
   return (
     <>
       <Header />
-      <ButtonAddTransactions />
-      {biggerThan767 ? (
-        <div>
-          <Navigation />
-        </div>
-      ) : (
-        <div>
-          <Navigation />
-        </div>
-      )}
-      <Balance />
       <Container>
         {biggerThan767 ? (
           <div>
@@ -35,6 +24,7 @@ const DashboardPage = () => {
         )}
         <Balance />
         <Currency />
+        <ButtonAddTransactions />
       </Container>
     </>
   );
