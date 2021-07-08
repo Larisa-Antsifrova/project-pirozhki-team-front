@@ -27,7 +27,8 @@
     "reselect": "^4.0.0",
     "sass-loader": "^10.1.1",
     "web-vitals": "^1.1.2",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
