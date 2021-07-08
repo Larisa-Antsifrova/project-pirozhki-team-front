@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import { useMediaPredicate } from 'react-media-hook';
 import Header from '../components/Header';
 import Balance from '../components/Balance';
+import ButtonAddTransactions from '../components/ButtonAddTransactions';
 import Currency from '../components/Currency/Currency';
 import Container from '../components/Container';
 
@@ -23,6 +24,7 @@ const DashboardPage = () => {
         )}
         <Balance />
         <Currency />
+        <ButtonAddTransactions />
       </Container>
     </>
   );

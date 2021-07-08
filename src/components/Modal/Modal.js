@@ -9,10 +9,11 @@ export default function Modal({ onClose, children }) {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
         onClose();
+        window.removeEventListener('keydown', handleKeyDown);
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
-    return window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
   const handleBackdropClick = event => {
