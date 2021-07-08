@@ -1,4 +1,5 @@
 import { Pie, defaults } from 'react-chartjs-2';
+import PropTypes from 'prop-types';
 import './Chart.scss';
 
 defaults.plugins.title.display = true;
@@ -15,7 +16,9 @@ const Chart = ({ tempData, totalBalance }) => {
         ctx.restore();
         ctx.font = '700 18px Circe';
         ctx.textBaseline = 'middle';
-        const text = totalBalance,
+        const text = Number.isInteger(totalBalance)
+            ? `${totalBalance.toLocaleString()}.00`
+            : totalBalance.toLocaleString(),
           textX = Math.round((width - ctx.measureText(text).width) / 2),
           textY = height / 1.8;
         ctx.fillText(text, textX, textY);
@@ -48,6 +51,11 @@ const Chart = ({ tempData, totalBalance }) => {
       ></Pie>
     </div>
   );
+};
+
+Chart.propTypes = {
+  tempData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  totalBalance: PropTypes.number.isRequired,
 };
 
 export default Chart;
