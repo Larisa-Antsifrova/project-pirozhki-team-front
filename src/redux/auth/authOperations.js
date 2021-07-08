@@ -1,9 +1,7 @@
 import axios from 'axios';
 import authActions from './authActions';
 
-// awesome-wallet-app.herokuapp.com/
-
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://awesome-wallet-app.herokuapp.com';
 
 const token = {
   set(token) {
@@ -17,8 +15,8 @@ const token = {
 const register = user => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
-    const { data } = await axios.post('/users/signup', user);
-    token.set(data.token);
+    const { data } = await axios.post('/auth/registration', user);
+    token.set(data.accessToken);
     dispatch(authActions.registerSuccess(data));
   } catch (error) {
     dispatch(authActions.registerError(error));
@@ -28,8 +26,8 @@ const register = user => async dispatch => {
 const login = user => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
-    const { data } = await axios.post('/users/login', user);
-    token.set(data.token);
+    const { data } = await axios.post('/auth/login', user);
+    token.set(data.accessToken);
     dispatch(authActions.loginSuccess(data));
   } catch (error) {
     dispatch(authActions.loginError(error));
@@ -39,7 +37,7 @@ const login = user => async dispatch => {
 const logout = () => async dispatch => {
   dispatch(authActions.logoutRequest);
   try {
-    await axios.post('/users/logout');
+    await axios.post('/auth/logout');
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {
@@ -59,7 +57,7 @@ const getCurrentUserInfo = () => async (dispatch, getState) => {
 
   dispatch(authActions.getCurrentUserRequest());
   try {
-    const response = await axios.get('/users/current');
+    const response = await axios.get('/user/current');
     dispatch(authActions.getCurrentUserSucces(response.data));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));

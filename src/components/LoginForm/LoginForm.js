@@ -22,6 +22,7 @@ export default function RegisterForm() {
   const validationShema = yup.object({
     email: yup
       .string()
+      .lowercase()
       .email('Неверный формат записи почты')
       .required('Обязательное поле'),
     password: yup
@@ -36,7 +37,7 @@ export default function RegisterForm() {
     { setSubmitting, setErrors, setStatus, resetForm },
   ) => {
     try {
-      dispatch(operation.login({ email, password }));
+      dispatch(operation.login({ email: email.toLowerCase(), password }));
       resetForm({});
       setStatus({ success: true });
     } catch (error) {
