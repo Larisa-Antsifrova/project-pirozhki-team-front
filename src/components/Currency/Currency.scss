@@ -1,58 +1,41 @@
 @import 'stylesheet/shared.scss';
 
-// .table {
-//   border-radius: 30px;
-//   width: 280px;
-//   padding: 11px 17px 22px 20px;
-//   color: $white-color;
-
-//   background: #4a56e2;
-// }
-
-// .tableHead {
-//   font-size: 18px;
-//   border-spacing: 20px 10px;
-// }
-// .tableHeadCurrency {
-//   text-align: left;
-//   margin-bottom: 10px;
-// }
-
-// .tableHeadSale {
-//   text-align: right;
-// }
-
-// .tableDataBuy {
-//   text-align: center;
-// }
-
-// .tableDataSale {
-//   text-align: right;
-// }
-
 .currencyTable {
-  // padding: 11px 20px 22px 20px;
-  // background: #4a56e2;
-  // border-radius: 30px;
-  color: white;
+  color: $white-color;
+
+  @media screen and (min-width: 768px) {
+    width: 334px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 348px;
+  }
 }
 
 .currencyHead {
   display: flex;
   justify-content: space-between;
-  background: $indigo-other-color;
   padding: 11px 17px 12px 20px;
   border-radius: 30px 30px 0px 0px;
+  @media screen and (min-width: 1280px) {
+    padding: 17px 30px 16px 30px;
+  }
+  background-color: $indigo-other-color;
 }
 
 .currencyDiv {
   padding: 10px 20px 22px 20px;
-  background: $indigo-accent-color;
   border-radius: 0px 0px 30px 30px;
+  @media screen and (min-width: 1280px) {
+    padding: 20px 30px 149px 30px;
+  }
+  background-color: $indigo-accent-color;
 }
 
 .currencyDiv div:not(:last-child) {
   margin-bottom: 10px;
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 23px;
+  }
 }
 
 .currencyDetails {
