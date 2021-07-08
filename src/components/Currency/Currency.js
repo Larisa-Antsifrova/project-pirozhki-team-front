@@ -36,28 +36,6 @@ const Currency = () => {
   } else {
     return (
       <>
-        {/* <table className="table">
-          <thead className="tableHead">
-            <tr>
-              <th className="tableHeadCurrency">Валюта</th>
-              <th className="tableHeadBuy">Покупка</th>
-              <th className="tableHeadSale">Продажа</th>
-            </tr>
-          </thead>
-          <tbody className="tableBody">
-            {currencyFiltered.map(({ ccy, buy, sale }) => {
-              const buyFixed = parseFloat(buy).toFixed(2);
-              const saleFixed = parseFloat(sale).toFixed(2);
-              return (
-                <tr key={ccy}>
-                  <td className="tableDataCurrency">{ccy}</td>
-                  <td className="tableDataBuy">{buyFixed}</td>
-                  <td className="tableDataSale">{saleFixed}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table> */}
         <div className="currencyTable">
           <div className="currencyHead">
             <p>Валют</p>
