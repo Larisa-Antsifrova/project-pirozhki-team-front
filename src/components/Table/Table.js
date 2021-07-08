@@ -24,7 +24,7 @@ const Table = ({ tempData }) => {
                     backgroundColor: `${color}`,
                   }}
                 ></span>
-                <span className="tableCategoriesName"> {name}</span>
+                {name}
               </td>
               <td className="tableSum">
                 {Number.isInteger(value)
