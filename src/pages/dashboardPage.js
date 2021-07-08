@@ -1,8 +1,10 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Navigation from '../components/Navigation';
 import { useMediaPredicate } from 'react-media-hook';
 import Header from '../components/Header';
 import Balance from '../components/Balance';
+import ButtonAddTransactions from '../components/ButtonAddTransactions';
 
 const DashboardPage = () => {
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
@@ -19,6 +21,7 @@ const DashboardPage = () => {
         </div>
       )}
       <Balance />
+      <ButtonAddTransactions />
     </>
   );
 };
