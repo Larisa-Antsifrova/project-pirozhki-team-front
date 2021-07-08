@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '../components/Container';
 import ModalLogout from '../components/ModalLogout';
 import Chart from '../components/Chart';
+import Table from '../components/Table';
 
 // Testing array
 const tempData = [
@@ -43,7 +44,7 @@ const tempData = [
   },
   {
     name: 'Досуг',
-    value: 100,
+    value: 100.323242342,
     income: false,
     color: '#fd9498',
   },
@@ -61,7 +62,7 @@ const tempData = [
   },
 ];
 
-const totalBalance = '$ 23.000';
+const totalBalance = 230000000000;
 
 const ErrorPage = () => {
   return (
@@ -69,6 +70,7 @@ const ErrorPage = () => {
       <h2>Not Found</h2>
       <ModalLogout />
       <Chart tempData={tempData} totalBalance={totalBalance} />
+      <Table tempData={tempData} />
     </Container>
   );
 };
