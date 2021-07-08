@@ -1,19 +1,71 @@
 @import 'stylesheet/shared.scss';
 
-.tableHead {
-  font-size: 18px;
-}
-// .tableHeadName {
-//   font-size: 18px;
+// .table {
+//   border-radius: 30px;
+//   width: 280px;
+//   padding: 11px 17px 22px 20px;
+//   color: $white-color;
+
+//   background: #4a56e2;
 // }
 
-.tableDataCurrency {
+// .tableHead {
+//   font-size: 18px;
+//   border-spacing: 20px 10px;
+// }
+// .tableHeadCurrency {
+//   text-align: left;
+//   margin-bottom: 10px;
+// }
+
+// .tableHeadSale {
+//   text-align: right;
+// }
+
+// .tableDataBuy {
+//   text-align: center;
+// }
+
+// .tableDataSale {
+//   text-align: right;
+// }
+
+.currencyTable {
+  // padding: 11px 20px 22px 20px;
+  // background: #4a56e2;
+  // border-radius: 30px;
+  color: white;
 }
 
-.tableDataBuy {
+.currencyHead {
+  display: flex;
+  justify-content: space-between;
+  background: $indigo-other-color;
+  padding: 11px 17px 12px 20px;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.currencyDiv {
+  padding: 10px 20px 22px 20px;
+  background: $indigo-accent-color;
+  border-radius: 0px 0px 30px 30px;
+}
+
+.currencyDiv div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.currencyDetails {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ccy {
+  text-align: left;
+}
+.buy {
   text-align: center;
 }
-
-.tableDataSale {
+.sale {
   text-align: right;
 }
