@@ -15,7 +15,7 @@ const Table = ({ tempData }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ name, value, color }) => (
+          {data.map(({ name, sum, color }) => (
             <tr key={name}>
               <td className="tableCategories">
                 <span
@@ -27,9 +27,9 @@ const Table = ({ tempData }) => {
                 {name}
               </td>
               <td className="tableSum">
-                {Number.isInteger(value)
-                  ? `${value}.00`
-                  : Math.round(value * 100) / 100}
+                {Number.isInteger(sum)
+                  ? `${sum}.00`
+                  : Math.round(sum * 100) / 100}
               </td>
             </tr>
           ))}

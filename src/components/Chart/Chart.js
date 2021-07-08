@@ -38,7 +38,7 @@ const Chart = ({ tempData, totalBalance }) => {
           labels: tempData.map(el => ` ${el.name}`),
           datasets: [
             {
-              data: tempData.map(el => el.value),
+              data: tempData.map(el => el.sum),
               backgroundColor: tempData.map(el => el.color),
               hoverOffset: 2,
             },
@@ -54,7 +54,14 @@ const Chart = ({ tempData, totalBalance }) => {
 };
 
 Chart.propTypes = {
-  tempData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tempData: PropTypes.arrayOf(
+    PropTypes.PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      sum: PropTypes.number.isRequired,
+      income: PropTypes.bool.isRequired,
+      color: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   totalBalance: PropTypes.number.isRequired,
 };
 
