@@ -2,28 +2,24 @@
 
 .add-transactions-container {
   position: relative;
+}
 
-  .add-transactions__button {
-    width: 44px;
-    display: block;
-    background-color: $diagram-color-8;
-    height: 44px;
-    border-radius: 50%;
-    box-shadow: 0px 6px 15px #24cca780;
+.add-transactions__button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 
-    position: absolute;
-    right: 0;
-    bottom: 40px;
+  display: block;
+  padding: 12px;
+  width: 44px;
+  height: 44px;
 
-    &:after {
-      content: '';
-      background-size: 17px;
-      display: block;
-      background-repeat: no-repeat;
-      width: 100%;
-      background-position: center center;
-      height: 31px;
-      background-image: url(../../images/button-add-transaction.png);
-    }
-  }
+  border-radius: 50%;
+  box-shadow: 0px 6px 15px #24cca780;
+  background-color: $diagram-color-8;
+}
+
+.add-button-icon {
+  width: 20px;
+  height: 20px;
 }

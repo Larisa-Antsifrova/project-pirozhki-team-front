@@ -5,6 +5,7 @@ import selectors from '../../redux/isModalAddTransactionOpen/isModalAddTransacti
 import ModalAddTransaction from '../ModalAddTransaction';
 import Modal from '../Modal';
 import './ButtonAddTransactions.scss';
+import sprite from '../../images/sprite.svg';
 
 const ButtonAddTransactions = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,11 @@ const ButtonAddTransactions = () => {
           className="add-transactions__button"
           type="button"
           onClick={onToggleModal}
-        ></button>
+        >
+          <svg className="add-button-icon">
+            <use href={sprite + '#remove-button-icon'} />
+          </svg>
+        </button>
       </div>
 
       {isModalAddTransactionOpen && (
