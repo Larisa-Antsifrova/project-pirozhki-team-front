@@ -1,0 +1,13 @@
+@import 'stylesheet/shared.scss';
+
+.titleForm {
+  font-family: $secondary-font;
+  color: $black-color;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 16px;
+  @include for-size(tablet) {
+    margin-left: 20px;
+  }
+}

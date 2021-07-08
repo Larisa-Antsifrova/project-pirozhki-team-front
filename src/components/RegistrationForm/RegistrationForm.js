@@ -1,125 +1,114 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import Title from '../Title';
-import Form from '../Form';
-import Label from '../Label';
-import Input from '../Input';
-import Button from '../Button';
-import operation from '../../redux/auth/authOperations';
+import { Formik, Form } from 'formik';
+import * as yup from 'yup';
+import sprite from '../../images/sprite.svg';
+import './RegistrationForm.scss';
 
-// const INITIAL_STATE = {
-//   name: '',
-//   email: '',
-//   password: '',
-// };
+import Title from '../Title';
+import Container from '../Container';
+import TextInput from '../TextInput';
+import operation from '../../redux/auth/authOperations';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const INITIAL_VALUES = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
+  };
 
-  const handleChange = e => {
-    const { name, value } = e.currentTarget;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      case 'password_repead':
-        setConfirmPassword(value);
-        break;
-      default:
-        console.log('Привет, ну ты куда вводишь?))');
+  const validationShema = yup.object({
+    email: yup
+      .string()
+      .email('Неверный формат записи почты')
+      .required('Обязательное поле'),
+    password: yup
+      .string()
+      .min(6, 'Не менее 6 символов')
+      .max(12, 'Не более 12 символов')
+      .required('Обязательное поле'),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password'), ''], 'Пароли должны совпадать')
+      .required('Обязательное поле'),
+    name: yup.string().min(1).max(12, 'Не более 12 символов'),
+  });
+
+  const onSubmit = (
+    { email, password, name },
+    { setSubmitting, setErrors, setStatus, resetForm },
+  ) => {
+    try {
+      const newUser = { email, password, name };
+      dispatch(operation.register(newUser));
+      resetForm({});
+      setStatus({ success: true });
+    } catch (error) {
+      setStatus({ success: false });
+      setSubmitting(false);
+      setErrors({ submit: error.message });
     }
   };
-  // const handleChange = ({ target: { name, value } }) => {
-  //   console.log('name', name);
-  //   console.log('value', value);
-  // };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const newUser = {
-      name,
-      email,
-      password,
-      confirmPassword,
-    };
-    dispatch(operation.register(newUser));
-
-    reset();
-  };
-
-  const reset = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-  };
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   console.log('submit');
-  // };
-
-  // const { name, email, password } = INITIAL_STATE;
   return (
-    <div>
-      <Title text={'Wallet'} />
-      <Form onSubmit={handleSubmit} autoComplete={'off'}>
-        <Label>
-          <Input
-            type={'email'}
-            name={'email'}
-            value={email}
-            placeholder={'E-mail:'}
-            onChange={handleChange}
-          />
-        </Label>
+    <Container>
+      <div className="formContainer">
+        <Title
+          text={
+            <>
+              <svg className="iconNavigation" width="38" height="38">
+                <use href={sprite + '#wallet-icon'} />
+              </svg>
+              <span className="titleForm">Wallet</span>
+            </>
+          }
+        />
 
-        <Label>
-          <Input
-            type={'password'}
-            name={'password'}
-            value={password}
-            placeholder={'Пароль'}
-            onChange={handleChange}
-          />
-        </Label>
+        <Formik
+          initialValues={INITIAL_VALUES}
+          validationSchema={validationShema}
+          validateOnBlur
+          validateOnChange
+          onSubmit={onSubmit}
+        >
+          <Form className="regForm">
+            <TextInput
+              icon="#email-field-icon"
+              name="email"
+              type="email"
+              placeholder="E-mail"
+            />
+            <TextInput
+              icon="#password-field-icon"
+              name="password"
+              type="password"
+              placeholder="Пароль"
+            />
+            <TextInput
+              icon="#password-field-icon"
+              name="confirmPassword"
+              type="password"
+              placeholder="Подтвердите пароль"
+            />
+            <TextInput
+              icon="#name-field-icon"
+              name="name"
+              type="text"
+              placeholder="Ваше Имя"
+            />
 
-        <Label>
-          <Input
-            type={'password'}
-            name={'password_repead'}
-            value={confirmPassword}
-            placeholder={'Подтвердите пароль'}
-            onChange={handleChange}
-          />
-        </Label>
-
-        <Label>
-          <Input
-            type={'text'}
-            name={'name'}
-            value={name}
-            placeholder={'Ваше Имя'}
-            onChange={handleChange}
-          />
-        </Label>
-
-        <Button type={'submit'} text={'Регистрация'} />
-        <NavLink to="/login" exact className="link">
+            <button className="regBtn" type="submit">
+              Регистрация
+            </button>
+          </Form>
+        </Formik>
+        <NavLink to="/login" exact className="loginlink">
           Вход
         </NavLink>
-      </Form>
-    </div>
+      </div>
+    </Container>
   );
 }

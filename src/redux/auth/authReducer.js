@@ -20,8 +20,14 @@ const token = createReducer(null, {
 });
 
 const error = createReducer(null, {
-  [authActions.registerError]: (_, { payload }) => payload,
-  [authActions.loginError]: (_, { payload }) => payload,
+  [authActions.registerError]: (_, { payload }) => {
+    alert('Неверный E-mail или Пароль');
+    console.log(payload);
+  },
+  [authActions.loginError]: (_, { payload }) => {
+    alert('Неверный E-mail или Пароль');
+    console.log(payload);
+  },
   [authActions.logoutError]: (_, { payload }) => payload,
   [authActions.getCurrentUserError]: (_, { payload }) => payload,
 });

@@ -3,12 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
 import operations from './redux/auth/authOperations';
-import ModalLogout from './components/ModalLogout';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
 const RegisterPage = lazy(() => import('./pages/registerPage'));
 const LoginPage = lazy(() => import('./pages/loginPage'));
-// const ErrorPage = lazy(() => import('./pages/errorPage'));
+const ErrorPage = lazy(() => import('./pages/errorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const App = () => {
           <Route path="/register" component={RegisterPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/dashboard" component={DashboardPage} />
-          <Route path="/" component={ModalLogout} />
+          <Route path="/" component={ErrorPage} />
         </Switch>
       </Suspense>
     </>
