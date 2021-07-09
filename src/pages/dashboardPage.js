@@ -6,6 +6,7 @@ import Balance from '../components/Balance';
 import ButtonAddTransactions from '../components/ButtonAddTransactions';
 import Currency from '../components/Currency/Currency';
 import Container from '../components/Container';
+import HomeTabMobile from '../components/HomeTabMobile/HomeTabMobile';
 
 const DashboardPage = () => {
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
@@ -25,6 +26,7 @@ const DashboardPage = () => {
         <Balance />
         <Currency />
         <ButtonAddTransactions />
+        <HomeTabMobile />
       </Container>
     </>
   );

@@ -1,0 +1,35 @@
+@import 'stylesheet/shared.scss';
+
+.transactionCard {
+  padding: 0;
+  background-color: $white-color;
+  border-radius: 10px;
+  list-style-type: none;
+  border-left: 5px solid #ff6596;
+}
+
+.transactionCardElement {
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.transactionCard li:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+}
+
+.transactionCard li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.elementName {
+  font-weight: bold;
+  font-size: 18px;
+}
+.elementDataPrice {
+  font-weight: bold;
+}
