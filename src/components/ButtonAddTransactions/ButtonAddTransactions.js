@@ -31,7 +31,7 @@ const ButtonAddTransactions = () => {
 
       {isModalAddTransactionOpen && (
         <Modal onClose={onToggleModal}>
-          <ModalAddTransaction />
+          <ModalAddTransaction onClose={onToggleModal} />
         </Modal>
       )}
     </>

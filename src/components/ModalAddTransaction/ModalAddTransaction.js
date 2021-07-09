@@ -1,10 +1,14 @@
 import React from 'react';
 import './ModalAddTransaction.scss';
-
-const ModalAddTransaction = () => {
+const ModalAddTransaction = ({ onClose }) => {
   return (
     <>
-      <h1>Добавить транзакцию</h1>
+      <button onClick={onClose}>x</button>
+      <h2>Добавить транзакцию</h2>
+
+      <p>Доход</p>
+
+      <p>Расход</p>
     </>
   );
 };

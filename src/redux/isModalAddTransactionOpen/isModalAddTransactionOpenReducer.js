@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import isModalAddTransactionOpenActions from './isModalAddTransactionOpenActions';
 
-const isModalAddTransactionOpen = createReducer(false, {
+const isModalAddTransactionOpen = createReducer(true, {
   [isModalAddTransactionOpenActions]: (state, _) => !state,
 });
 
