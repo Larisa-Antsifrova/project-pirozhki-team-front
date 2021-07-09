@@ -5,9 +5,9 @@ import Spinner from './components/Spinner';
 import operations from './redux/auth/authOperations';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
-const RegisterPage = lazy(() => import('./pages/registerPage'));
-const LoginPage = lazy(() => import('./pages/loginPage'));
-const ErrorPage = lazy(() => import('./pages/errorPage'));
+const RegisterPage = lazy(() => import('./pages/registerPage/registerPage'));
+const LoginPage = lazy(() => import('./pages/loginPage/loginPage'));
+const ErrorPage = lazy(() => import('./pages/errorPage/errorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
