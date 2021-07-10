@@ -1,6 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useCallback, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
 import { getTotalBalance } from '../../redux/finance/financeSelectors';
+import operations from '../../redux/finance/financeOperations';
+
 import Spinner from '../Spinner';
 import Chart from '../Chart';
 import Table from '../Table';
@@ -65,12 +68,32 @@ const tempData = [
   },
 ];
 
-const month = ['Март', 'Апрель', 'Май', 'Март', 'Апрель', 'Май'];
+const month = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
+];
 const year = [2020, 2021, 2023];
 
 const DiagramTab = () => {
+  const dispatch = useDispatch();
   const totalBalance = useSelector(getTotalBalance);
   const isLoading = useSelector(getIsLoading);
+  const [seletcMonth, setSeletcMonth] = useState(null);
+  const [seletcYear, setSeletcYear] = useState(null);
+
+  useEffect(() => {
+    dispatch(operations.statistics(seletcMonth, seletcYear));
+  }, [dispatch, seletcMonth, seletcYear]);
 
   return (
     <>
@@ -86,12 +109,17 @@ const DiagramTab = () => {
                 <SelectMonthYear
                   title={'Месяц'}
                   list={month}
-                  onChange={itemTitle => console.log(itemTitle)}
+                  onChange={itemTitle => {
+                    const monthNum = month.indexOf(itemTitle) + 1;
+                    setSeletcMonth(
+                      `${monthNum < 10 ? `0${monthNum}` : monthNum}`,
+                    );
+                  }}
                 />
                 <SelectMonthYear
                   title={'Год'}
                   list={year}
-                  onChange={itemTitle => console.log(itemTitle)}
+                  onChange={itemTitle => setSeletcYear(itemTitle)}
                 />
               </div>
               <div>
