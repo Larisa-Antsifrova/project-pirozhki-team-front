@@ -1,1 +1,1 @@
-export const fetchTransactions = state => state.finance.data;
+export const fetchTransactions = state => state.finance.fetchTransactions;

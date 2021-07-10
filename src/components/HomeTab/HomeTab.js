@@ -4,26 +4,26 @@ import './HomeTab.scss';
 const HomeTab = () => {
   return (
     <>
-      <ul className="dataList">
-        <li className="dataElement">
+      <div className="dataList">
+        <p className="dataElement">
           <span>04.01.19</span>
-        </li>
-        <li className="dataElementCenter">
+        </p>
+        <p className="dataElementCenter">
           <span>-</span>
-        </li>
-        <li className="dataElement">
+        </p>
+        <p className="dataElement">
           <span>Разное</span>
-        </li>
-        <li className="dataElement">
+        </p>
+        <p className="dataElement">
           <span>Подарок жене</span>
-        </li>
-        <li className="dataElementRight">
+        </p>
+        <p className="dataElementRight">
           <span>300.00</span>
-        </li>
-        <li className="dataElementRight">
+        </p>
+        <p className="dataElementRight">
           <span>6900.00</span>
-        </li>
-      </ul>
+        </p>
+      </div>
     </>
   );
 };

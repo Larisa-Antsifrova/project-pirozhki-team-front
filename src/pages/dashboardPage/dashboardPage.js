@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navigation from '../../components/Navigation';
 import { useMediaPredicate } from 'react-media-hook';
 import Header from '../../components/Header';
@@ -7,9 +7,16 @@ import ButtonAddTransactions from '../../components/ButtonAddTransactions';
 import Currency from '../../components/Currency/Currency';
 import Container from '../../components/Container';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
+import HomeTabContainer from '../../components/HomeTab/HomeTabContainer';
 import './dashboardPage.scss';
 
+import { useDispatch } from 'react-redux';
+import operations from '../../redux/finance/financeOperations';
+
 const DashboardPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(operations.fetchTransactions()), [dispatch]);
+
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   return (
     <>
@@ -29,6 +36,7 @@ const DashboardPage = () => {
             <Balance />
             <Currency />
           </div>
+          <HomeTabContainer />
           <div className="twoBlock">
             <DiagramTab />
           </div>

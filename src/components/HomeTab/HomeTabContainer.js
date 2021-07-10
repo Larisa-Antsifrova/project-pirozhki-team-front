@@ -1,37 +1,39 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { fetchTransactions } from '../../redux/finance/financeSelectors';
+import { useSelector } from 'react-redux';
+import { fetchTransactions } from '../../redux/finance/financeSelectors';
 import './HomeTab.scss';
 import HomeTab from './HomeTab';
 
 const HomeTabContainer = () => {
-  // const transactions = useSelector(fetchTransactions);
-  // console.log(transactions);
+  const getTransactions = useSelector(fetchTransactions);
+  console.log(getTransactions);
 
+  const { data } = getTransactions;
+  console.log(data);
   return (
-    <div>
-      <ul className="tableHeader">
-        <li className="tableHeaderElement">
+    <>
+      <div className="tableHeader">
+        <p className="tableHeaderElement">
           <span>Дата</span>
-        </li>
-        <li className="tableHeaderElementCenter">
+        </p>
+        <p className="tableHeaderElementCenter">
           <span>Тип</span>
-        </li>
-        <li className="tableHeaderElement">
+        </p>
+        <p className="tableHeaderElement">
           <span>Категория</span>
-        </li>
-        <li className="tableHeaderElement">
+        </p>
+        <p className="tableHeaderElement">
           <span>Комментарий</span>
-        </li>
-        <li className="tableHeaderElementRight">
+        </p>
+        <p className="tableHeaderElementRight">
           <span>Сумма</span>
-        </li>
-        <li className="tableHeaderElementRight">
+        </p>
+        <p className="tableHeaderElementRight">
           <span>Баланс</span>
-        </li>
-      </ul>
+        </p>
+      </div>
       <HomeTab />
-    </div>
+    </>
   );
 };
 
