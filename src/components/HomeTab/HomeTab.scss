@@ -3,14 +3,17 @@
 .tableHeader {
   justify-content: space-between;
   list-style-type: none;
+
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 60px 40px 118px 118px 70px 70px;
   grid-gap: 2vw;
+
   padding: 16px 21px 15px 20px;
+  margin-bottom: 0;
+
   border-radius: 30px;
   background-color: $white-color;
-  margin-bottom: 0;
 
   font-weight: bold;
   font-size: 18px;
@@ -19,12 +22,15 @@
 .dataList {
   justify-content: space-between;
   list-style-type: none;
+
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 60px 40px 118px 118px 70px 70px;
   grid-gap: 2vw;
+
   padding: 16px 21px 15px 20px;
   margin: 0;
+
   border-bottom: 1px solid #dcdcdf;
 }
 

@@ -14,4 +14,15 @@ const totalBalance = () => async dispatch => {
   }
 };
 
-export default totalBalance;
+const fetchTransactions = () => async dispatch => {
+  dispatch(financeActions.fetchTransactionsRequest());
+
+  try {
+    const { data } = await axios.get('/transactions');
+    dispatch(financeActions.fetchTransactionsSuccess(data));
+  } catch (error) {
+    dispatch(financeActions.fetchTransactionsError());
+  }
+};
+
+export default { totalBalance, fetchTransactions };

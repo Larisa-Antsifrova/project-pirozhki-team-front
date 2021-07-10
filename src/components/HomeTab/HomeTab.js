@@ -4,26 +4,6 @@ import './HomeTab.scss';
 const HomeTab = () => {
   return (
     <>
-      <ul className="tableHeader">
-        <li className="tableHeaderElement">
-          <span>Дата</span>
-        </li>
-        <li className="tableHeaderElementCenter">
-          <span>Тип</span>
-        </li>
-        <li className="tableHeaderElement">
-          <span>Категория</span>
-        </li>
-        <li className="tableHeaderElement">
-          <span>Комментарий</span>
-        </li>
-        <li className="tableHeaderElementRight">
-          <span>Сумма</span>
-        </li>
-        <li className="tableHeaderElementRight">
-          <span>Баланс</span>
-        </li>
-      </ul>
       <ul className="dataList">
         <li className="dataElement">
           <span>04.01.19</span>

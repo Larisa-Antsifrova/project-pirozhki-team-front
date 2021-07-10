@@ -7,6 +7,7 @@ import ButtonAddTransactions from '../components/ButtonAddTransactions';
 import Currency from '../components/Currency/Currency';
 import Container from '../components/Container';
 import HomeTabMobile from '../components/HomeTabMobile/HomeTabMobile';
+import HomeTabContainer from '../components/HomeTab/HomeTabContainer';
 import HomeTab from '../components/HomeTab';
 
 const DashboardPage = () => {
@@ -27,7 +28,7 @@ const DashboardPage = () => {
         {/* <Balance />
         <Currency /> */}
         <ButtonAddTransactions />
-        <HomeTab />
+        <HomeTabContainer />
         {/* <HomeTabMobile /> */}
       </Container>
     </>
