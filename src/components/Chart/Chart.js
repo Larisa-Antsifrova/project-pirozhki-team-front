@@ -20,7 +20,7 @@ const Chart = ({ tempData, totalBalance }) => {
             ? `${totalBalance.toLocaleString()}.00`
             : totalBalance.toLocaleString(),
           textX = Math.round((width - ctx.measureText(text).width) / 2),
-          textY = height / 1.8;
+          textY = height / 1.9;
         ctx.fillText(text, textX, textY);
 
         ctx.save();
@@ -31,6 +31,7 @@ const Chart = ({ tempData, totalBalance }) => {
   return (
     <div className="chartPie">
       <Pie
+        className="canvasTop"
         plugins={centerText}
         height={320}
         width={320}

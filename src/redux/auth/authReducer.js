@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import authActions from './authActions';
-// import operation from './auth-operation';
 
 const initialUserState = { name: null, email: null };
 
@@ -10,12 +9,11 @@ const user = createReducer(initialUserState, {
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: () => initialUserState,
   [authActions.getCurrentUserSucces]: (_, action) => action.payload,
-  // [operation.getCurrentUserInfo.fulfilled]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-  [authActions.registerSuccess]: (_, { payload }) => payload.token,
-  [authActions.loginSuccess]: (_, { payload }) => payload.token,
+  [authActions.registerSuccess]: (_, { payload }) => payload.accessToken,
+  [authActions.loginSuccess]: (_, { payload }) => payload.accessToken,
   [authActions.logoutSuccess]: () => null,
 });
 

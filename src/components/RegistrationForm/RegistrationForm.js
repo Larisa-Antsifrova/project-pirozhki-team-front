@@ -43,8 +43,7 @@ export default function RegisterForm() {
     { setSubmitting, setErrors, setStatus, resetForm },
   ) => {
     try {
-      console.log(this.props.values.password);
-      const newUser = { email, password, name };
+      const newUser = { email: email.toLowerCase(), password, name };
       dispatch(operation.register(newUser));
       resetForm({});
       setStatus({ success: true });
