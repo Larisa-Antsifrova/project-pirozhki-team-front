@@ -16,8 +16,9 @@ const register = user => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
     const { data } = await axios.post('/auth/registration', user);
-    token.set(data.accessToken);
-    dispatch(authActions.registerSuccess(data));
+    token.set(data.data);
+
+    dispatch(authActions.registerSuccess(data.data));
   } catch (error) {
     dispatch(authActions.registerError(error));
   }
@@ -27,8 +28,9 @@ const login = user => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const { data } = await axios.post('/auth/login', user);
-    token.set(data.accessToken);
-    dispatch(authActions.loginSuccess(data));
+    console.log(data.data.accessToken);
+    token.set(data.data);
+    dispatch(authActions.loginSuccess(data.data));
   } catch (error) {
     dispatch(authActions.loginError(error));
   }

@@ -1,17 +1,17 @@
 import axios from 'axios';
 import financeActions from './financeActions';
 
-axios.defaults.baseURL = 'https://awesome-wallet-app.herokuapp.com';
-
 const totalBalance = () => async dispatch => {
   dispatch(financeActions.totalBalanceRequest());
 
   try {
-    const { data } = await axios.get('/statistics');
-    dispatch(financeActions.totalBalanceSuccess(data));
+    const { data } = await axios.get('/transactions');
+    const totalBalance = data.data.totals.balance;
+    dispatch(financeActions.totalBalanceSuccess(totalBalance));
   } catch (error) {
     dispatch(financeActions.totalBalanceError());
   }
 };
 
-export default totalBalance;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { totalBalance };
