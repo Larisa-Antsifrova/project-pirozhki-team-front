@@ -1,3 +1,7 @@
+import { useSelector } from 'react-redux';
+import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
+import { getTotalBalance } from '../../redux/finance/financeSelectors';
+import Spinner from '../Spinner';
 import Chart from '../Chart';
 import Table from '../Table';
 import SelectMonthYear from '../SelectMonthYear';
@@ -64,33 +68,40 @@ const tempData = [
 const month = ['Март', 'Апрель', 'Май', 'Март', 'Апрель', 'Май'];
 const year = [2020, 2021, 2023];
 
-const totalBalance = 230000000000;
-
 const DiagramTab = () => {
+  const totalBalance = useSelector(getTotalBalance);
+  const isLoading = useSelector(getIsLoading);
+
   return (
-    <div className="diagramTab">
-      <h2 className="diagramTabTitle">Статистика</h2>
-      <div className="diagramTabChartTable">
-        <Chart tempData={tempData} totalBalance={totalBalance} />
-        <div className="tableContainer">
-          <div className="dropdownContainer">
-            <SelectMonthYear
-              title={'Месяц'}
-              list={month}
-              onChange={itemTitle => console.log(itemTitle)}
-            />
-            <SelectMonthYear
-              title={'Год'}
-              list={year}
-              onChange={itemTitle => console.log(itemTitle)}
-            />
-          </div>
-          <div>
-            <Table tempData={tempData} />
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className="diagramTab">
+          <h2 className="diagramTabTitle">Статистика</h2>
+          <div className="diagramTabChartTable">
+            <Chart tempData={tempData} totalBalance={totalBalance} />
+            <div className="tableContainer">
+              <div className="dropdownContainer">
+                <SelectMonthYear
+                  title={'Месяц'}
+                  list={month}
+                  onChange={itemTitle => console.log(itemTitle)}
+                />
+                <SelectMonthYear
+                  title={'Год'}
+                  list={year}
+                  onChange={itemTitle => console.log(itemTitle)}
+                />
+              </div>
+              <div>
+                <Table tempData={tempData} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
