@@ -1,12 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { fetchTransactions } from '../../redux/finance/financeSelectors';
+// import { useSelector } from 'react-redux';
+// import { fetchTransactions } from '../../redux/finance/financeSelectors';
 import './HomeTab.scss';
 import HomeTab from './HomeTab';
 
 const HomeTabContainer = () => {
-  const transactions = useSelector(fetchTransactions);
-  console.log(transactions);
+  // const transactions = useSelector(fetchTransactions);
+  // console.log(transactions);
 
   return (
     <div>
