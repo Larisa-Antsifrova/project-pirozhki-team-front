@@ -2,9 +2,8 @@ import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import './Table.scss';
 
-const Table = ({ tempData }) => {
+const Table = ({ tempData, costsIncome }) => {
   const data = useMemo(() => tempData, [tempData]);
-
   return (
     <div>
       <table className="table">
@@ -15,8 +14,8 @@ const Table = ({ tempData }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ name, sum, color }) => (
-            <tr key={name}>
+          {data.map(({ category, sum, color }) => (
+            <tr key={category}>
               <td className="tableCategories">
                 <span
                   className="tableCategoriesColor"
@@ -24,7 +23,7 @@ const Table = ({ tempData }) => {
                     backgroundColor: `${color}`,
                   }}
                 ></span>
-                {name}
+                {category}
               </td>
               <td className="tableSum">
                 {Number.isInteger(sum)
@@ -35,11 +34,11 @@ const Table = ({ tempData }) => {
           ))}
           <tr className="tableCostsIncome">
             <td>Расходы:</td>
-            <td className="tableCostsValue tableSum">24.950</td>
+            <td className="tableCostsValue tableSum">{costsIncome.expense}</td>
           </tr>
           <tr className="tableCostsIncome">
             <td>Доходы:</td>
-            <td className="tableIncomeValue tableSum">29.950</td>
+            <td className="tableIncomeValue tableSum">{costsIncome.income}</td>
           </tr>
         </tbody>
       </table>
