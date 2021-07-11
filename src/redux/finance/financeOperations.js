@@ -3,7 +3,7 @@ import financeActions from './financeActions';
 
 axios.defaults.baseURL = 'https://awesome-wallet-app.herokuapp.com';
 
-const totalBalance = () => async dispatch => {
+export const totalBalance = () => async dispatch => {
   dispatch(financeActions.totalBalanceRequest());
 
   try {
@@ -14,7 +14,7 @@ const totalBalance = () => async dispatch => {
   }
 };
 
-const fetchTransactions = () => async dispatch => {
+export const fetchTransactions = () => async dispatch => {
   dispatch(financeActions.fetchTransactionsRequest());
 
   try {
@@ -25,4 +25,4 @@ const fetchTransactions = () => async dispatch => {
   }
 };
 
-export default { totalBalance, fetchTransactions };
+// export default { totalBalance, fetchTransactions };

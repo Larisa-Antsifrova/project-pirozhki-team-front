@@ -11,11 +11,11 @@ import HomeTabContainer from '../../components/HomeTab/HomeTabContainer';
 import './dashboardPage.scss';
 
 import { useDispatch } from 'react-redux';
-import operations from '../../redux/finance/financeOperations';
+import { fetchTransactions } from '../../redux/finance/financeOperations';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(operations.fetchTransactions()), [dispatch]);
+  useEffect(() => dispatch(fetchTransactions()), [dispatch]);
 
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   return (
