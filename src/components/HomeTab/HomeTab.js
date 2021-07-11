@@ -1,26 +1,38 @@
 import React from 'react';
 import './HomeTab.scss';
 
-const HomeTab = () => {
+const HomeTab = ({ category, income, date, comment, sum }) => {
+  let dateNew = new Date(date);
+
+  const options = {
+    year: '2-digit',
+    month: 'numeric',
+    day: 'numeric',
+  };
+  const localData = dateNew.toLocaleDateString('ua-UA', options);
+  console.log(localData);
+
   return (
     <>
       <div className="dataList">
         <p className="dataElement">
-          <span>04.01.19</span>
+          <span>{localData}</span>
         </p>
         <p className="dataElementCenter">
-          <span>-</span>
+          <span>{income ? '+' : '-'}</span>
         </p>
         <p className="dataElement">
-          <span>Разное</span>
+          <span>{category}</span>
         </p>
         <p className="dataElement">
-          <span>Подарок жене</span>
+          <span>{comment}</span>
         </p>
         <p className="dataElementRight">
-          <span>300.00</span>
+          <span>{sum}</span>
         </p>
-        <p className="dataElementRight">
+        <p
+          className={income ? 'dataElementRightPlus' : 'dataElementRightMinus'}
+        >
           <span>6900.00</span>
         </p>
       </div>

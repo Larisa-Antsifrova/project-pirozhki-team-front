@@ -7,9 +7,9 @@ import HomeTab from './HomeTab';
 const HomeTabContainer = () => {
   const getTransactions = useSelector(fetchTransactions);
   console.log(getTransactions);
+  // const { transactions, totals } = getTransactions;
+  // console.log(transactions, totals);
 
-  const { data } = getTransactions;
-  console.log(data);
   return (
     <>
       <div className="tableHeader">
@@ -32,7 +32,18 @@ const HomeTabContainer = () => {
           <span>Баланс</span>
         </p>
       </div>
-      <HomeTab />
+      {getTransactions.map(({ id, comment, sum, category, income, date }) => (
+        // <li className="transactionItem" key={t.id}>
+        <HomeTab
+          key={id}
+          comment={comment}
+          sum={sum}
+          category={category}
+          income={income}
+          date={date}
+        />
+        // </li>
+      ))}
     </>
   );
 };

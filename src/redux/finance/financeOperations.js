@@ -18,8 +18,12 @@ export const fetchTransactions = () => async dispatch => {
   dispatch(financeActions.fetchTransactionsRequest());
 
   try {
-    const { data } = await axios.get('/transactions');
-    dispatch(financeActions.fetchTransactionsSuccess(data));
+    const {
+      data: {
+        data: { transactions },
+      },
+    } = await axios.get('/transactions');
+    dispatch(financeActions.fetchTransactionsSuccess(transactions));
   } catch (error) {
     dispatch(financeActions.fetchTransactionsError());
   }
