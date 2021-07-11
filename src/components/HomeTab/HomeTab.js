@@ -10,7 +10,6 @@ const HomeTab = ({ category, income, date, comment, sum }) => {
     day: 'numeric',
   };
   const localData = dateNew.toLocaleDateString('ua-UA', options);
-  console.log(localData);
 
   return (
     <>

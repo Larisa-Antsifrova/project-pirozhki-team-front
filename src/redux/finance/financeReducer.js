@@ -6,11 +6,11 @@ const totalBalance = createReducer(null, {
   [financeActions.totalBalanceSuccess]: (_, { payload }) => payload,
 });
 
-const fetchTransactions = createReducer([], {
+const transactions = createReducer([], {
   [financeActions.fetchTransactionsSuccess]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
   totalBalance,
-  fetchTransactions,
+  transactions,
 });

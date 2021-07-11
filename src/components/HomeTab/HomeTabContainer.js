@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { fetchTransactions } from '../../redux/finance/financeSelectors';
+import { transactions } from '../../redux/finance/financeSelectors';
 import './HomeTab.scss';
 import HomeTab from './HomeTab';
 
 const HomeTabContainer = () => {
-  const getTransactions = useSelector(fetchTransactions);
-  console.log(getTransactions);
+  const getTransactions = useSelector(transactions);
+  // console.log(getTransactions);
   // const { transactions, totals } = getTransactions;
   // console.log(transactions, totals);
 
@@ -32,8 +32,8 @@ const HomeTabContainer = () => {
           <span>Баланс</span>
         </p>
       </div>
-      {getTransactions.map(({ id, comment, sum, category, income, date }) => (
-        // <li className="transactionItem" key={t.id}>
+      {/* {getTransactions.map(({ id, comment, sum, category, income, date }) => (
+
         <HomeTab
           key={id}
           comment={comment}
@@ -42,8 +42,8 @@ const HomeTabContainer = () => {
           income={income}
           date={date}
         />
-        // </li>
-      ))}
+
+      ))} */}
     </>
   );
 };

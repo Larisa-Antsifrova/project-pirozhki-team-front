@@ -2,8 +2,7 @@ import React from 'react';
 import './HomeTabMobile.scss';
 
 const HomeTabMobile = ({ category, income, date, comment, sum }) => {
-  let dateNew = new Date(date);
-
+  const dateNew = new Date(date);
   const options = {
     year: '2-digit',
     month: 'numeric',
@@ -37,7 +36,7 @@ const HomeTabMobile = ({ category, income, date, comment, sum }) => {
       </li>
       <li className="transactionCardElement">
         <span className="elementName">Баланс</span>
-        <span className="elementData">6 900.00</span>
+        <span className="elementData"></span>
       </li>
     </ul>
   );

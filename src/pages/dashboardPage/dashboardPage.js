@@ -7,8 +7,8 @@ import ButtonAddTransactions from '../../components/ButtonAddTransactions';
 import Currency from '../../components/Currency/Currency';
 import Container from '../../components/Container';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
-import HomeTabContainer from '../../components/HomeTab/HomeTabContainer';
-import HomeTabMobileContainer from '../../components/HomeTabMobile/HomeTabMobileContainer';
+import HomeTabContainer from '../../components/HomeTab';
+import HomeTabMobileContainer from '../../components/HomeTabMobile';
 import './dashboardPage.scss';
 
 import { useDispatch } from 'react-redux';
@@ -37,8 +37,15 @@ const DashboardPage = () => {
             <Balance />
             <Currency />
           </div>
-          <HomeTabMobileContainer />
-          {/* <HomeTabContainer /> */}
+          {biggerThan767 ? (
+            <div>
+              <HomeTabContainer />
+            </div>
+          ) : (
+            <div>
+              <HomeTabMobileContainer />
+            </div>
+          )}
           <div className="twoBlock">
             <DiagramTab />
           </div>

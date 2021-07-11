@@ -1,1 +1,1 @@
-export { default } from './HomeTabMobile';
+export { default } from './HomeTabMobileContainer';
