@@ -8,6 +8,7 @@ import Currency from '../../components/Currency/Currency';
 import Container from '../../components/Container';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
 import HomeTabContainer from '../../components/HomeTab/HomeTabContainer';
+import HomeTabMobileContainer from '../../components/HomeTabMobile/HomeTabMobileContainer';
 import './dashboardPage.scss';
 
 import { useDispatch } from 'react-redux';
@@ -36,7 +37,8 @@ const DashboardPage = () => {
             <Balance />
             <Currency />
           </div>
-          <HomeTabContainer />
+          <HomeTabMobileContainer />
+          {/* <HomeTabContainer /> */}
           <div className="twoBlock">
             <DiagramTab />
           </div>
