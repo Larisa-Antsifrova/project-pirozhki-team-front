@@ -20,7 +20,7 @@ const Chart = ({ tempData, totalBalance }) => {
             ? `${totalBalance.toLocaleString()}.00`
             : totalBalance.toLocaleString(),
           textX = Math.round((width - ctx.measureText(text).width) / 2),
-          textY = height / 1.8;
+          textY = height / 1.9;
         ctx.fillText(text, textX, textY);
 
         ctx.save();
@@ -31,14 +31,15 @@ const Chart = ({ tempData, totalBalance }) => {
   return (
     <div className="chartPie">
       <Pie
+        className="canvasTop"
         plugins={centerText}
         height={320}
         width={320}
         data={{
-          labels: tempData.map(el => ` ${el.name}`),
+          labels: tempData.map(el => ` ${el.category}`),
           datasets: [
             {
-              data: tempData.map(el => el.sum),
+              data: tempData.map(el => (el.sum > 0 ? el.sum : 1)),
               backgroundColor: tempData.map(el => el.color),
               hoverOffset: 2,
             },
@@ -56,7 +57,7 @@ const Chart = ({ tempData, totalBalance }) => {
 Chart.propTypes = {
   tempData: PropTypes.arrayOf(
     PropTypes.PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
       sum: PropTypes.number.isRequired,
       income: PropTypes.bool.isRequired,
       color: PropTypes.string.isRequired,

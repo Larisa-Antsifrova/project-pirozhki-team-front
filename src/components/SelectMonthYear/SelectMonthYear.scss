@@ -1,0 +1,89 @@
+@import '../../stylesheet/vars';
+
+.dropdownWrapper {
+  position: relative;
+  min-width: 280px;
+  margin-bottom: 20px;
+  user-select: none;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    min-width: 165px;
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .dropdownHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 280px;
+    // margin-bottom: 20px;
+    height: 50px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 8px 14px;
+    cursor: pointer;
+
+    @media screen and (min-width: 768px) {
+      justify-content: space-between;
+      width: 165px;
+    }
+
+    &.dropdownHeaderActive {
+      border-bottom: 1px transparent solid;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-bottom: 0;
+      margin-bottom: 0px;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+      stroke-width: 1;
+      margin-left: 8px;
+    }
+  }
+
+  .dropdownList {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    background: $white-color;
+    border: 1px solid black;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    &.dropdownListOpen {
+      display: flex;
+      z-index: 1;
+    }
+
+    .dropdownListItem {
+      border: none;
+      background: none;
+      border-bottom: 1px solid $gray-table-string-color;
+      font-family: inherit;
+      font-size: 16px;
+      padding: 8px 14px;
+      color: black;
+      cursor: pointer;
+      outline: none;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        color: $rose-color;
+      }
+    }
+  }
+}
