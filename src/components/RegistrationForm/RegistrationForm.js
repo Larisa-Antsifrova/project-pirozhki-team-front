@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useMediaPredicate } from 'react-media-hook';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import sprite from '../../images/sprite.svg';
@@ -53,6 +54,7 @@ export default function RegisterForm() {
       setErrors({ submit: error.message });
     }
   };
+  const biggerThan767 = useMediaPredicate('(min-width: 768px)');
 
   return (
     <Container>
@@ -60,9 +62,17 @@ export default function RegisterForm() {
         <Title
           text={
             <>
-              <svg className="iconNavigation" width="38" height="38">
-                <use href={sprite + '#wallet-icon'} />
-              </svg>
+              <span className="headerLogo">
+                {biggerThan767 ? (
+                  <svg>
+                    <use href={sprite + '#wallet-icon'} />
+                  </svg>
+                ) : (
+                  <svg>
+                    <use href={sprite + '#wallet-mobile-icon'} />
+                  </svg>
+                )}
+              </span>
               <span className="titleForm">Wallet</span>
             </>
           }
@@ -75,13 +85,14 @@ export default function RegisterForm() {
           validateOnChange
           onSubmit={onSubmit}
         >
-          {({ values, handleChange }) => (
+          {({ values, handleBlur, isValid, dirty, handleChange }) => (
             <Form className="regForm">
               <TextInput
                 icon="#email-field-icon"
                 name="email"
                 type="email"
                 placeholder="E-mail"
+                onBlur={handleBlur}
               />
               <TextInput
                 icon="#password-field-icon"
@@ -90,6 +101,7 @@ export default function RegisterForm() {
                 placeholder="Пароль"
                 onChange={handleChange}
                 values={values.password}
+                onBlur={handleBlur}
               />
               <PasswordStrengthMeter password={values.password} />
               <TextInput
@@ -97,15 +109,21 @@ export default function RegisterForm() {
                 name="confirmPassword"
                 type="password"
                 placeholder="Подтвердите пароль"
+                onBlur={handleBlur}
               />
               <TextInput
                 icon="#name-field-icon"
                 name="name"
                 type="text"
                 placeholder="Ваше Имя"
+                onBlur={handleBlur}
               />
 
-              <button className="regBtn" type="submit">
+              <button
+                className="regBtn"
+                type="submit"
+                disabled={!isValid && !dirty}
+              >
                 Регистрация
               </button>
             </Form>

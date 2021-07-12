@@ -46,9 +46,9 @@ const DashboardPage = () => {
               <HomeTabMobileContainer />
             </div>
           )}
-          {/* <div className="twoBlock">
+          <div className="twoBlock">
             <DiagramTab />
-          </div> */}
+          </div>
           <ButtonAddTransactions />
         </div>
       </Container>

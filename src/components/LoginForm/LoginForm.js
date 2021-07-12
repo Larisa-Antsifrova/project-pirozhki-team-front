@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useMediaPredicate } from 'react-media-hook';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import sprite from '../../images/sprite.svg';
@@ -46,6 +47,7 @@ export default function RegisterForm() {
       setErrors({ submit: error.message });
     }
   };
+  const biggerThan767 = useMediaPredicate('(min-width: 768px)');
 
   return (
     <Container>
@@ -53,9 +55,17 @@ export default function RegisterForm() {
         <Title
           text={
             <>
-              <svg className="iconNavigation" width="38" height="38">
-                <use href={sprite + '#wallet-icon'} />
-              </svg>
+              <span className="headerLogo">
+                {biggerThan767 ? (
+                  <svg>
+                    <use href={sprite + '#wallet-icon'} />
+                  </svg>
+                ) : (
+                  <svg>
+                    <use href={sprite + '#wallet-mobile-icon'} />
+                  </svg>
+                )}
+              </span>
               <span className="titleForm">Wallet</span>
             </>
           }
