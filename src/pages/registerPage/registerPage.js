@@ -9,6 +9,12 @@ const RegisterPage = () => {
     <main>
       <div className="authWrapper">
         <Container>
+          <div className="heroWrapper">
+            <div className="heroImageRegister"></div>
+            <div className="heroTitle">
+              <h1 className="heroTitleText">Finance App</h1>
+            </div>
+          </div>
           <div className="formWrapper">
             <RegistrationForm />
           </div>

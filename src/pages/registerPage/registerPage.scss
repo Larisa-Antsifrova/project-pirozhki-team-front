@@ -5,11 +5,8 @@
   width: 100vw;
   background-color: $white-color;
 
-  @include for-size(phone) {
-    // background-color: $white-color;
-  }
-
   @include for-size(tablet) {
+    padding: 60px 0;
     background-color: $background-color;
   }
 
@@ -18,9 +15,63 @@
   }
 }
 
+.heroWrapper {
+  display: flex;
+  width: 100%;
+  max-width: 540px;
+  height: 250px;
+
+  margin: 0 auto 50px;
+}
+
+.heroBlocks {
+  width: 50%;
+}
+
+.heroImage {
+  @extend .heroBlocks;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  &Register {
+    @extend .heroImage;
+    background-image: url('../../images/register-page-img-tablet.png');
+  }
+
+  &Login {
+    @extend .heroImage;
+    background-image: url('../../images/login-page-img-tablet.png');
+  }
+}
+
+.heroTitle {
+  @extend .heroBlocks;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.heroTitleText {
+  font-family: $secondary-font;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.5;
+}
+
 .formWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+
+  @include for-size(phone) {
+    min-height: 100vh;
+  }
+
+  @include for-size(tablet) {
+    min-height: auto;
+  }
 }
