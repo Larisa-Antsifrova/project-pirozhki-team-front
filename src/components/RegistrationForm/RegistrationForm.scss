@@ -1,17 +1,15 @@
 @import 'stylesheet/shared.scss';
 
 .formContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 36px;
+  padding: 10px 0 15px;
+  border-radius: 20px;
+  background-color: $white-color;
+
   @include for-size(tablet) {
-    padding-bottom: 60px;
+    padding: 40px 65px 60px;
   }
-  outline: 1px solid blue;
-  background-color: green;
 }
+
 .regForm {
   display: inline-flex;
   flex-direction: column;
@@ -19,9 +17,11 @@
   align-items: center;
   margin-top: 50px;
 }
+
 .error {
   color: $rose-color;
 }
+
 .titleForm {
   font-family: $secondary-font;
   color: $black-color;
@@ -37,6 +37,9 @@
 .regBtn {
   color: $white-color;
   background-color: $green-accent-color-color;
+  height: 50px;
+  width: 280px;
+  border-radius: 20px;
   @include for-size(tablet) {
     width: 300px;
   }

@@ -1,9 +1,10 @@
 @import 'stylesheet/shared.scss';
 
 .authWrapper {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  background-color: $white-color;
+  // background-color: $white-color;
+  background-color: pink;
 
   @include for-size(phone) {
     // background-color: $white-color;
@@ -22,5 +23,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }

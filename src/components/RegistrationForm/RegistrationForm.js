@@ -55,7 +55,6 @@ export default function RegisterForm() {
   };
 
   return (
-    // <Container>
     <div className="formContainer">
       <Title
         text={
@@ -115,6 +114,5 @@ export default function RegisterForm() {
         Вход
       </NavLink>
     </div>
-    // </Container>
   );
 }
