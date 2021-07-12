@@ -1,12 +1,52 @@
 @import 'stylesheet/shared.scss';
 
 .formContainer {
-  padding: 10px 0 15px;
+  padding: 36px 0;
   border-radius: 20px;
   background-color: $white-color;
 
   @include for-size(tablet) {
     padding: 40px 65px 60px;
+  }
+}
+
+.formHeaderTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formHeaderIcon {
+  width: 30px;
+  height: 30px;
+
+  @include for-size(tablet) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.formHeaderText {
+  margin-left: 16px;
+
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5;
+
+  @include for-size(tablet) {
+    margin-left: 20px;
+    font-size: 30px;
+  }
+}
+
+.titleForm {
+  font-family: $secondary-font;
+  color: $black-color;
+  font-size: 30px;
+  @include for-size(tablet) {
+    margin-left: 20px;
   }
 }
 
@@ -20,18 +60,6 @@
 
 .error {
   color: $rose-color;
-}
-
-.titleForm {
-  font-family: $secondary-font;
-  color: $black-color;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 30px;
-  margin-left: 16px;
-  @include for-size(tablet) {
-    margin-left: 20px;
-  }
 }
 
 .regBtn {

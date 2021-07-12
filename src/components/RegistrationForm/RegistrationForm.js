@@ -56,16 +56,12 @@ export default function RegisterForm() {
 
   return (
     <div className="formContainer">
-      <Title
-        text={
-          <>
-            <svg className="iconNavigation" width="38" height="38">
-              <use href={sprite + '#wallet-icon'} />
-            </svg>
-            <span className="titleForm">Wallet</span>
-          </>
-        }
-      />
+      <p className="formHeaderTitle">
+        <svg className="formHeaderIcon">
+          <use href={sprite + '#wallet-icon'} />
+        </svg>
+        <span className="formHeaderText">Wallet</span>
+      </p>
 
       <Formik
         initialValues={INITIAL_VALUES}
