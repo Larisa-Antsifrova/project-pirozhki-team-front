@@ -53,7 +53,7 @@ export default function RegisterForm() {
         <Title
           text={
             <>
-              <svg className="iconNavigation" width="38" height="38">
+              <svg className="iconTitleForm" width="30" height="30">
                 <use href={sprite + '#wallet-icon'} />
               </svg>
               <span className="titleForm">Wallet</span>

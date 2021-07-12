@@ -1,6 +1,8 @@
 @import 'stylesheet/shared.scss';
 
 .titleText {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 25px auto 5px;
 }

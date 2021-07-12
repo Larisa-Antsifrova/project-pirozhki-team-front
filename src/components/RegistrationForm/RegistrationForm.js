@@ -60,7 +60,7 @@ export default function RegisterForm() {
         <Title
           text={
             <>
-              <svg className="iconNavigation" width="38" height="38">
+              <svg className="iconTitleForm" width="30" height="30">
                 <use href={sprite + '#wallet-icon'} />
               </svg>
               <span className="titleForm">Wallet</span>
@@ -75,13 +75,14 @@ export default function RegisterForm() {
           validateOnChange
           onSubmit={onSubmit}
         >
-          {({ values, handleChange }) => (
+          {({ values, handleBlur, isValid, dirty, handleChange }) => (
             <Form className="regForm">
               <TextInput
                 icon="#email-field-icon"
                 name="email"
                 type="email"
                 placeholder="E-mail"
+                onBlur={handleBlur}
               />
               <TextInput
                 icon="#password-field-icon"
@@ -90,6 +91,7 @@ export default function RegisterForm() {
                 placeholder="Пароль"
                 onChange={handleChange}
                 values={values.password}
+                onBlur={handleBlur}
               />
               <PasswordStrengthMeter password={values.password} />
               <TextInput
@@ -97,15 +99,21 @@ export default function RegisterForm() {
                 name="confirmPassword"
                 type="password"
                 placeholder="Подтвердите пароль"
+                onBlur={handleBlur}
               />
               <TextInput
                 icon="#name-field-icon"
                 name="name"
                 type="text"
                 placeholder="Ваше Имя"
+                onBlur={handleBlur}
               />
 
-              <button className="regBtn" type="submit">
+              <button
+                className="regBtn"
+                type="submit"
+                disabled={!isValid && !dirty}
+              >
                 Регистрация
               </button>
             </Form>

@@ -1,5 +1,12 @@
 @import 'stylesheet/shared.scss';
 
+.iconTitleForm {
+  @include for-size(tablet) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -33,6 +40,10 @@
 }
 
 .regBtn {
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  margin-bottom: 20px;
   color: $white-color;
   background-color: $green-accent-color-color;
   @include for-size(tablet) {
