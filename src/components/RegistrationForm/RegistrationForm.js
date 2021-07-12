@@ -6,8 +6,6 @@ import * as yup from 'yup';
 import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
 
-// import Title from '../Title';
-// import Container from '../Container';
 import TextInput from '../TextInput';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';

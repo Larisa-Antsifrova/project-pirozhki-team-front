@@ -2,17 +2,18 @@
 
 .formElement {
   position: relative;
-  margin: 20px 0px;
+  margin: 0 0 40px;
 }
 
 .textInput {
-  width: 280px;
+  width: 100%;
   height: 34px;
   padding-left: 54px;
+
   border: 0px;
-  outline: none;
   border-bottom: 1px solid $gray-table-string-color;
   background-color: transparent;
+  outline: none;
 
   &:focus,
   &:hover {
@@ -22,15 +23,15 @@
       fill: $indigo-other-color;
     }
   }
-  @include for-size(tablet) {
-    width: 410px;
-  }
 }
 
-.iconFormElement {
+.formElementIcon {
   line-height: 0;
   position: absolute;
   top: 2px;
   left: 10px;
   fill: $fill-color;
 }
+
+// $time-transforming: 250ms;
+// $timing-function: cubic-bezier(0.4, 0, 0.2, 1);

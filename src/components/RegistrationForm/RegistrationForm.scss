@@ -1,7 +1,10 @@
 @import 'stylesheet/shared.scss';
 
 .formContainer {
+  width: 100%;
+  max-width: 540px;
   padding: 36px 0;
+
   border-radius: 20px;
   background-color: $white-color;
 
@@ -40,20 +43,16 @@
     font-size: 30px;
   }
 }
-// ==========================================
+
 .authForm {
-  // display: inline-flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   margin-top: 50px;
   margin-bottom: 20px;
 }
 
 .error {
+  text-align: end;
   color: $rose-color;
 }
-// ==========================================
 
 .authBtn {
   display: block;
@@ -61,6 +60,7 @@
   max-width: 300px;
   height: 50px;
   padding: 13px;
+  margin: 0 auto;
 
   text-align: center;
   text-transform: uppercase;
@@ -81,8 +81,6 @@
 
   &Redirect {
     @extend .authBtn;
-
-    margin: 0 auto;
 
     color: $indigo-accent-color;
     background-color: $white-color;
