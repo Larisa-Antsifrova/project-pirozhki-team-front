@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
 
-import Title from '../Title';
+// import Title from '../Title';
 // import Container from '../Container';
 import TextInput from '../TextInput';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
@@ -100,13 +100,13 @@ export default function RegisterForm() {
               placeholder="Ваше Имя"
             />
 
-            <button className="regBtn" type="submit">
+            <button className="authBtnCurrent" type="submit">
               Регистрация
             </button>
           </Form>
         )}
       </Formik>
-      <NavLink to="/login" exact className="loginlink">
+      <NavLink to="/login" exact className="authBtnRedirect">
         Вход
       </NavLink>
     </div>

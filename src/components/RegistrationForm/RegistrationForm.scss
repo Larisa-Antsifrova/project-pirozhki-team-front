@@ -41,15 +41,6 @@
   }
 }
 
-.titleForm {
-  font-family: $secondary-font;
-  color: $black-color;
-  font-size: 30px;
-  @include for-size(tablet) {
-    margin-left: 20px;
-  }
-}
-
 .regForm {
   display: inline-flex;
   flex-direction: column;
@@ -62,29 +53,36 @@
   color: $rose-color;
 }
 
-.regBtn {
-  color: $white-color;
-  background-color: $green-accent-color-color;
-  height: 50px;
-  width: 280px;
+.authBtn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 13px;
+
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+
   border-radius: 20px;
-  @include for-size(tablet) {
-    width: 300px;
+
+  &Current {
+    @extend .authBtn;
+
+    margin-bottom: 20px;
+
+    color: $white-color;
+    background-color: $green-accent-color-color;
+    border: 1px solid transparent;
   }
-}
 
-.loginlink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 280px;
-  border-radius: 20px;
-  background: $white-color;
-  color: $indigo-accent-color;
-  border: 1px solid $indigo-accent-color;
+  &Redirect {
+    @extend .authBtn;
 
-  @include for-size(tablet) {
-    width: 300px;
+    color: $indigo-accent-color;
+    background-color: $white-color;
+    border: 1px solid $indigo-accent-color;
   }
 }
