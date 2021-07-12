@@ -57,6 +57,8 @@ const DiagramTab = () => {
 
   const onSelectYear = itemTitle => setSeletcYear(itemTitle);
 
+  console.log(seletcYear);
+  console.log(seletcMonth);
   return (
     <>
       {isLoading ? (
@@ -72,12 +74,14 @@ const DiagramTab = () => {
             <div className="tableContainer">
               <div className="dropdownContainer">
                 <SelectMonthYear
-                  title={'Месяц'}
+                  title={
+                    seletcMonth ? month[parseInt(seletcMonth - 1)] : 'Месяц'
+                  }
                   list={month}
                   onChange={onSelectMonth}
                 />
                 <SelectMonthYear
-                  title={'Год'}
+                  title={seletcYear ? seletcYear : 'Год'}
                   list={year}
                   onChange={onSelectYear}
                 />
