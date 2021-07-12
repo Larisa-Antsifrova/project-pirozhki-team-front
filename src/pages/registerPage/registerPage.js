@@ -1,13 +1,18 @@
 import React from 'react';
 import Title from '../../components/Title';
 import RegistrationForm from '../../components/RegistrationForm';
+import Container from '../../components/Container';
+import './registerPage.scss';
 
 const RegisterPage = () => {
   return (
-    <>
-      <Title text={<span className="titleApp">Finance App</span>} />
-      <RegistrationForm />
-    </>
+    <main>
+      <div className="authWrapper">
+        <Container>
+          <RegistrationForm />
+        </Container>
+      </div>
+    </main>
   );
 };
 

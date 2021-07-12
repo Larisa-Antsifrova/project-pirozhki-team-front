@@ -7,7 +7,7 @@ import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
 
 import Title from '../Title';
-import Container from '../Container';
+// import Container from '../Container';
 import TextInput from '../TextInput';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';
@@ -55,66 +55,66 @@ export default function RegisterForm() {
   };
 
   return (
-    <Container>
-      <div className="formContainer">
-        <Title
-          text={
-            <>
-              <svg className="iconNavigation" width="38" height="38">
-                <use href={sprite + '#wallet-icon'} />
-              </svg>
-              <span className="titleForm">Wallet</span>
-            </>
-          }
-        />
+    // <Container>
+    <div className="formContainer">
+      <Title
+        text={
+          <>
+            <svg className="iconNavigation" width="38" height="38">
+              <use href={sprite + '#wallet-icon'} />
+            </svg>
+            <span className="titleForm">Wallet</span>
+          </>
+        }
+      />
 
-        <Formik
-          initialValues={INITIAL_VALUES}
-          validationSchema={validationShema}
-          validateOnBlur
-          validateOnChange
-          onSubmit={onSubmit}
-        >
-          {({ values, handleChange }) => (
-            <Form className="regForm">
-              <TextInput
-                icon="#email-field-icon"
-                name="email"
-                type="email"
-                placeholder="E-mail"
-              />
-              <TextInput
-                icon="#password-field-icon"
-                name="password"
-                type="password"
-                placeholder="Пароль"
-                onChange={handleChange}
-                values={values.password}
-              />
-              <PasswordStrengthMeter password={values.password} />
-              <TextInput
-                icon="#password-field-icon"
-                name="confirmPassword"
-                type="password"
-                placeholder="Подтвердите пароль"
-              />
-              <TextInput
-                icon="#name-field-icon"
-                name="name"
-                type="text"
-                placeholder="Ваше Имя"
-              />
+      <Formik
+        initialValues={INITIAL_VALUES}
+        validationSchema={validationShema}
+        validateOnBlur
+        validateOnChange
+        onSubmit={onSubmit}
+      >
+        {({ values, handleChange }) => (
+          <Form className="regForm">
+            <TextInput
+              icon="#email-field-icon"
+              name="email"
+              type="email"
+              placeholder="E-mail"
+            />
+            <TextInput
+              icon="#password-field-icon"
+              name="password"
+              type="password"
+              placeholder="Пароль"
+              onChange={handleChange}
+              values={values.password}
+            />
+            <PasswordStrengthMeter password={values.password} />
+            <TextInput
+              icon="#password-field-icon"
+              name="confirmPassword"
+              type="password"
+              placeholder="Подтвердите пароль"
+            />
+            <TextInput
+              icon="#name-field-icon"
+              name="name"
+              type="text"
+              placeholder="Ваше Имя"
+            />
 
-              <button className="regBtn" type="submit">
-                Регистрация
-              </button>
-            </Form>
-          )}
-        </Formik>
-        <NavLink to="/login" exact className="loginlink">
-          Вход
-        </NavLink>
-      </div>
-    </Container>
+            <button className="regBtn" type="submit">
+              Регистрация
+            </button>
+          </Form>
+        )}
+      </Formik>
+      <NavLink to="/login" exact className="loginlink">
+        Вход
+      </NavLink>
+    </div>
+    // </Container>
   );
 }

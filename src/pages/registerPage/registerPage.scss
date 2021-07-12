@@ -1,0 +1,17 @@
+@import 'stylesheet/shared.scss';
+
+.authWrapper {
+  background-color: $white-color;
+
+  @include for-size(phone) {
+    // background-color: $white-color;
+  }
+
+  @include for-size(tablet) {
+    background-color: $background-color;
+  }
+
+  @include for-size(desktop) {
+    background-color: $background-color;
+  }
+}

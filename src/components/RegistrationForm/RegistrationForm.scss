@@ -9,6 +9,8 @@
   @include for-size(tablet) {
     padding-bottom: 60px;
   }
+  outline: 1px solid blue;
+  background-color: green;
 }
 .regForm {
   display: inline-flex;
