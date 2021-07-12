@@ -18,20 +18,28 @@ const App = () => {
     <>
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <WithAuthRedirect path="/register" type="guest">
+          <WithAuthRedirect
+            path="/register"
+            type="guest"
+            redirectTo="/dashboard"
+          >
             <RegisterPage />
           </WithAuthRedirect>
 
-          <WithAuthRedirect path="/login" type="guest">
+          <WithAuthRedirect path="/login" type="guest" redirectTo="/dashboard">
             <LoginPage />
           </WithAuthRedirect>
 
-          <WithAuthRedirect path="/dashboard" type="private">
+          <WithAuthRedirect
+            path="/dashboard"
+            type="private"
+            redirectTo="/login"
+          >
             <DashboardPage />
           </WithAuthRedirect>
 
-          <WithAuthRedirect path="/" type="guest">
-            <ErrorPage />
+          <WithAuthRedirect path="/" type="guest" redirectTo="/login">
+            <LoginPage />
           </WithAuthRedirect>
         </Switch>
       </Suspense>
