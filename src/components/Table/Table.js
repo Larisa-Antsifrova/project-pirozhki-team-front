@@ -6,6 +6,12 @@ const Table = ({ tempData, costsIncome }) => {
   const data = useMemo(() => tempData, [tempData]);
   const { expense, income } = useMemo(() => costsIncome, [costsIncome]);
 
+  const numberToLocalString = num => {
+    return Number.isInteger(num)
+      ? `${num.toLocaleString()}.00`
+      : num.toLocaleString();
+  };
+
   return (
     <div>
       <table className="table">
@@ -36,11 +42,15 @@ const Table = ({ tempData, costsIncome }) => {
           ))}
           <tr className="tableCostsIncome">
             <td>Расходы:</td>
-            <td className="tableCostsValue tableSum">{expense}</td>
+            <td className="tableCostsValue tableSum">
+              {numberToLocalString(expense)}
+            </td>
           </tr>
           <tr className="tableCostsIncome">
             <td>Доходы:</td>
-            <td className="tableIncomeValue tableSum">{income}</td>
+            <td className="tableIncomeValue tableSum">
+              {numberToLocalString(income)}
+            </td>
           </tr>
         </tbody>
       </table>

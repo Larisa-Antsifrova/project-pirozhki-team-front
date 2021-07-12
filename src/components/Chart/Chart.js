@@ -39,7 +39,7 @@ const Chart = ({ tempData, totalBalance }) => {
           labels: tempData.map(el => ` ${el.category}`),
           datasets: [
             {
-              data: tempData.map(el => el.sum),
+              data: tempData.map(el => (el.sum > 0 ? el.sum : 1)),
               backgroundColor: tempData.map(el => el.color),
               hoverOffset: 2,
             },

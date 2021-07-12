@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
 import {
-  getTotalBalance,
   getStatistics,
   costsIncomeTotals,
 } from '../../redux/finance/financeSelectors';
@@ -34,14 +33,13 @@ const noTransaction = [
   {
     category: 'У вас нету транзакций',
     income: false,
-    sum: 1,
+    sum: 0,
     color: '#e9e9e9',
   },
 ];
 
 const DiagramTab = () => {
   const dispatch = useDispatch();
-  const totalBalance = useSelector(getTotalBalance);
   const statistics = useSelector(getStatistics);
   const costsIncome = useSelector(costsIncomeTotals);
   const isLoading = useSelector(getIsLoading);
@@ -69,7 +67,7 @@ const DiagramTab = () => {
           <div className="diagramTabChartTable">
             <Chart
               tempData={statistics.length > 0 ? statistics : noTransaction}
-              totalBalance={totalBalance}
+              totalBalance={costsIncome.balance}
             />
             <div className="tableContainer">
               <div className="dropdownContainer">
