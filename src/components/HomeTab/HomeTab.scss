@@ -1,16 +1,7 @@
 @import 'stylesheet/shared.scss';
 
 .tableHeader {
-  justify-content: space-between;
-  list-style-type: none;
-
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 60px 40px 118px 118px 70px 70px;
-  grid-gap: 2vw;
-
   padding: 16px 21px 15px 20px;
-  margin-bottom: 0;
 
   border-radius: 30px;
   background-color: $white-color;
@@ -19,19 +10,28 @@
   font-size: 18px;
 }
 
-.dataList {
+.tableHeaderElementRight {
+  text-align: right;
+}
+
+.tableHeaderElementCenter {
+  text-align: center;
+}
+
+.tableHeaderCommon {
   justify-content: space-between;
   list-style-type: none;
-
-  height: 54px;
-
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 60px 40px 118px 118px 70px 70px;
   grid-gap: 2vw;
+  margin: 0;
+}
+
+.dataList {
+  height: 54px;
 
   padding: 10px 21px 8px 20px;
-  margin: 0;
 
   line-height: 1.13;
 
@@ -43,41 +43,22 @@
   justify-self: baseline;
 }
 
-.tableHeaderElementRight {
-  text-align: right;
-}
-
-.tableHeaderElementCenter {
-  text-align: center;
-}
-
 .dataElementCenter {
-  text-align: center;
-  align-self: center;
   justify-self: center;
 }
 
 .dataElementRight {
   text-align: right;
-  align-self: center;
-  justify-self: right;
-}
-.transactionItem {
-  list-style-type: none;
-}
-
-.dataElementRightPlus {
-  text-align: right;
-  align-self: center;
-  justify-self: right;
-  color: $green-accent-color-color;
-  font-weight: bold;
-}
-
-.dataElementRightMinus {
-  text-align: right;
-  align-self: center;
   justify-self: right;
   color: $rose-color;
   font-weight: bold;
+}
+
+.dataElementGreen {
+  color: $green-accent-color-color;
+}
+
+.dataElementBalance {
+  text-align: right;
+  justify-self: right;
 }

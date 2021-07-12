@@ -3,13 +3,14 @@ import { useSelector } from 'react-redux';
 import { transactions } from '../../redux/finance/financeSelectors';
 import './HomeTab.scss';
 import HomeTab from './HomeTab';
+import cn from 'classnames';
 
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
 
   return (
     <>
-      <div className="tableHeader">
+      <div className={cn('tableHeader', 'tableHeaderCommon')}>
         <p className="tableHeaderElement">
           <span>Дата</span>
         </p>

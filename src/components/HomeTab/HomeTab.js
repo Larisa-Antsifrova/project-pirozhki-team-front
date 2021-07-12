@@ -1,23 +1,24 @@
 import React from 'react';
 import './HomeTab.scss';
+import cn from 'classnames';
 
 const HomeTab = ({ category, income, date, comment, sum }) => {
-  let dateNew = new Date(date);
+  let incomingDate = new Date(date);
 
   const options = {
     year: '2-digit',
     month: 'numeric',
     day: 'numeric',
   };
-  const localData = dateNew.toLocaleDateString('ua-UA', options);
+  const localData = incomingDate.toLocaleDateString('ua-UA', options);
 
   return (
     <>
-      <div className="dataList">
+      <div className={cn('dataList', 'tableHeaderCommon')}>
         <p className="dataElement">
           <span>{localData}</span>
         </p>
-        <p className="dataElementCenter">
+        <p className={cn('dataElement', 'dataElementCenter')}>
           <span>{income ? '+' : '-'}</span>
         </p>
         <p className="dataElement">
@@ -27,11 +28,15 @@ const HomeTab = ({ category, income, date, comment, sum }) => {
           <span>{comment}</span>
         </p>
         <p
-          className={income ? 'dataElementRightPlus' : 'dataElementRightMinus'}
+          className={cn(
+            'dataElement',
+            'dataElementRight',
+            income && 'dataElementGreen',
+          )}
         >
           <span>{sum}</span>
         </p>
-        <p className="dataElementRight">
+        <p className={cn('dataElement', 'dataElementBalance')}>
           <span>6900.00</span>
         </p>
       </div>
