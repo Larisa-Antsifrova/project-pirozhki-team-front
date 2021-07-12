@@ -3,8 +3,7 @@
 .authWrapper {
   min-height: 100vh;
   width: 100vw;
-  // background-color: $white-color;
-  background-color: pink;
+  background-color: $white-color;
 
   @include for-size(phone) {
     // background-color: $white-color;
@@ -15,7 +14,7 @@
   }
 
   @include for-size(desktop) {
-    background-color: $background-color;
+    //
   }
 }
 

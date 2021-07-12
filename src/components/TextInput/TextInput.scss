@@ -3,6 +3,19 @@
 .formElement {
   position: relative;
   margin: 0 0 40px;
+
+  &:focus-within,
+  &:hover {
+    .textInput {
+      border-bottom: 1px solid $indigo-accent-color;
+      transition: border-bottom $time-transforming $timing-function;
+    }
+
+    .formElementIcon {
+      fill: $indigo-other-color;
+      transition: fill $time-transforming $timing-function;
+    }
+  }
 }
 
 .textInput {
@@ -16,17 +29,6 @@
   outline: none;
 
   transition: border-bottom $time-transforming $timing-function;
-
-  &:focus,
-  &:hover {
-    border-bottom: 1px solid $indigo-accent-color;
-    transition: border-bottom $time-transforming $timing-function;
-
-    & ~ .formElementIcon {
-      fill: $indigo-other-color;
-      transition: fill $time-transforming $timing-function;
-    }
-  }
 }
 
 .formElementIcon {
