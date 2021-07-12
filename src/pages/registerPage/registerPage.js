@@ -1,7 +1,6 @@
 import React from 'react';
-// import Title from '../../components/Title';
-import RegistrationForm from '../../components/RegistrationForm';
 import Container from '../../components/Container';
+import RegistrationForm from '../../components/RegistrationForm';
 import './registerPage.scss';
 
 const RegisterPage = () => {

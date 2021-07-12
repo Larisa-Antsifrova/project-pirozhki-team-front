@@ -3,11 +3,18 @@
 .authWrapper {
   min-height: 100vh;
   width: 100vw;
+
   background-color: $white-color;
 
   @include for-size(tablet) {
     padding: 60px 0;
+
     background-color: $background-color;
+    background-image: url('../../images/bg-pink-spot.svg'),
+      url('../../images/bg-lilac-spot.svg');
+    background-position: top right, bottom left;
+    background-repeat: no-repeat;
+    background-size: 50vw;
   }
 
   @include for-size(desktop) {
