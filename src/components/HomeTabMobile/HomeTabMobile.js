@@ -1,19 +1,22 @@
 import React from 'react';
 import './HomeTabMobile.scss';
+import cn from 'classnames';
+// import { useSelector } from 'react-redux';
+// import { totals } from '../../redux/finance/financeSelectors';
 
 const HomeTabMobile = ({ category, income, date, comment, sum }) => {
-  const dateNew = new Date(date);
+  const incomingDate = new Date(date);
   const options = {
     year: '2-digit',
     month: 'numeric',
     day: 'numeric',
   };
-  const localData = dateNew.toLocaleDateString('ua-UA', options);
+  const localData = incomingDate.toLocaleDateString('ua-UA', options);
 
   return (
-    <ul className={income ? 'transactionCardGreen' : 'transactionCardRose'}>
+    <ul className={cn('transactionCard', income && 'borderLeftGreen')}>
       <li className="transactionCardElement">
-        <span className="elementName">Дата</span>{' '}
+        <span className="elementName">Дата</span>
         <span className="elementData">{localData}</span>
       </li>
       <li className="transactionCardElement">
@@ -30,7 +33,7 @@ const HomeTabMobile = ({ category, income, date, comment, sum }) => {
       </li>
       <li className="transactionCardElement">
         <span className="elementName">Сумма</span>
-        <span className={income ? 'elementDataPlus' : 'elementDataMinus'}>
+        <span className={cn('elementPrice', income && 'elementPriceGreen')}>
           {sum}
         </span>
       </li>

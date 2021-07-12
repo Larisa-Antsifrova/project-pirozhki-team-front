@@ -5,66 +5,34 @@
   background-color: $white-color;
   border-radius: 10px;
   list-style-type: none;
-  border-left: 5px solid #ff6596;
+  border-left: 5px solid $rose-color;
 }
 
-.transactionCardRose {
-  padding: 0;
-  background-color: $white-color;
-  border-radius: 10px;
-  list-style-type: none;
-  border-left: 5px solid #ff6596;
-}
-.transactionCardGreen {
-  padding: 0;
-  background-color: $white-color;
-  border-radius: 10px;
-  list-style-type: none;
-  border-left: 5px solid $green-accent-color-color;
-}
-
-.transactionCardElement {
+.transactionCard li {
+  padding: 10px 20px;
   display: flex;
   font-size: 16px;
   justify-content: space-between;
   align-items: baseline;
 }
 
-.transactionCardGreen li:not(:last-child) {
-  border-bottom: 1px solid #dcdcdf;
-}
-.transactionCardRose li:not(:last-child) {
+.transactionCard li:not(:last-child) {
   border-bottom: 1px solid #dcdcdf;
 }
 
-.transactionCardRose li {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.transactionCardGreen li {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+.borderLeftGreen {
+  border-left: 5px solid $green-accent-color-color;
 }
 
 .elementName {
   font-weight: bold;
   font-size: 18px;
 }
-.elementDataPrice {
-  font-weight: bold;
-}
-.elementDataPlus {
-  font-weight: bold;
-  font-size: 16px;
-  color: $green-accent-color-color;
-}
-.elementDataMinus {
+.elementPrice {
   font-weight: bold;
   font-size: 16px;
   color: $rose-color;
+}
+.elementPriceGreen {
+  color: $green-accent-color-color;
 }

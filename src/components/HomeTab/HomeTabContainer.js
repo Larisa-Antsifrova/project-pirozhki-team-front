@@ -5,10 +5,7 @@ import './HomeTab.scss';
 import HomeTab from './HomeTab';
 
 const HomeTabContainer = () => {
-  const getTransactions = useSelector(transactions);
-  // console.log(getTransactions);
-  // const { transactions, totals } = getTransactions;
-  // console.log(transactions, totals);
+  const transactionsList = useSelector(transactions);
 
   return (
     <>
@@ -32,18 +29,17 @@ const HomeTabContainer = () => {
           <span>Баланс</span>
         </p>
       </div>
-      {/* {getTransactions.map(({ id, comment, sum, category, income, date }) => (
-
-        <HomeTab
-          key={id}
-          comment={comment}
-          sum={sum}
-          category={category}
-          income={income}
-          date={date}
-        />
-
-      ))} */}
+      {transactionsList &&
+        transactionsList.map(({ id, comment, sum, category, income, date }) => (
+          <HomeTab
+            key={id}
+            comment={comment}
+            sum={sum}
+            category={category}
+            income={income}
+            date={date}
+          />
+        ))}
     </>
   );
 };

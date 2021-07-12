@@ -1,17 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {
-  transactions,
-  totals,
-  pagination,
-} from '../../redux/finance/financeSelectors';
+import { transactions } from '../../redux/finance/financeSelectors';
 import './HomeTabMobile.scss';
 import HomeTabMobile from './HomeTabMobile';
 
 const HomeTabMobileContainer = () => {
   const transactionsList = useSelector(transactions);
-  const Totals = useSelector(totals);
-  console.log(Totals);
 
   return (
     <>

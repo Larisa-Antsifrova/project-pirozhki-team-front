@@ -26,12 +26,12 @@ const HomeTab = ({ category, income, date, comment, sum }) => {
         <p className="dataElement">
           <span>{comment}</span>
         </p>
-        <p className="dataElementRight">
-          <span>{sum}</span>
-        </p>
         <p
           className={income ? 'dataElementRightPlus' : 'dataElementRightMinus'}
         >
+          <span>{sum}</span>
+        </p>
+        <p className="dataElementRight">
           <span>6900.00</span>
         </p>
       </div>
