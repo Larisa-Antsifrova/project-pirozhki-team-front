@@ -71,7 +71,7 @@ export default function RegisterForm() {
         onSubmit={onSubmit}
       >
         {({ values, handleChange }) => (
-          <Form className="regForm">
+          <Form className="authForm">
             <TextInput
               icon="#email-field-icon"
               name="email"

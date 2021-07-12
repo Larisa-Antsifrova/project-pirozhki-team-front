@@ -41,12 +41,13 @@
   }
 }
 // ==========================================
-.regForm {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.authForm {
+  // display: inline-flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
   margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .error {
@@ -72,8 +73,6 @@
 
   &Current {
     @extend .authBtn;
-
-    margin-bottom: 20px;
 
     color: $white-color;
     background-color: $green-accent-color-color;
