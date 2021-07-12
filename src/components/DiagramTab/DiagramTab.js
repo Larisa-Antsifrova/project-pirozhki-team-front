@@ -57,8 +57,6 @@ const DiagramTab = () => {
 
   const onSelectYear = itemTitle => setSeletcYear(itemTitle);
 
-  console.log(seletcYear);
-  console.log(seletcMonth);
   return (
     <>
       {isLoading ? (
