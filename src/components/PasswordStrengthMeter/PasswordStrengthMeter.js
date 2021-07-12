@@ -5,6 +5,7 @@ import './PasswordStrengthMeter.scss';
 const PasswordStrengthMeter = ({ password }) => {
   const testResult = zxcvbn(password);
   const numStrength = (testResult.score * 100) / 4;
+
   const createPassLevel = () => {
     if (password.length) {
       switch (testResult.score) {
@@ -23,6 +24,7 @@ const PasswordStrengthMeter = ({ password }) => {
       }
     }
   };
+
   const funcProgressColor = () => {
     switch (testResult.score) {
       case 0:
