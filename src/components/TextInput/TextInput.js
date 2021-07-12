@@ -9,11 +9,11 @@ const TextInput = ({ icon, ...props }) => {
   return (
     <div className="formElement">
       <input className="textInput" {...field} {...props} />
-      <div className="formElementIcon">
-        <svg width="24" height="24">
-          <use href={sprite + icon}></use>
-        </svg>
-      </div>
+
+      <svg className="formElementIcon">
+        <use href={sprite + icon}></use>
+      </svg>
+
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}

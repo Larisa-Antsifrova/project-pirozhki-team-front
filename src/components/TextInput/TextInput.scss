@@ -15,23 +15,28 @@
   background-color: transparent;
   outline: none;
 
+  transition: border-bottom $time-transforming $timing-function;
+
   &:focus,
   &:hover {
     border-bottom: 1px solid $indigo-accent-color;
+    transition: border-bottom $time-transforming $timing-function;
 
-    & ~ .iconFormElement {
+    & ~ .formElementIcon {
       fill: $indigo-other-color;
+      transition: fill $time-transforming $timing-function;
     }
   }
 }
 
 .formElementIcon {
-  line-height: 0;
-  position: absolute;
-  top: 2px;
-  left: 10px;
-  fill: $fill-color;
-}
+  width: 24px;
+  height: 24px;
 
-// $time-transforming: 250ms;
-// $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 0;
+  left: 15px;
+
+  fill: $fill-color;
+  transition: fill $time-transforming $timing-function;
+}
