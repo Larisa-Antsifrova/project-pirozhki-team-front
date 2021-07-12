@@ -3,21 +3,23 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+
 import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
-
 import TextInput from '../TextInput';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+
   const INITIAL_VALUES = {
     email: '',
     password: '',
     confirmPassword: '',
     name: '',
   };
+
   const validationShema = yup.object({
     email: yup
       .string()
@@ -42,6 +44,7 @@ export default function RegisterForm() {
   ) => {
     try {
       const newUser = { email: email.toLowerCase(), password, name };
+
       dispatch(operation.register(newUser));
       resetForm({});
       setStatus({ success: true });

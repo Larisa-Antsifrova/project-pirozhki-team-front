@@ -48,14 +48,14 @@ const PasswordStrengthMeter = ({ password }) => {
   };
 
   return (
-    <>
+    <div className="progressWrapper">
       <div className="progress">
         <div className="progressBar" style={passwordMeterstyles}></div>
       </div>
       <p className="progressDescript" style={{ color: funcProgressColor() }}>
         {createPassLevel()}
       </p>
-    </>
+    </div>
   );
 };
 
