@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { transactions } from '../../redux/finance/financeSelectors';
+import { transactions, totals } from '../../redux/finance/financeSelectors';
 import './HomeTab.scss';
 import HomeTab from './HomeTab';
 import cn from 'classnames';
 
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
+  const totalList = useSelector(totals);
 
   return (
     <>
@@ -31,16 +32,19 @@ const HomeTabContainer = () => {
         </p>
       </div>
       {transactionsList &&
-        transactionsList.map(({ id, comment, sum, category, income, date }) => (
-          <HomeTab
-            key={id}
-            comment={comment}
-            sum={sum}
-            category={category}
-            income={income}
-            date={date}
-          />
-        ))}
+        transactionsList.map(({ id, comment, sum, category, income, date }) => {
+          return (
+            <HomeTab
+              totals={totalList.balance}
+              key={id}
+              comment={comment}
+              sum={sum}
+              category={category}
+              income={income}
+              date={date}
+            />
+          );
+        })}
     </>
   );
 };

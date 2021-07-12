@@ -4,7 +4,6 @@ import cn from 'classnames';
 
 const HomeTab = ({ category, income, date, comment, sum }) => {
   let incomingDate = new Date(date);
-
   const options = {
     year: '2-digit',
     month: 'numeric',
@@ -37,7 +36,7 @@ const HomeTab = ({ category, income, date, comment, sum }) => {
           <span>{sum}</span>
         </p>
         <p className={cn('dataElement', 'dataElementBalance')}>
-          <span>6900.00</span>
+          <span></span>
         </p>
       </div>
     </>
