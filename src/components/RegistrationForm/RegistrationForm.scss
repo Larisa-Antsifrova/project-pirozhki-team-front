@@ -1,5 +1,20 @@
 @import 'stylesheet/shared.scss';
 
+.headerLogo {
+  @include for-size(phone) {
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  @include for-size(tablet) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .formContainer {
   width: 100%;
   max-width: 540px;
