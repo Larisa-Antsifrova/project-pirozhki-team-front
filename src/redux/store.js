@@ -14,6 +14,7 @@ import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReduc
 import isModalAddTransactionOpenReducer from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
 import auth from './auth/authReducer';
 import finance from './finance/financeReducer';
+import isLoading from './isLoading/isLoadingReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -35,6 +36,7 @@ const store = configureStore({
     isModalAddTransactionOpen: isModalAddTransactionOpenReducer,
     auth: persistReducer(persistConfig, auth),
     finance,
+    isLoading,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,

@@ -6,6 +6,11 @@ const totalBalance = createReducer(null, {
   [financeActions.totalBalanceSuccess]: (_, { payload }) => payload,
 });
 
+const statistics = createReducer(null, {
+  [financeActions.statisticsSuccess]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
   totalBalance,
+  statistics,
 });

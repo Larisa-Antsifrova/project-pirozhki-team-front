@@ -1,4 +1,7 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import operations from '../../redux/finance/financeOperations';
 import Navigation from '../../components/Navigation';
 import { useMediaPredicate } from 'react-media-hook';
 import Header from '../../components/Header';
@@ -10,6 +13,12 @@ import DiagramTab from '../../components/DiagramTab/DiagramTab';
 import './dashboardPage.scss';
 
 const DashboardPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(operations.totalBalance());
+  }, [dispatch]);
+
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   return (
     <>
