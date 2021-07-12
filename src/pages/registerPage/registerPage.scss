@@ -1,6 +1,8 @@
 @import 'stylesheet/shared.scss';
 
 .authWrapper {
+  height: 100vh;
+  width: 100vw;
   background-color: $white-color;
 
   @include for-size(phone) {
@@ -14,4 +16,11 @@
   @include for-size(desktop) {
     background-color: $background-color;
   }
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

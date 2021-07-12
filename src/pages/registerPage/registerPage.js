@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../../components/Title';
+// import Title from '../../components/Title';
 import RegistrationForm from '../../components/RegistrationForm';
 import Container from '../../components/Container';
 import './registerPage.scss';
@@ -9,7 +9,9 @@ const RegisterPage = () => {
     <main>
       <div className="authWrapper">
         <Container>
-          <RegistrationForm />
+          <div className="formWrapper">
+            <RegistrationForm />
+          </div>
         </Container>
       </div>
     </main>
