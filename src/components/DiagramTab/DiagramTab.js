@@ -30,6 +30,15 @@ const month = [
 ];
 const year = [2020, 2021, 2023];
 
+const noTransaction = [
+  {
+    category: 'У вас нету транзакций',
+    income: false,
+    sum: 1,
+    color: '#e9e9e9',
+  },
+];
+
 const DiagramTab = () => {
   const dispatch = useDispatch();
   const totalBalance = useSelector(getTotalBalance);
@@ -43,13 +52,12 @@ const DiagramTab = () => {
     dispatch(operations.statistics(seletcMonth, seletcYear));
   }, [dispatch, seletcYear, seletcMonth]);
 
-  const noTransaction = [
-    {
-      category: 'У вас нету транзакций',
-      sum: 1,
-      color: '#e9e9e9',
-    },
-  ];
+  const onSelectMonth = itemTitle => {
+    const monthNum = month.indexOf(itemTitle) + 1;
+    setSeletcMonth(`${monthNum < 10 ? `0${monthNum}` : monthNum}`);
+  };
+
+  const onSelectYear = itemTitle => setSeletcYear(itemTitle);
 
   return (
     <>
@@ -68,17 +76,12 @@ const DiagramTab = () => {
                 <SelectMonthYear
                   title={'Месяц'}
                   list={month}
-                  onChange={itemTitle => {
-                    const monthNum = month.indexOf(itemTitle) + 1;
-                    setSeletcMonth(
-                      `${monthNum < 10 ? `0${monthNum}` : monthNum}`,
-                    );
-                  }}
+                  onChange={onSelectMonth}
                 />
                 <SelectMonthYear
                   title={'Год'}
                   list={year}
-                  onChange={itemTitle => setSeletcYear(itemTitle)}
+                  onChange={onSelectYear}
                 />
               </div>
               <div>

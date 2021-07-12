@@ -4,6 +4,8 @@ import './Table.scss';
 
 const Table = ({ tempData, costsIncome }) => {
   const data = useMemo(() => tempData, [tempData]);
+  const { expense, income } = useMemo(() => costsIncome, [costsIncome]);
+
   return (
     <div>
       <table className="table">
@@ -34,11 +36,11 @@ const Table = ({ tempData, costsIncome }) => {
           ))}
           <tr className="tableCostsIncome">
             <td>Расходы:</td>
-            <td className="tableCostsValue tableSum">{costsIncome.expense}</td>
+            <td className="tableCostsValue tableSum">{expense}</td>
           </tr>
           <tr className="tableCostsIncome">
             <td>Доходы:</td>
-            <td className="tableIncomeValue tableSum">{costsIncome.income}</td>
+            <td className="tableIncomeValue tableSum">{income}</td>
           </tr>
         </tbody>
       </table>
@@ -47,7 +49,18 @@ const Table = ({ tempData, costsIncome }) => {
 };
 
 Table.propTypes = {
-  tempData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tempData: PropTypes.arrayOf(
+    PropTypes.PropTypes.shape({
+      category: PropTypes.string.isRequired,
+      sum: PropTypes.number.isRequired,
+      income: PropTypes.bool.isRequired,
+      color: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  costsIncome: PropTypes.shape({
+    expense: PropTypes.number.isRequired,
+    income: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default Table;
