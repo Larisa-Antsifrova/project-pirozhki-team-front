@@ -11,16 +11,18 @@ const RegisterPage = () => {
     <main>
       <div className="authWrapper">
         <Container>
-          {biggerThan767 ? (
-            <div className="heroWrapper">
-              <div className="heroImageRegister"></div>
-              <div className="heroTitle">
-                <h1 className="heroTitleText">Finance App</h1>
+          <div className="authContainer">
+            {biggerThan767 ? (
+              <div className="heroWrapper">
+                <div className="heroImageRegister"></div>
+                <div className="heroTitle">
+                  <h1 className="heroTitleText">Finance App</h1>
+                </div>
               </div>
+            ) : null}
+            <div className="formWrapper">
+              <RegistrationForm />
             </div>
-          ) : null}
-          <div className="formWrapper">
-            <RegistrationForm />
           </div>
         </Container>
       </div>

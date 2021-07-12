@@ -18,7 +18,16 @@
   }
 
   @include for-size(desktop) {
-    //
+    min-height: auto;
+    height: 100vh;
+
+    background-size: 35vw, 45vw;
+  }
+}
+
+.authContainer {
+  @include for-size(desktop) {
+    display: flex;
   }
 }
 
@@ -29,10 +38,23 @@
   height: 250px;
 
   margin: 0 auto 50px;
+
+  @include for-size(desktop) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: calc(100vh - 120px);
+    margin: 0;
+  }
 }
 
 .heroBlocks {
   width: 50%;
+
+  @include for-size(desktop) {
+    width: 100%;
+  }
 }
 
 .heroImage {
@@ -42,14 +64,29 @@
   background-size: contain;
   background-position: center;
 
+  @include for-size(desktop) {
+    height: 70%;
+    margin-bottom: 30px;
+
+    background-position: bottom;
+  }
+
   &Register {
     @extend .heroImage;
     background-image: url('../../images/register-page-img-tablet.png');
+
+    @include for-size(desktop) {
+      background-image: url('../../images/register-page-img-desktop.png');
+    }
   }
 
   &Login {
     @extend .heroImage;
     background-image: url('../../images/login-page-img-tablet.png');
+
+    @include for-size(desktop) {
+      background-image: url('../../images/login-page-img-desktop.png');
+    }
   }
 }
 
@@ -80,5 +117,14 @@
 
   @include for-size(tablet) {
     min-height: auto;
+  }
+
+  @include for-size(desktop) {
+    width: 60%;
+    height: calc(100vh - 120px);
+
+    justify-content: flex-end;
+
+    // TODO: add backdrop blur
   }
 }
