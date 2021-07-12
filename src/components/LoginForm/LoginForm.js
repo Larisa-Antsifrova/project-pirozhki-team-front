@@ -97,7 +97,7 @@ export default function RegisterForm() {
             </button>
           </Form>
         </Formik>
-        <NavLink to="/register" exact className="loginlink">
+        <NavLink to="/auth/register" exact className="loginlink">
           Регистрация
         </NavLink>
       </div>

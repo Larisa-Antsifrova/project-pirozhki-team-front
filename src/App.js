@@ -6,9 +6,8 @@ import WithAuthRedirect from './components/WithAuthRedirect';
 import operations from './redux/auth/authOperations';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
-const RegisterPage = lazy(() => import('./pages/registerPage/registerPage'));
-const LoginPage = lazy(() => import('./pages/loginPage/loginPage'));
 const ErrorPage = lazy(() => import('./pages/errorPage/errorPage'));
+const AuthPage = lazy(() => import('./pages/authPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,28 +18,28 @@ const App = () => {
       <Suspense fallback={<Spinner />}>
         <Switch>
           <WithAuthRedirect
-            path="/register"
+            path="/auth"
             type="guest"
-            redirectTo="/dashboard"
+            redirectTo="/dashboard/home"
           >
-            <RegisterPage />
-          </WithAuthRedirect>
-
-          <WithAuthRedirect path="/login" type="guest" redirectTo="/dashboard">
-            <LoginPage />
+            <AuthPage />
           </WithAuthRedirect>
 
           <WithAuthRedirect
             path="/dashboard"
             type="private"
-            redirectTo="/login"
+            redirectTo="/auth/login"
           >
             <DashboardPage />
           </WithAuthRedirect>
 
-          <WithAuthRedirect path="/" type="guest" redirectTo="/login">
-            <LoginPage />
+          <WithAuthRedirect exact path="/" type="guest" redirectTo="/auth">
+            <AuthPage />
           </WithAuthRedirect>
+
+          {/* <WithAuthRedirect path="" type="guest" redirectTo="/notFound">
+            <ErrorPage />
+          </WithAuthRedirect> */}
         </Switch>
       </Suspense>
     </>
