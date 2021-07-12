@@ -34,8 +34,6 @@ const statistics = (month, year) => async dispatch => {
     +`${month ? month : mm}`,
   )}`;
 
-  console.log(startDate);
-  console.log(endDate);
   try {
     const { data } = await axios.get(
       `/statistics?startDate=${startDate}&endDate=${endDate}`,
