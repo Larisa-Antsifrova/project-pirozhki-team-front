@@ -1,15 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useMediaPredicate } from 'react-media-hook';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import sprite from '../../images/sprite.svg';
-import '../RegistrationForm/RegistrationForm.scss';
 
-import Title from '../Title';
-import Container from '../Container';
 import TextInput from '../TextInput';
 import operation from '../../redux/auth/authOperations';
+import sprite from '../../images/sprite.svg';
+import '../RegistrationForm/RegistrationForm.scss';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -48,18 +47,14 @@ export default function RegisterForm() {
   };
 
   return (
-    <Container>
+    <>
       <div className="formContainer">
-        <Title
-          text={
-            <>
-              <svg className="iconNavigation" width="38" height="38">
-                <use href={sprite + '#wallet-icon'} />
-              </svg>
-              <span className="titleForm">Wallet</span>
-            </>
-          }
-        />
+        <p className="formHeaderTitle">
+          <svg className="formHeaderIcon">
+            <use href={sprite + '#wallet-icon'} />
+          </svg>
+          <span className="formHeaderText">Wallet</span>
+        </p>
 
         <Formik
           initialValues={INITIAL_VALUES}
@@ -68,7 +63,7 @@ export default function RegisterForm() {
           validateOnChange
           onSubmit={onSubmit}
         >
-          <Form className="regForm">
+          <Form className="authForm">
             <TextInput
               icon="#email-field-icon"
               name="email"
@@ -82,15 +77,15 @@ export default function RegisterForm() {
               placeholder="Пароль"
             />
 
-            <button className="regBtn" type="submit">
+            <button className="authBtnCurrent" type="submit">
               Вход
             </button>
           </Form>
         </Formik>
-        <NavLink to="/register" exact className="loginlink">
+        <NavLink to="/register" exact className="authBtnRedirect">
           Регистрация
         </NavLink>
       </div>
-    </Container>
+    </>
   );
 }

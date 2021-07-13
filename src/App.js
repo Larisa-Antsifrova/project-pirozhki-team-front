@@ -1,9 +1,8 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import WithAuthRedirect from './components/WithAuthRedirect';
 import operations from './redux/auth/authOperations';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
@@ -19,23 +18,21 @@ const App = () => {
     <>
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <PublicRoute path="/register" restricted redirectTo="/dashboard">
+          <WithAuthRedirect path="/register" type="guest">
             <RegisterPage />
-          </PublicRoute>
+          </WithAuthRedirect>
 
-          <PublicRoute path="/login" restricted redirectTo="/dashboard">
+          <WithAuthRedirect path="/login" type="guest">
             <LoginPage />
-          </PublicRoute>
+          </WithAuthRedirect>
 
-          <PrivateRoute path="/dashboard" redirectTo="/login">
+          <WithAuthRedirect path="/dashboard" type="private">
             <DashboardPage />
-          </PrivateRoute>
+          </WithAuthRedirect>
 
-          <PublicRoute exact path="/">
+          <WithAuthRedirect path="/" type="guest">
             <ErrorPage />
-          </PublicRoute>
-
-          <Redirect to="/login" />
+          </WithAuthRedirect>
         </Switch>
       </Suspense>
     </>

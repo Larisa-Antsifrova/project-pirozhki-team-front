@@ -3,16 +3,17 @@ import { useField } from 'formik';
 import sprite from '../../images/sprite.svg';
 import './TextInput.scss';
 
-const MyTextInput = ({ icon, ...props }) => {
+const TextInput = ({ icon, ...props }) => {
   const [field, meta] = useField(props);
+
   return (
     <div className="formElement">
       <input className="textInput" {...field} {...props} />
-      <div className="iconFormElement">
-        <svg width="24" height="24">
-          <use href={sprite + icon}></use>
-        </svg>
-      </div>
+
+      <svg className="formElementIcon">
+        <use href={sprite + icon}></use>
+      </svg>
+
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}
@@ -20,4 +21,4 @@ const MyTextInput = ({ icon, ...props }) => {
   );
 };
 
-export default MyTextInput;
+export default TextInput;
