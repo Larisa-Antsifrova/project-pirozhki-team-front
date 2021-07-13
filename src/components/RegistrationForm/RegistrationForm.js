@@ -1,26 +1,25 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useMediaPredicate } from 'react-media-hook';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+
 import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
-
-import Title from '../Title';
-import Container from '../Container';
 import TextInput from '../TextInput';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+
   const INITIAL_VALUES = {
     email: '',
     password: '',
     confirmPassword: '',
     name: '',
   };
+
   const validationShema = yup.object({
     email: yup
       .string()
@@ -45,6 +44,7 @@ export default function RegisterForm() {
   ) => {
     try {
       const newUser = { email: email.toLowerCase(), password, name };
+
       dispatch(operation.register(newUser));
       resetForm({});
       setStatus({ success: true });
@@ -54,85 +54,66 @@ export default function RegisterForm() {
       setErrors({ submit: error.message });
     }
   };
-  const biggerThan767 = useMediaPredicate('(min-width: 768px)');
 
   return (
-    <Container>
-      <div className="formContainer">
-        <Title
-          text={
-            <>
-              <span className="headerLogo">
-                {biggerThan767 ? (
-                  <svg>
-                    <use href={sprite + '#wallet-icon'} />
-                  </svg>
-                ) : (
-                  <svg>
-                    <use href={sprite + '#wallet-mobile-icon'} />
-                  </svg>
-                )}
-              </span>
-              <span className="titleForm">Wallet</span>
-            </>
-          }
-        />
+    <div className="formContainer">
+      <p className="formHeaderTitle">
+        <svg className="formHeaderIcon">
+          <use href={sprite + '#wallet-icon'} />
+        </svg>
+        <span className="formHeaderText">Wallet</span>
+      </p>
 
-        <Formik
-          initialValues={INITIAL_VALUES}
-          validationSchema={validationShema}
-          validateOnBlur
-          validateOnChange
-          onSubmit={onSubmit}
-        >
-          {({ values, handleBlur, isValid, dirty, handleChange }) => (
-            <Form className="regForm">
-              <TextInput
-                icon="#email-field-icon"
-                name="email"
-                type="email"
-                placeholder="E-mail"
-                onBlur={handleBlur}
-              />
-              <TextInput
-                icon="#password-field-icon"
-                name="password"
-                type="password"
-                placeholder="Пароль"
-                onChange={handleChange}
-                values={values.password}
-                onBlur={handleBlur}
-              />
-              <PasswordStrengthMeter password={values.password} />
-              <TextInput
-                icon="#password-field-icon"
-                name="confirmPassword"
-                type="password"
-                placeholder="Подтвердите пароль"
-                onBlur={handleBlur}
-              />
-              <TextInput
-                icon="#name-field-icon"
-                name="name"
-                type="text"
-                placeholder="Ваше Имя"
-                onBlur={handleBlur}
-              />
+      <Formik
+        initialValues={INITIAL_VALUES}
+        validationSchema={validationShema}
+        validateOnBlur
+        validateOnChange
+        onSubmit={onSubmit}
+      >
+        {({ values, handleChange, isValid, dirty }) => (
+          <Form className="authForm">
+            <TextInput
+              icon="#email-field-icon"
+              name="email"
+              type="email"
+              placeholder="E-mail"
+            />
+            <TextInput
+              icon="#password-field-icon"
+              name="password"
+              type="password"
+              placeholder="Пароль"
+              onChange={handleChange}
+              values={values.password}
+            />
+            <PasswordStrengthMeter password={values.password} />
+            <TextInput
+              icon="#password-field-icon"
+              name="confirmPassword"
+              type="password"
+              placeholder="Подтвердите пароль"
+            />
+            <TextInput
+              icon="#name-field-icon"
+              name="name"
+              type="text"
+              placeholder="Ваше Имя"
+            />
 
-              <button
-                className="regBtn"
-                type="submit"
-                disabled={!isValid && !dirty}
-              >
-                Регистрация
-              </button>
-            </Form>
-          )}
-        </Formik>
-        <NavLink to="/auth/login" exact className="loginlink">
-          Вход
-        </NavLink>
-      </div>
-    </Container>
+            <button
+              className="authBtnCurrent"
+              type="submit"
+              disabled={!isValid && !dirty}
+            >
+              Регистрация
+            </button>
+          </Form>
+        )}
+      </Formik>
+      <NavLink to="/auth/login" exact className="authBtnRedirect">
+        Вход
+      </NavLink>
+    </div>
   );
 }
