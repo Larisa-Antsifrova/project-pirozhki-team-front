@@ -1,5 +1,6 @@
 import axios from 'axios';
 import financeActions from './financeActions';
+import { getDaysInMonth, getMonth, getYear } from '../../heplers/operation';
 
 const totalBalance = () => async dispatch => {
   dispatch(financeActions.totalBalanceRequest());
@@ -14,19 +15,9 @@ const totalBalance = () => async dispatch => {
 };
 
 const statistics = (month, year) => async dispatch => {
-  dispatch(financeActions.statisticsRequest());
-
-  function getDaysInMonth(y, m) {
-    return m === 2
-      ? y & 3 || (!(y % 25) && y & 15)
-        ? 28
-        : 29
-      : 30 + ((m + (m >> 3)) & 1);
-  }
-
   const today = new Date();
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const yyyy = today.getFullYear();
+  const mm = getMonth(today);
+  const yyyy = getYear(today);
 
   const startDate = `${year ? year : yyyy}-${month ? month : mm}-01`;
   const endDate = `${year ? year : yyyy}-${month ? month : mm}-${getDaysInMonth(
@@ -34,6 +25,7 @@ const statistics = (month, year) => async dispatch => {
     +`${month ? month : mm}`,
   )}`;
 
+  dispatch(financeActions.statisticsRequest());
   try {
     const { data } = await axios.get(
       `/statistics?startDate=${startDate}&endDate=${endDate}`,
