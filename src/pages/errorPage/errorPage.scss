@@ -1,0 +1,13 @@
+.heroTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.heroTitleText {
+  font-family: $secondary-font;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.5;
+}

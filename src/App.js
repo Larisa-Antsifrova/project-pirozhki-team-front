@@ -1,12 +1,12 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
 import WithAuthRedirect from './components/WithAuthRedirect';
 import operations from './redux/auth/authOperations';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
-const ErrorPage = lazy(() => import('./pages/errorPage/errorPage'));
+const ErrorPage = lazy(() => import('./pages/errorPage'));
 const AuthPage = lazy(() => import('./pages/authPage'));
 
 const App = () => {
@@ -37,9 +37,7 @@ const App = () => {
             <AuthPage />
           </WithAuthRedirect>
 
-          {/* <WithAuthRedirect path="" type="guest" redirectTo="/notFound">
-            <ErrorPage />
-          </WithAuthRedirect> */}
+          <Route path="*" component={ErrorPage} />
         </Switch>
       </Suspense>
     </>
