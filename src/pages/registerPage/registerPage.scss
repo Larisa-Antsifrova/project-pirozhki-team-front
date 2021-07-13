@@ -18,6 +18,7 @@
   }
 
   @include for-size(desktop) {
+    position: relative;
     min-height: auto;
     height: 100vh;
 
@@ -25,8 +26,20 @@
   }
 }
 
+.authBackdrop {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
+}
+
 .authContainer {
   @include for-size(desktop) {
+    position: relative;
+    z-index: 1;
     display: flex;
   }
 }
@@ -124,7 +137,5 @@
     height: calc(100vh - 120px);
 
     justify-content: flex-end;
-
-    // TODO: add backdrop blur
   }
 }

@@ -6,10 +6,12 @@ import './registerPage.scss';
 
 const RegisterPage = () => {
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
+  const biggerThan1280 = useMediaPredicate('(min-width: 1280px)');
 
   return (
     <main>
       <div className="authWrapper">
+        {biggerThan1280 ? <div className="authBackdrop"></div> : null}
         <Container>
           <div className="authContainer">
             {biggerThan767 ? (
