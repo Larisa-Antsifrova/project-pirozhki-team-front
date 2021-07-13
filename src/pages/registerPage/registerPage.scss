@@ -22,7 +22,7 @@
     min-height: auto;
     height: 100vh;
 
-    background-size: 35vw, 45vw;
+    background-size: 50vw 50vh, 45vw;
   }
 }
 
@@ -41,6 +41,7 @@
     position: relative;
     z-index: 1;
     display: flex;
+    align-items: center;
   }
 }
 
