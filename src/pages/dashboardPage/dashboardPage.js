@@ -11,7 +11,7 @@ import HomeTabContainer from '../../components/HomeTab';
 import HomeTabMobileContainer from '../../components/HomeTabMobile';
 import './dashboardPage.scss';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
 
 const DashboardPage = () => {
@@ -46,9 +46,9 @@ const DashboardPage = () => {
               <HomeTabMobileContainer />
             </div>
           )}
-          <div className="twoBlock">
+          {/* <div className="twoBlock">
             <DiagramTab />
-          </div>
+          </div> */}
           <ButtonAddTransactions />
         </div>
       </Container>

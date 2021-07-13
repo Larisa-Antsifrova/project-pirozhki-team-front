@@ -6,7 +6,6 @@ import {
   costsIncomeTotals,
 } from '../../redux/finance/financeSelectors';
 import { getStatisticsData } from '../../redux/finance/financeOperations';
-
 import Spinner from '../Spinner';
 import Chart from '../Chart';
 import Table from '../Table';
