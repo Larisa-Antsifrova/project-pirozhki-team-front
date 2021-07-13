@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { numberToLocalString } from '../../heplers/operation';
+import { numberToLocalString } from '../../helpers/operation';
 import './Table.scss';
 
 const Table = ({ tempData, costsIncome }) => {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import financeActions from './financeActions';
-import { getDaysInMonth, getMonth, getYear } from '../../heplers/operation';
+import { getDaysInMonth, getMonth, getYear } from '../../helpers/operation';
 
 const totalBalance = () => async dispatch => {
   dispatch(financeActions.totalBalanceRequest());

@@ -15,7 +15,7 @@ export const MONTH = [
 
 export const NO_TRANSACTION = [
   {
-    category: 'У вас нету транзакций',
+    category: 'У вас нет транзакций',
     income: false,
     sum: 0,
     color: '#e9e9e9',

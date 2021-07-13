@@ -6,7 +6,7 @@ import {
   costsIncomeTotals,
 } from '../../redux/finance/financeSelectors';
 import operations from '../../redux/finance/financeOperations';
-import { MONTH, NO_TRANSACTION } from '../../heplers/constants';
+import { MONTH, NO_TRANSACTION } from '../../helpers/constants';
 import Spinner from '../Spinner';
 import Chart from '../Chart';
 import Table from '../Table';
