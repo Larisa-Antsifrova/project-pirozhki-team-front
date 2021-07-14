@@ -11,7 +11,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReducer';
-import isModalAddTransactionOpenReducer from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
+import {
+  modalAddTransactionOpenReducer,
+  categories,
+} from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
 import auth from './auth/authReducer';
 import finance from './finance/financeReducer';
 import isLoading from './isLoading/isLoadingReducer';
@@ -33,7 +36,8 @@ const persistConfig = {
 const store = configureStore({
   reducer: {
     isModalLogoutOpen: isModalLogoutOpenReducer,
-    isModalAddTransactionOpen: isModalAddTransactionOpenReducer,
+    isModalAddTransactionOpen: modalAddTransactionOpenReducer,
+    categories: categories,
     auth: persistReducer(persistConfig, auth),
     finance,
     isLoading,

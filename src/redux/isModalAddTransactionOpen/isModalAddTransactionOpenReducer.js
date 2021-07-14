@@ -1,8 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
-import isModalAddTransactionOpenActions from './isModalAddTransactionOpenActions';
+import {
+  modalAddTransactionOpen,
+  getCategories,
+} from './isModalAddTransactionOpenActions';
 
-const isModalAddTransactionOpen = createReducer(true, {
-  [isModalAddTransactionOpenActions]: (state, _) => !state,
+const modalAddTransactionOpenReducer = createReducer(false, {
+  [modalAddTransactionOpen]: (state, _) => !state,
 });
 
-export default isModalAddTransactionOpen;
+const initialState = [];
+
+const categories = createReducer(initialState, {
+  [getCategories]: (_, { payload }) => payload,
+});
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export { modalAddTransactionOpenReducer, categories };
