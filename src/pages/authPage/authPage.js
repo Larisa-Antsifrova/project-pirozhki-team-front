@@ -22,7 +22,7 @@ const AuthPage = () => {
                 <div className="heroWrapper">
                   <div
                     className={
-                      currentPage.pathname === '/auth/login'
+                      currentPage.pathname.includes('/auth/login')
                         ? 'heroImageLogin'
                         : 'heroImageRegister'
                     }
@@ -33,7 +33,7 @@ const AuthPage = () => {
                 </div>
               ) : null}
               <div className="formWrapper">
-                {currentPage.pathname === '/auth/login' ? (
+                {currentPage.pathname.includes('/auth/login') ? (
                   <LoginForm />
                 ) : (
                   <RegistrationForm />

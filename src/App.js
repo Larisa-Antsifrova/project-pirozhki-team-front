@@ -21,7 +21,7 @@ const App = () => {
             <Redirect to="/auth/login" />
           </WithAuthRedirect>
 
-          <WithAuthRedirect exact path="/auth" type="guest" redirectTo="/auth">
+          <WithAuthRedirect path="/auth" type="guest" redirectTo="/auth">
             <Switch>
               <WithAuthRedirect
                 path="/auth/login"
