@@ -4,6 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Notify from '../Notify/Notify';
+
 import TextInput from '../TextInput';
 import operation from '../../redux/auth/authOperations';
 import sprite from '../../images/sprite.svg';
@@ -45,6 +49,8 @@ export default function RegisterForm() {
     }
   };
 
+  const notify = () => toast.error('Неверные почта или пароль');
+
   return (
     <>
       <div className="formContainer">
@@ -54,6 +60,8 @@ export default function RegisterForm() {
           </svg>
           <span className="formHeaderText">Wallet</span>
         </p>
+
+        <Notify />
 
         <Formik
           initialValues={INITIAL_VALUES}
@@ -76,7 +84,7 @@ export default function RegisterForm() {
               placeholder="Пароль"
             />
 
-            <button className="authBtnCurrent" type="submit">
+            <button className="authBtnCurrent" type="submit" onClick={notify}>
               Вход
             </button>
           </Form>

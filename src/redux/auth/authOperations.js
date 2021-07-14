@@ -20,6 +20,7 @@ const register = user => async dispatch => {
     token.set(accessToken);
     dispatch(authActions.registerSuccess(data.data));
   } catch (error) {
+    console.log(error);
     dispatch(authActions.registerError(error));
   }
 };
@@ -32,6 +33,7 @@ const login = user => async dispatch => {
     token.set(accessToken);
     dispatch(authActions.loginSuccess(data.data));
   } catch (error) {
+    console.log(error);
     dispatch(authActions.loginError(error));
   }
 };

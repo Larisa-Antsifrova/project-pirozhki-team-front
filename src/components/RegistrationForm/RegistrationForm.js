@@ -10,7 +10,12 @@ import TextInput from '../TextInput';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Notify from '../Notify/Notify';
+
 export default function RegisterForm() {
+  const notify = () => toast.error('Неверные почта или пароль');
   const dispatch = useDispatch();
 
   const INITIAL_VALUES = {
@@ -64,6 +69,8 @@ export default function RegisterForm() {
         <span className="formHeaderText">Wallet</span>
       </p>
 
+      <Notify />
+
       <Formik
         initialValues={INITIAL_VALUES}
         validationSchema={validationShema}
@@ -104,6 +111,7 @@ export default function RegisterForm() {
             <button
               className="authBtnCurrent"
               type="submit"
+              onClick={notify}
               disabled={!isValid && !dirty}
             >
               Регистрация
