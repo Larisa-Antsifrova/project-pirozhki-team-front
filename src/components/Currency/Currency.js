@@ -30,30 +30,28 @@ const Currency = () => {
   });
 
   return (
-    <>
-      <div className="currencyTable">
-        <div className="currencyHead">
-          <p>Валюта</p>
-          <p>Покупка</p>
-          <p>Продажа</p>
-        </div>
-        <div className="currencyDiv">
-          {!isLoaded && <div>Loading...</div>}
-          {error && <div>Error: {error.message}</div>}
-          {currencyFiltered.map(({ ccy, buy, sale }) => {
-            const buyFixed = parseFloat(buy).toFixed(2);
-            const saleFixed = parseFloat(sale).toFixed(2);
-            return (
-              <div className="currencyDetails" key={ccy}>
-                <p className="ccy">{ccy}</p>
-                <p className="buy">{buyFixed}</p>
-                <p className="sale">{saleFixed}</p>
-              </div>
-            );
-          })}
-        </div>
+    <div className="currencyTable">
+      <div className="currencyHead">
+        <p>Валюта</p>
+        <p>Покупка</p>
+        <p>Продажа</p>
       </div>
-    </>
+      <div className="currencyDiv">
+        {!isLoaded && <div>Loading...</div>}
+        {error && <div>Error: {error.message}</div>}
+        {currencyFiltered.map(({ ccy, buy, sale }) => {
+          const buyFixed = parseFloat(buy).toFixed(2);
+          const saleFixed = parseFloat(sale).toFixed(2);
+          return (
+            <div className="currencyDetails" key={ccy}>
+              <p className="ccy">{ccy}</p>
+              <p className="buy">{buyFixed}</p>
+              <p className="sale">{saleFixed}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
