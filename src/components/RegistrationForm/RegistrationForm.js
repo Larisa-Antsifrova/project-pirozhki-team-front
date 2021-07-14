@@ -71,7 +71,7 @@ export default function RegisterForm() {
         validateOnChange
         onSubmit={onSubmit}
       >
-        {({ values, handleChange }) => (
+        {({ values, handleChange, isValid, dirty }) => (
           <Form className="authForm">
             <TextInput
               icon="#email-field-icon"
@@ -101,13 +101,17 @@ export default function RegisterForm() {
               placeholder="Ваше Имя"
             />
 
-            <button className="authBtnCurrent" type="submit">
+            <button
+              className="authBtnCurrent"
+              type="submit"
+              disabled={!isValid && !dirty}
+            >
               Регистрация
             </button>
           </Form>
         )}
       </Formik>
-      <NavLink to="/login" exact className="authBtnRedirect">
+      <NavLink to="/auth/login" exact className="authBtnRedirect">
         Вход
       </NavLink>
     </div>
