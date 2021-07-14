@@ -38,17 +38,17 @@ const Currency = () => {
       </div>
       <div className="currencyBody">
         <div className="currencyDetails">
-          <p className="ccy">30.00</p>
+          <p className="ccy">USD</p>
           <p className="buy">30.00</p>
           <p className="sale">30.00</p>
         </div>
         <div className="currencyDetails">
-          <p className="ccy">30.00</p>
+          <p className="ccy">EUR</p>
           <p className="buy">30.00</p>
           <p className="sale">30.00</p>
         </div>
         <div className="currencyDetails">
-          <p className="ccy">30.00</p>
+          <p className="ccy">RUB</p>
           <p className="buy">30.00</p>
           <p className="sale">30.00</p>
         </div>

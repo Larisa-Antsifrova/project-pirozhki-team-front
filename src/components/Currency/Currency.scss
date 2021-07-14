@@ -39,6 +39,11 @@
 
   background-color: $indigo-accent-color;
 
+  background-image: url('../../images/bg-currency.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+
   @include for-size(desktop) {
     padding: 20px 30px 30px 30px;
     min-height: 290px;
