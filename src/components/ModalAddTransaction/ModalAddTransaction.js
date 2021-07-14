@@ -19,7 +19,7 @@ import './transactionFormDatepicker.scss';
 
 const initialState = {
   date: Number(moment(new Date()).format('D')),
-  month: moment(new Date()).format('MMMM'),
+  month: moment(new Date()).format('MM'),
   year: Number(moment(new Date()).format('YYYY')),
   type: 'income',
   category: '',
@@ -127,7 +127,7 @@ const TransactionForm = () => {
       }
       transactionItem.amount = Number(transactionItem.amount);
       setTransactionItem(initialState);
-      console.log(transactionItem, token);
+      console.log(transactionItem);
       onAddTransaction(transactionItem, token);
       onToggleModal();
     }
