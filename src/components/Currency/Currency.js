@@ -37,26 +37,10 @@ const Currency = () => {
         <p className="sale">Продажа</p>
       </div>
       <div className="currencyBody">
-        <div className="currencyDetails">
-          <p className="ccy">USD</p>
-          <p className="buy">30.00</p>
-          <p className="sale">30.00</p>
-        </div>
-        <div className="currencyDetails">
-          <p className="ccy">EUR</p>
-          <p className="buy">30.00</p>
-          <p className="sale">30.00</p>
-        </div>
-        <div className="currencyDetails">
-          <p className="ccy">RUB</p>
-          <p className="buy">30.00</p>
-          <p className="sale">30.00</p>
-        </div>
-
         {!isLoaded && <div className="currencyLoader">Loading...</div>}
         {error && (
           <div className="currencyErrorMessage">
-            Currency service is resting :)
+            <p>Currency rates are currently unavailable</p>
           </div>
         )}
         {currencyFiltered.map(({ ccy, buy, sale }) => {
