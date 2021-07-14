@@ -25,7 +25,7 @@ const initialState = {
   category: '',
   description: '',
   amount: '',
-  balanceAfter: 0,
+  // balanceAfter: 0,
 };
 
 const TransactionForm = () => {
@@ -35,8 +35,8 @@ const TransactionForm = () => {
   const [checkedBox, setCheckedBox] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const token = useSelector(state => state.auth.user.token);
-  const categoriesList = useSelector(state => state.categories);
+  const token = useSelector(tokenSelector);
+  const categoriesList = useSelector(categoriesSelector);
 
   const dispatch = useDispatch();
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
@@ -127,6 +127,7 @@ const TransactionForm = () => {
       }
       transactionItem.amount = Number(transactionItem.amount);
       setTransactionItem(initialState);
+      console.log(transactionItem, token);
       onAddTransaction(transactionItem, token);
       onToggleModal();
     }

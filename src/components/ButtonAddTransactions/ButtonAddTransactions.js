@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
-import selectors from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenSelectors';
+import { onModalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenSelectors';
 import ModalAddTransaction from '../ModalAddTransaction';
 import Modal from '../Modal';
 import './ButtonAddTransactions.scss';
@@ -11,9 +11,7 @@ const ButtonAddTransactions = () => {
   const dispatch = useDispatch();
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
 
-  const isModalAddTransactionOpen = useSelector(state =>
-    selectors.isModalAddTransactionOpen(state),
-  );
+  const isModalAddTransactionOpen = useSelector(onModalAddTransactionOpen);
 
   return (
     <>
