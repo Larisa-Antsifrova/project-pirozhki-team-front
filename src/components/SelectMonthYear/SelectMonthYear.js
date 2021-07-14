@@ -14,7 +14,11 @@ const SelectMonthYear = ({ title, list, onChange }) => {
   };
 
   return (
-    <div className="dropdownWrapper" onClick={e => setOpen(!isOpen)}>
+    <div
+      className="dropdownWrapper"
+      onPointerEnter={() => setOpen(true)}
+      onPointerLeave={() => setOpen(false)}
+    >
       <div className={`dropdownHeader ${isOpen && 'dropdownHeaderActive'}`}>
         <span className="dropdownHeaderTitle">{dropdownTitle}</span>
         {isOpen ? <DropUpIcon /> : <DropDownIcon />}
