@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import { modalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
-import { addTransactionOperation } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenOperations';
+import { addTransactions } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
 
 import {
   categoriesSelector,
@@ -40,7 +40,7 @@ const TransactionForm = () => {
 
   const dispatch = useDispatch();
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
-  const onAddTransaction = () => dispatch(addTransactionOperation());
+  const onAddTransaction = () => dispatch(addTransactions());
 
   const getCategoriesNames = list => {
     const namesList = list.map(item => ({
