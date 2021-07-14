@@ -18,6 +18,10 @@ const App = () => {
       <Suspense fallback={<Spinner />}>
         <Switch>
           <WithAuthRedirect exact path="/" type="guest" redirectTo="/auth">
+            <Redirect to="/auth/login" />
+          </WithAuthRedirect>
+
+          <WithAuthRedirect exact path="/auth" type="guest" redirectTo="/auth">
             <Switch>
               <WithAuthRedirect
                 path="/auth/login"
