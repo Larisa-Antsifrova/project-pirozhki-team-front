@@ -14,6 +14,7 @@ import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReduc
 import {
   modalAddTransactionOpenReducer,
   categories,
+  transactionAdd,
 } from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
 import auth from './auth/authReducer';
 import finance from './finance/financeReducer';
@@ -41,6 +42,7 @@ const store = configureStore({
     auth: persistReducer(persistConfig, auth),
     finance,
     isLoading,
+    transaction: transactionAdd,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,

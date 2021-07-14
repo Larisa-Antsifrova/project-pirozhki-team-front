@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   getCategories,
-  addTransaction,
+  addTransactions,
 } from '../isModalAddTransactionOpen/isModalAddTransactionOpenActions';
 
 const addTransactionOperation = (transaction, token) => async dispatch => {
@@ -14,7 +14,8 @@ const addTransactionOperation = (transaction, token) => async dispatch => {
         Authorization: token,
       },
     });
-    dispatch(addTransaction(data));
+    console.log({ data });
+    dispatch(addTransactions({ data }));
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +23,7 @@ const addTransactionOperation = (transaction, token) => async dispatch => {
 
 const getCategoriesOperation = () => async dispatch => {
   try {
-    const result = await axios.get('/categories');
+    const result = await axios.get('/categories/hardcoded');
     if (result.status === 200) {
       dispatch(getCategories(result));
     }
@@ -32,7 +33,4 @@ const getCategoriesOperation = () => async dispatch => {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  addTransactionOperation,
-  getCategoriesOperation,
-};
+export { addTransactionOperation, getCategoriesOperation };

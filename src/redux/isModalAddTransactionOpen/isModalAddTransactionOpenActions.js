@@ -2,11 +2,9 @@ import { createAction } from '@reduxjs/toolkit';
 
 const modalAddTransactionOpen = createAction('modal/modalAddTransactionOpen');
 
-const getCategories = createAction('transactions/getCategories', payload => ({
-  payload: payload.data,
-}));
+const getCategories = createAction('transactions/getCategories');
 
-const addTransaction = createAction('transaction/add');
+const addTransactions = createAction('transaction/add');
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export { getCategories, addTransaction, modalAddTransactionOpen };
+export { getCategories, addTransactions, modalAddTransactionOpen };

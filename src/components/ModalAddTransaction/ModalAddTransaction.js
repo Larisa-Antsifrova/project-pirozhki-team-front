@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import { modalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
+import { addTransactionOperation } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenOperations';
 
-import formOperations from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenOperations';
-import formSelectors from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenSelectors';
+import {
+  categoriesSelector,
+  tokenSelector,
+} from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenSelectors';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ModalAddTransaction.scss';
@@ -25,43 +28,31 @@ const initialState = {
   balanceAfter: 0,
 };
 
-const TransactionForm = ({
-  addTransaction,
-  categoriesList,
-  currentTransaction,
-  // currentBalance,
-  token,
-}) => {
+const TransactionForm = () => {
   const [transactionItem, setTransactionItem] = useState(initialState);
   const [startDate, setStartDate] = useState(new Date());
   const [optionsList, setOptionsList] = useState([]);
   const [checkedBox, setCheckedBox] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const token = useSelector(state => state.auth.user.token);
+  const categoriesList = useSelector(state => state.categories);
+
   const dispatch = useDispatch();
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
+  const onAddTransaction = () => dispatch(addTransactionOperation());
 
   const getCategoriesNames = list => {
     const namesList = list.map(item => ({
-      value: item.name,
-      label: item.name.charAt(0).toUpperCase() + item.name.slice(1),
+      name: item.name,
+      // label: item.name.charAt(0).toUpperCase() + item.name.slice(1),
     }));
     return namesList;
   };
 
   useEffect(() => {
-    if (currentTransaction && currentTransaction.type === 'expense') {
-      setCheckedBox(state => !state);
-    }
-    if (currentTransaction) {
-      setTransactionItem(state => ({
-        ...state,
-        ...currentTransaction,
-        category: '',
-      }));
-    }
     setOptionsList(getCategoriesNames(categoriesList));
-  }, [currentTransaction, categoriesList]);
+  }, [categoriesList]);
 
   const handleInputAmount = ({ target }) => {
     const { name, value } = target;
@@ -134,17 +125,9 @@ const TransactionForm = ({
       if (event.target[1].checked) {
         transactionItem.category = transactionItem.category.value;
       }
-
-      // if (!currentTransaction) {
-      //   event.target[1].checked
-      //     ? (transactionItem.balanceAfter =
-      //       Number(currentBalance) - Number(amount))
-      //     : (transactionItem.balanceAfter =
-      //       Number(currentBalance) + Number(amount));
-      // }
       transactionItem.amount = Number(transactionItem.amount);
-      currentTransaction && addTransaction(transactionItem, token);
       setTransactionItem(initialState);
+      onAddTransaction(transactionItem, token);
       onToggleModal();
     }
     return validateResult;
@@ -227,9 +210,7 @@ const TransactionForm = ({
             <span className="form__descriptionError">{errors.description}</span>
           )}
         </div>
-        <button className="form__add_btn">
-          {currentTransaction ? 'Изменить' : 'Добавить'}
-        </button>
+        <button className="form__add_btn">Добавить</button>
         <button className="form__cancel_btn" onClick={onToggleModal}>
           Отмена
         </button>
@@ -239,14 +220,4 @@ const TransactionForm = ({
   );
 };
 
-const mapStateToProps = state => ({
-  token: formSelectors.tokenSelector(state),
-  categoriesList: formSelectors.categoriesSelector(state),
-  // currentBalance: formSelectors.currentBalanceSelector(state),
-});
-
-const mapDispatchToProps = {
-  addTransaction: formOperations.addTransactionOperation,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
+export default TransactionForm;
