@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useMediaPredicate } from 'react-media-hook';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 
@@ -82,7 +81,7 @@ export default function RegisterForm() {
             </button>
           </Form>
         </Formik>
-        <NavLink to="/register" exact className="authBtnRedirect">
+        <NavLink to="/auth/register" exact className="authBtnRedirect">
           Регистрация
         </NavLink>
       </div>
