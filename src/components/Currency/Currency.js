@@ -18,47 +18,43 @@ const Currency = () => {
         setCurrency(result);
       } catch (e) {
         setIsLoaded(true);
-        setError(error);
+        setError(e);
       }
     }
 
     getCurrency();
-  }, [error]);
+  }, []);
 
   const currencyFiltered = currency.filter(curr => {
     return curr.ccy !== 'BTC';
   });
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <>
-        <div className="currencyTable">
-          <div className="currencyHead">
-            <p>Валют</p>
-            <p>Покупка</p>
-            <p>Продажа</p>
-          </div>
-          <div className="currencyDiv">
-            {currencyFiltered.map(({ ccy, buy, sale }) => {
-              const buyFixed = parseFloat(buy).toFixed(2);
-              const saleFixed = parseFloat(sale).toFixed(2);
-              return (
-                <div className="currencyDetails" key={ccy}>
-                  <p className="ccy">{ccy}</p>
-                  <p className="buy">{buyFixed}</p>
-                  <p className="sale">{saleFixed}</p>
-                </div>
-              );
-            })}
-          </div>
+  return (
+    <>
+      <div className="currencyTable">
+        <div className="currencyHead">
+          <p>Валюта</p>
+          <p>Покупка</p>
+          <p>Продажа</p>
         </div>
-      </>
-    );
-  }
+        <div className="currencyDiv">
+          {!isLoaded && <div>Loading...</div>}
+          {error && <div>Error: {error.message}</div>}
+          {currencyFiltered.map(({ ccy, buy, sale }) => {
+            const buyFixed = parseFloat(buy).toFixed(2);
+            const saleFixed = parseFloat(sale).toFixed(2);
+            return (
+              <div className="currencyDetails" key={ccy}>
+                <p className="ccy">{ccy}</p>
+                <p className="buy">{buyFixed}</p>
+                <p className="sale">{saleFixed}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Currency;
