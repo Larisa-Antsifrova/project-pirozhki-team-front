@@ -32,13 +32,33 @@ const Currency = () => {
   return (
     <div className="currencyTable">
       <div className="currencyHead">
-        <p>Валюта</p>
-        <p>Покупка</p>
-        <p>Продажа</p>
+        <p className="ccy">Валюта</p>
+        <p className="buy">Покупка</p>
+        <p className="sale">Продажа</p>
       </div>
-      <div className="currencyDiv">
-        {!isLoaded && <div>Loading...</div>}
-        {error && <div>Error: {error.message}</div>}
+      <div className="currencyBody">
+        <div className="currencyDetails">
+          <p className="ccy">30.00</p>
+          <p className="buy">30.00</p>
+          <p className="sale">30.00</p>
+        </div>
+        <div className="currencyDetails">
+          <p className="ccy">30.00</p>
+          <p className="buy">30.00</p>
+          <p className="sale">30.00</p>
+        </div>
+        <div className="currencyDetails">
+          <p className="ccy">30.00</p>
+          <p className="buy">30.00</p>
+          <p className="sale">30.00</p>
+        </div>
+
+        {!isLoaded && <div className="currencyLoader">Loading...</div>}
+        {error && (
+          <div className="currencyErrorMessage">
+            Currency service is resting :)
+          </div>
+        )}
         {currencyFiltered.map(({ ccy, buy, sale }) => {
           const buyFixed = parseFloat(buy).toFixed(2);
           const saleFixed = parseFloat(sale).toFixed(2);
