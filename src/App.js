@@ -1,14 +1,13 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
 import WithAuthRedirect from './components/WithAuthRedirect';
 import operations from './redux/auth/authOperations';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
-const RegisterPage = lazy(() => import('./pages/registerPage/registerPage'));
-const LoginPage = lazy(() => import('./pages/loginPage/loginPage'));
-const ErrorPage = lazy(() => import('./pages/errorPage/errorPage'));
+const ErrorPage = lazy(() => import('./pages/errorPage'));
+const AuthPage = lazy(() => import('./pages/authPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,21 +17,27 @@ const App = () => {
     <>
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <WithAuthRedirect path="/register" type="guest">
-            <RegisterPage />
+          <WithAuthRedirect
+            path="/auth"
+            type="guest"
+            redirectTo="/dashboard/home"
+          >
+            <AuthPage />
           </WithAuthRedirect>
 
-          <WithAuthRedirect path="/login" type="guest">
-            <LoginPage />
-          </WithAuthRedirect>
-
-          <WithAuthRedirect path="/dashboard" type="private">
+          <WithAuthRedirect
+            path="/dashboard"
+            type="private"
+            redirectTo="/auth/login"
+          >
             <DashboardPage />
           </WithAuthRedirect>
 
-          <WithAuthRedirect path="/" type="guest">
-            <ErrorPage />
+          <WithAuthRedirect exact path="/" type="guest" redirectTo="/auth">
+            <AuthPage />
           </WithAuthRedirect>
+
+          <Route path="*" component={ErrorPage} />
         </Switch>
       </Suspense>
     </>

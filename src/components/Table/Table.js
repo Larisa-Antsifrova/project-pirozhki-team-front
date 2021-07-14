@@ -1,16 +1,11 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { numberToLocalString } from '../../helpers/operation';
 import './Table.scss';
 
 const Table = ({ tempData, costsIncome }) => {
   const data = useMemo(() => tempData, [tempData]);
   const { expense, income } = useMemo(() => costsIncome, [costsIncome]);
-
-  const numberToLocalString = num => {
-    return Number.isInteger(num)
-      ? `${num.toLocaleString()}.00`
-      : num.toLocaleString();
-  };
 
   return (
     <div>

@@ -37,7 +37,7 @@ const DashboardPage = () => {
             <Balance />
             <Currency />
           </div>
-          {biggerThan767 ? (
+          {/* {biggerThan767 ? (
             <div>
               <HomeTabContainer />
             </div>
@@ -45,10 +45,10 @@ const DashboardPage = () => {
             <div>
               <HomeTabMobileContainer />
             </div>
-          )}
-          {/* <div className="twoBlock">
+          )} */}
+          <div className="twoBlock">
             <DiagramTab />
-          </div> */}
+          </div>
           <ButtonAddTransactions />
         </div>
       </Container>
