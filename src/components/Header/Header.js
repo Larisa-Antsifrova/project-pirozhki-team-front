@@ -16,7 +16,7 @@ const Header = () => {
           <Link className="headerLink" to="/dashboard/home">
             <span className="headerLogo">
               <svg className="formHeaderIcon">
-                <use href={sprite + '#wallet-mobile-icon'} />
+                <use href={sprite + '#wallet-icon'} />
               </svg>
             </span>
             <span className="headerTitle">Wallet</span>
