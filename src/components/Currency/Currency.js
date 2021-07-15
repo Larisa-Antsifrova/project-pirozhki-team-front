@@ -34,7 +34,11 @@ const Currency = () => {
         <p className="sale">Продажа</p>
       </div>
       <div className="currencyBody">
-        {!isLoaded && <SmallSpinner color={'#ffffff'} size={50} />}
+        {!isLoaded && (
+          <div className="currencySpinner">
+            <SmallSpinner color={'#ffffff'} size={50} />
+          </div>
+        )}
         {error && (
           <div>
             <p>— Что мы говорим Богу валют?</p>

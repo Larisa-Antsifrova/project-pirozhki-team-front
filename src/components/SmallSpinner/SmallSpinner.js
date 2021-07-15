@@ -1,14 +1,13 @@
 import { PuffLoader } from 'react-spinners';
-import './SmallSpinner.scss';
+import PropTypes from 'prop-types';
 
-const SmallSpinner = () => {
-  return (
-    <>
-      <div className="smallSpinner">
-        <PuffLoader color={'#6E78E8'} loading="true" size={80} />
-      </div>
-    </>
-  );
+const SmallSpinner = ({ color, size }) => {
+  return <PuffLoader color={color} size={size} loading="true" />;
+};
+
+SmallSpinner.propTypes = {
+  color: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
 };
 
 export default SmallSpinner;

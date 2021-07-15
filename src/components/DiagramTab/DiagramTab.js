@@ -38,7 +38,9 @@ const DiagramTab = () => {
   return (
     <>
       {isLoading ? (
-        <SmallSpinner />
+        <div className="diagramTabSpinner">
+          <SmallSpinner />
+        </div>
       ) : (
         <div className="diagramTab">
           <h2 className="diagramTabTitle">Статистика</h2>
