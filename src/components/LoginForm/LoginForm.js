@@ -49,8 +49,8 @@ export default function RegisterForm() {
     }
   };
 
+  // const clearWaitingQueue = () => toast.clearWaitingQueue()
   const notify = () => toast.error('Неверные почта или пароль');
-
   return (
     <>
       <div className="formContainer">

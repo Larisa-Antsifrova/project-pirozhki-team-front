@@ -8,14 +8,14 @@ import authSelectors from '../../redux/auth/authSelectors';
 const Notify = () => {
   const isError = useSelector(authSelectors.getIsError);
 
-  return !isError ? null : (
+  return isError ? (
     <ToastContainer
       position="top-right"
-      autoClose={3000}
-      limit={1}
+      autoClose={false}
+      limit={2}
       hideProgressBar
       newestOnTop={false}
-      closeButton={false}
+      closeButton
       transition={Zoom}
       closeOnClick
       rtl={false}
@@ -23,7 +23,7 @@ const Notify = () => {
       draggable
       pauseOnHover
     />
-  );
+  ) : null;
 };
 
 export default Notify;
