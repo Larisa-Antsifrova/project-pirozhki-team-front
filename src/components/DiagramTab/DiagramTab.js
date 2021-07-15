@@ -4,6 +4,7 @@ import {
   getStatistics,
   costsIncomeTotals,
   isLoadingStatistic,
+  getFirstTransactionDate,
 } from '../../redux/finance/financeSelectors';
 import { getStatisticsData } from '../../redux/finance/financeOperations';
 import { MONTH, NO_TRANSACTION } from '../../helpers/constants';
@@ -26,9 +27,7 @@ const DiagramTab = () => {
   const costsIncome = useSelector(costsIncomeTotals);
   const isLoading = useSelector(isLoadingStatistic);
 
-  const firstTransactionDate = useSelector(
-    state => state.finance.statistics?.earliest,
-  );
+  const firstTransactionDate = useSelector(getFirstTransactionDate);
 
   useEffect(() => {
     dispatch(getStatisticsData(seletcMonth, seletcYear));
@@ -91,7 +90,7 @@ const DiagramTab = () => {
                 />
                 <SelectMonthYear
                   title={seletcYear ? seletcYear : 'Год'}
-                  list={year}
+                  list={year.sort((a, b) => a - b)}
                   onChange={onSelectYear}
                 />
               </div>
