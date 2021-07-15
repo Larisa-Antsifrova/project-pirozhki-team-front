@@ -39,7 +39,7 @@ const HomeTabMobile = ({ category, income, date, comment, sum }) => {
       </li>
       <li className="transactionCardElement">
         <span className="elementName">Баланс</span>
-        <span className="elementData"></span>
+        <span className="elementData">5000</span>
       </li>
     </ul>
   );

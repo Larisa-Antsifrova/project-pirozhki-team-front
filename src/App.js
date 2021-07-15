@@ -17,11 +17,7 @@ const App = () => {
     <>
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <WithAuthRedirect
-            path="/auth"
-            type="guest"
-            redirectTo="/dashboard/home"
-          >
+          <WithAuthRedirect path="/auth" type="guest" redirectTo="/dashboard">
             <AuthPage />
           </WithAuthRedirect>
 

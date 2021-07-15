@@ -8,7 +8,7 @@ const HomeTabMobileContainer = () => {
   const transactionsList = useSelector(transactions);
 
   return (
-    <>
+    <div className="transactionCardsWrapper">
       {transactionsList &&
         transactionsList.map(({ id, comment, sum, category, income, date }) => (
           <HomeTabMobile
@@ -20,7 +20,7 @@ const HomeTabMobileContainer = () => {
             date={date}
           />
         ))}
-    </>
+    </div>
   );
 };
 

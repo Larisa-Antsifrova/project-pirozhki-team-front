@@ -7,12 +7,12 @@ import ButtonAddTransactions from '../../components/ButtonAddTransactions';
 import Currency from '../../components/Currency/Currency';
 import Container from '../../components/Container';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
-import HomeTabContainer from '../../components/HomeTab';
-import HomeTabMobileContainer from '../../components/HomeTabMobile';
 import './dashboardPage.scss';
+import { Switch, Route } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
+import HomeTabPage from '../homeTabPage';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -25,31 +25,13 @@ const DashboardPage = () => {
       <Container>
         <div className="dashboard">
           <div className="oneBlock">
-            {biggerThan767 ? (
-              <div>
-                <Navigation />
-              </div>
-            ) : (
-              <div>
-                <Navigation />
-              </div>
-            )}
-            <Balance />
-            <Currency />
+            <Navigation />
+            <Switch>
+              <Route path="/dashboard/home" component={HomeTabPage} />
+              {/* <Route path="/dashboard/diagram" component={DiagramTab} /> */}
+              <Route path="/dashboard/currency" component={Currency} />
+            </Switch>
           </div>
-          {/* {biggerThan767 ? (
-            <div>
-              <HomeTabContainer />
-            </div>
-          ) : (
-            <div>
-              <HomeTabMobileContainer />
-            </div>
-          )} */}
-          <div className="twoBlock">
-            <DiagramTab />
-          </div>
-          <ButtonAddTransactions />
         </div>
       </Container>
     </>

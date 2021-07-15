@@ -36,7 +36,7 @@ const HomeTab = ({ category, income, date, comment, sum }) => {
           <span>{sum}</span>
         </p>
         <p className={cn('dataElement', 'dataElementBalance')}>
-          <span></span>
+          <span>5 000.00</span>
         </p>
       </div>
     </>
