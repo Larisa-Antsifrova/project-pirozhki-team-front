@@ -6,6 +6,27 @@ body {
   font-family: $primary-font;
   color: $black-color;
   background-color: $fill-color;
+
+  @include for-size(tablet) {
+    min-height: 100vh;
+
+    background-image: url('../images/bg-pink-spot.svg'),
+      url('../images/bg-lilac-spot.svg');
+    background-position: top right, bottom left;
+    background-repeat: no-repeat;
+    background-size: 50vw;
+  }
+
+  @include for-size(desktop) {
+    background-size: 50vw 50vh, 45vw;
+  }
+}
+
+.appBackdrop {
+  min-height: 100vh;
+
+  background-color: $white-background-color;
+  backdrop-filter: $backdrop-blur;
 }
 
 img {
