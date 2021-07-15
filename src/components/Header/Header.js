@@ -14,15 +14,9 @@ const Header = () => {
         <div className="headerWrapper">
           <Link className="headerLink" to="/dashboard/home">
             <span className="headerLogo">
-              {biggerThan767 ? (
-                <svg>
-                  <use href={sprite + '#wallet-icon'} />
-                </svg>
-              ) : (
-                <svg>
-                  <use href={sprite + '#wallet-mobile-icon'} />
-                </svg>
-              )}
+              <svg className="formHeaderIcon">
+                <use href={sprite + '#wallet-mobile-icon'} />
+              </svg>
             </span>
             <span className="headerTitle">Wallet</span>
           </Link>
