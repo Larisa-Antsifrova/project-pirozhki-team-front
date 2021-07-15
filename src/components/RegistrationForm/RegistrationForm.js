@@ -112,7 +112,7 @@ export default function RegisterForm() {
         )}
       </Formik>
       <NavLink to="/auth/login" exact className="authBtnRedirect">
-        Вход
+        Войти
       </NavLink>
     </div>
   );
