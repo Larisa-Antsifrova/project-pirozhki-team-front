@@ -32,7 +32,7 @@ The application allows to:
 
 | Tool/Resource                                                      | Purpose                                                     |
 | :----------------------------------------------------------------- | :---------------------------------------------------------- |
-| [Axios](https://www.npmjs.com/package/axios)                       | Facilitates fetch requests to Web Server                    |
+| [Axios](https://www.npmjs.com/package/axios)                       | Fetch requests to Web Server facilitator                    |
 | [React](https://reactjs.org/)                                      | JavaScript library for building user interfaces             |
 | [Redux](https://redux.js.org/)                                     | App state manager                                           |
 | [Redux Toolkit](https://redux-toolkit.js.org/)                     | App state manager facilitator                               |
@@ -41,8 +41,9 @@ The application allows to:
 | [react-router-dom](https://reactrouter.com/web/guides/quick-start) | App routing and redirects                                   |
 | [react-media-hook](https://www.npmjs.com/package/react-media-hook) | Manages components render depending on the current viewport |
 | [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)   | Statistics visualization                                    |
-| [react-spinners](https://www.npmjs.com/package/react-spinners)     | App loaders and spinners                                    |
 | [react-modal](https://www.npmjs.com/package/react-modal)           | Manages modals render                                       |
+| [react-spinners](https://www.npmjs.com/package/react-spinners)     | App loaders and spinners                                    |
+| [react-toastify](https://www.npmjs.com/package/react-toastify)     | Displays notifications                                      |
 | [Formik](https://formik.org/)                                      | Provides easy methods for forms                             |
 | [yup](https://www.npmjs.com/package/yup)                           | Form inputs validation                                      |
 | [zxcvbn](https://www.npmjs.com/package/zxcvbn)                     | Password strength check                                     |
