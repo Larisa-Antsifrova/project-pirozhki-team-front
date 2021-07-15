@@ -25,7 +25,7 @@ const DashboardPage = () => {
       <Container>
         <div className="dashboard">
           <div className="oneBlock">
-            <Navigation />
+            {/* <Navigation /> */}
             <Switch>
               <Route path="/dashboard/home" component={HomeTabPage} />
               {/* <Route path="/dashboard/diagram" component={DiagramTab} /> */}
