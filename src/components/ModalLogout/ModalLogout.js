@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactModal from 'react-modal';
 import './ModalLogout.scss';
 import { useMediaPredicate } from 'react-media-hook';
-import { getUsername } from '../../redux/auth/authSelectors';
+import { getUserName } from '../../redux/auth/authSelectors';
 import sprite from '../../images/sprite.svg';
 import isModalLogoutOpenActions from '../../redux/isModalLogoutOpen/isModalLogoutOpenActions';
 import selectors from '../../redux/isModalLogoutOpen/isModalLogoutOpenSelectors';
@@ -21,12 +21,11 @@ const ModalLogout = () => {
     console.log('Ура вы вышли из этой финансовой пирамиды');
   };
 
-  const userName = useSelector(getUsername);
-  console.log(userName);
+  const userName = useSelector(getUserName);
 
   return (
     <>
-      {biggerThan767 && <p class="userName">{userName}</p>}
+      {biggerThan767 && <p className="userName">{userName}</p>}
       <button className="logoutBtn" onClick={onToggleModal}>
         {biggerThan767 && (
           <svg className="stickIcon">
