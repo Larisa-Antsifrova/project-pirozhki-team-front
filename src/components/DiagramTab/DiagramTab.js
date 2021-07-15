@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
 import {
   getStatistics,
   costsIncomeTotals,
+  isLoadingStatistic,
 } from '../../redux/finance/financeSelectors';
 import { getStatisticsData } from '../../redux/finance/financeOperations';
 import { MONTH, NO_TRANSACTION } from '../../helpers/constants';
@@ -19,7 +19,7 @@ const DiagramTab = () => {
   const dispatch = useDispatch();
   const statistics = useSelector(getStatistics);
   const costsIncome = useSelector(costsIncomeTotals);
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(isLoadingStatistic);
 
   const [seletcMonth, setSeletcMonth] = useState(null);
   const [seletcYear, setSeletcYear] = useState(null);
