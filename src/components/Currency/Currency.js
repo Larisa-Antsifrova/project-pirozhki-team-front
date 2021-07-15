@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchCurrencies } from '../../http/currency-service';
 import './Currency.scss';
 
 const Currency = () => {
@@ -10,10 +10,7 @@ const Currency = () => {
   useEffect(() => {
     async function getCurrency() {
       try {
-        let response = await axios.get(
-          'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
-        );
-        const result = await response.data;
+        const result = await fetchCurrencies();
         setIsLoaded(true);
         setCurrency(result);
       } catch (e) {
@@ -24,10 +21,6 @@ const Currency = () => {
 
     getCurrency();
   }, []);
-
-  const currencyFiltered = currency.filter(curr => {
-    return curr.ccy !== 'BTC';
-  });
 
   return (
     <div className="currencyTable">
@@ -40,10 +33,11 @@ const Currency = () => {
         {!isLoaded && <div className="currencyLoader">Loading...</div>}
         {error && (
           <div className="currencyErrorMessage">
-            <p>Currency rates are currently unavailable</p>
+            <p>— Что мы говорим Богу валют?</p>
+            <p>— Не сегодня!</p>
           </div>
         )}
-        {currencyFiltered.map(({ ccy, buy, sale }) => {
+        {currency.map(({ ccy, buy, sale }) => {
           const buyFixed = parseFloat(buy).toFixed(2);
           const saleFixed = parseFloat(sale).toFixed(2);
           return (
