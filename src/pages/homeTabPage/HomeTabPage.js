@@ -14,15 +14,19 @@ const HomeTabPage = () => {
     <>
       {biggerThan767 ? (
         <>
-          <div className="homeTabElements">
-            <div className="homeTabNavigationBalance">
-              <Navigation />
-              <Balance />
+          <div className="hameTabMain">
+            <div className="homeTabElements">
+              <div className="homeTabNavigationBalance">
+                <Navigation />
+                <Balance />
+              </div>
+              <Currency />
             </div>
-            <Currency />
+            <div>
+              <HomeTabContainer />
+            </div>
           </div>
-          <HomeTabContainer />
-          <ButtonAddTransactions />
+          {/* <ButtonAddTransactions /> */}
         </>
       ) : (
         <>
