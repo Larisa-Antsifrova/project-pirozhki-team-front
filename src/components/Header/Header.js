@@ -1,13 +1,14 @@
 import React from 'react';
-import './Header.scss';
-import sprite from '../../images/sprite.svg';
-import { useMediaPredicate } from 'react-media-hook';
+
 import { Link } from 'react-router-dom';
+
 import ModalLogout from '../ModalLogout/ModalLogout';
 import Container from '../Container';
 
+import sprite from '../../images/sprite.svg';
+import './Header.scss';
+
 const Header = () => {
-  const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   return (
     <header className="header">
       <Container>
@@ -15,7 +16,7 @@ const Header = () => {
           <Link className="headerLink" to="/dashboard/home">
             <span className="headerLogo">
               <svg className="formHeaderIcon">
-                <use href={sprite + '#wallet-mobile-icon'} />
+                <use href={sprite + '#wallet-icon'} />
               </svg>
             </span>
             <span className="headerTitle">Wallet</span>
