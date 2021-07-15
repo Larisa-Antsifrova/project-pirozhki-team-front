@@ -11,11 +11,11 @@ const Notify = () => {
   return isError ? (
     <ToastContainer
       position="top-right"
-      autoClose={false}
-      limit={2}
+      autoClose={3000}
+      limit={1}
       hideProgressBar
       newestOnTop={false}
-      closeButton
+      closeButton={false}
       transition={Zoom}
       closeOnClick
       rtl={false}
