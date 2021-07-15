@@ -1,0 +1,65 @@
+@import 'stylesheet/shared.scss';
+
+.tableHeader {
+  padding: 16px 21px 15px 20px;
+
+  border-radius: 30px;
+  background-color: $white-color;
+
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tableHeaderElementRight {
+  text-align: right;
+}
+
+.tableHeaderElementCenter {
+  text-align: center;
+}
+
+.tableHeaderCommon {
+  justify-content: space-between;
+  list-style-type: none;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 60px 40px 118px 118px 70px 70px;
+  grid-gap: 2vw;
+  margin: 0;
+}
+
+.dataList {
+  height: 54px;
+
+  padding: 10px 21px 8px 20px;
+
+  line-height: 1.13;
+
+  border-bottom: 1px solid $gray-table-string-color;
+  box-shadow: 0px 1px 0px $white-background-color-second;
+}
+
+.dataElement {
+  align-self: center;
+  justify-self: baseline;
+}
+
+.dataElementCenter {
+  justify-self: center;
+}
+
+.dataElementRight {
+  text-align: right;
+  justify-self: right;
+  color: $rose-color;
+  font-weight: bold;
+}
+
+.dataElementGreen {
+  color: $green-accent-color-color;
+}
+
+.dataElementBalance {
+  text-align: right;
+  justify-self: right;
+}

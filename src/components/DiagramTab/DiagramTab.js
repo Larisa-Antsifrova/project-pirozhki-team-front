@@ -5,7 +5,7 @@ import {
   getStatistics,
   costsIncomeTotals,
 } from '../../redux/finance/financeSelectors';
-import operations from '../../redux/finance/financeOperations';
+import { getStatisticsData } from '../../redux/finance/financeOperations';
 import { MONTH, NO_TRANSACTION } from '../../helpers/constants';
 import Spinner from '../Spinner';
 import Chart from '../Chart';
@@ -25,7 +25,7 @@ const DiagramTab = () => {
   const [seletcYear, setSeletcYear] = useState(null);
 
   useEffect(() => {
-    dispatch(operations.statistics(seletcMonth, seletcYear));
+    dispatch(getStatisticsData(seletcMonth, seletcYear));
   }, [dispatch, seletcYear, seletcMonth]);
 
   const onSelectMonth = itemTitle => {
