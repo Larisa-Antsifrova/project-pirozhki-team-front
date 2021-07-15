@@ -13,6 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
 import HomeTabPage from '../homeTabPage';
+import CurrencyTabPage from '../currencyTabPage';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const DashboardPage = () => {
             <Switch>
               <Route path="/dashboard/home" component={HomeTabPage} />
               {/* <Route path="/dashboard/diagram" component={DiagramTab} /> */}
-              <Route path="/dashboard/currency" component={Currency} />
+              <Route path="/dashboard/currency" component={CurrencyTabPage} />
             </Switch>
           </div>
         </div>
