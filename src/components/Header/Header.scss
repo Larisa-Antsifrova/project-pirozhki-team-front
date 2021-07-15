@@ -3,41 +3,42 @@
 .header {
   background-color: $white-color;
 
-  @include for-size(phone) {
-    height: 60px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
+  height: 60px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
   @include for-size(tablet) {
     height: 80px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
 }
+
 .headerLogo {
-  @include for-size(phone) {
-    height: 30px;
-    width: 30px;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    display: inline-block;
-    cursor: pointer;
-  }
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  display: inline-block;
+  cursor: pointer;
+
   @include for-size(tablet) {
     height: 40px;
     width: 40px;
   }
 }
+
 .headerTitle {
-  @include for-size(phone) {
-    margin-left: 16px;
-    font-family: $secondary-font;
-    font-weight: bold;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+
+  font-family: $secondary-font;
+  font-weight: bold;
+  font-size: 24px;
+
+  cursor: pointer;
+
   @include for-size(tablet) {
     font-size: 30px;
   }
@@ -45,6 +46,7 @@
 
 .headerWrapper {
   display: flex;
+  align-items: center;
 }
 
 .headerLink {

@@ -44,9 +44,6 @@ export default function RegisterForm() {
       setErrors({ submit: error.message });
     }
   };
-  const clearWaitingQueue = () => {
-    toast.clearWaitingQueue();
-  };
   const notify = () => {
     toast.error('Неверные почта или пароль');
   };

@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => dispatch(operations.getCurrentUserInfo()), [dispatch]);
 
   return (
-    <>
+    <div className="appBackdrop">
       <Suspense fallback={<Spinner />}>
         <Switch>
           <WithAuthRedirect exact path="/" type="guest" redirectTo="/auth">
@@ -48,7 +48,7 @@ const App = () => {
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Suspense>
-    </>
+    </div>
   );
 };
 export default App;
