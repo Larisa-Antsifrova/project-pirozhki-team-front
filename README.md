@@ -47,5 +47,4 @@ The application allows to:
 | [yup](https://www.npmjs.com/package/yup)                           | Form inputs validation                                      |
 | [zxcvbn](https://www.npmjs.com/package/zxcvbn)                     | Password strength check                                     |
 | [SASS](https://sass-lang.com/)                                     | CSS Prepocessor                                             |
-| [sass-loader](https://www.npmjs.com/package/sass-loader)           | Compiles SASS into CSS                                      |
 | [Postman](https://www.postman.com/)                                | Facilitates HTTP requests checks                            |
