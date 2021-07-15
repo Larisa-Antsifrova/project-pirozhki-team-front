@@ -38,10 +38,10 @@ const store = configureStore({
   reducer: {
     isModalLogoutOpen: isModalLogoutOpenReducer,
     isModalAddTransactionOpen: modalAddTransactionOpenReducer,
-    categories: categories,
     auth: persistReducer(persistConfig, auth),
     finance,
     isLoading,
+    categories: categories,
     transaction: transactionAdd,
   },
   devTools: process.env.NODE_ENV === 'development',

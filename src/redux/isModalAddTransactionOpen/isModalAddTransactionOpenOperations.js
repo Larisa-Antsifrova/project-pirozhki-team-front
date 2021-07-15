@@ -1,34 +1,33 @@
 import axios from 'axios';
+
 import {
-  getCategories,
-  addTransactions,
+  addTransactionsRequest,
+  addTransactionsSuccess,
+  addTransactionsError,
+  getCategoriesRequest,
+  getCategoriesSuccess,
+  getCategoriesError,
 } from '../isModalAddTransactionOpen/isModalAddTransactionOpenActions';
 
-const addTransactionOperation = (transaction, token) => async dispatch => {
+const addTransactionOperation = transaction => async dispatch => {
+  dispatch(addTransactionsRequest());
+
   try {
-    const { data } = await axios({
-      method: 'post',
-      data: transaction,
-      url: '/transactions',
-      headers: {
-        Authorization: token,
-      },
-    });
-    console.log({ data });
-    dispatch(addTransactions({ data }));
+    const response = await axios.post('/transactions', transaction);
+    dispatch(addTransactionsSuccess(response));
   } catch (error) {
-    console.log(error);
+    dispatch(addTransactionsError(error.message));
   }
 };
 
 const getCategoriesOperation = () => async dispatch => {
+  dispatch(getCategoriesRequest());
+
   try {
-    const result = await axios.get('/categories/hardcoded');
-    if (result.status === 200) {
-      dispatch(getCategories(result));
-    }
+    const response = await axios.get('/categories/hardcoded');
+    dispatch(getCategoriesSuccess(response));
   } catch (error) {
-    console.log(error);
+    dispatch(getCategoriesError(error.message));
   }
 };
 

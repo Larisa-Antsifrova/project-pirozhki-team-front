@@ -1,24 +1,20 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
   modalAddTransactionOpen,
-  getCategories,
-  addTransactions,
+  getCategoriesSuccess,
+  addTransactionsSuccess,
 } from './isModalAddTransactionOpenActions';
 
 const modalAddTransactionOpenReducer = createReducer(false, {
   [modalAddTransactionOpen]: (state, _) => !state,
 });
 
-const initialState = [];
-
-const categories = createReducer(initialState, {
-  [getCategories]: (_, { payload }) => payload,
+const transactionAdd = createReducer([], {
+  [addTransactionsSuccess]: (state, { payload }) => [...state, payload],
 });
 
-const state = [];
-
-const transactionAdd = createReducer(state, {
-  [addTransactions]: (state, { payload }) => [...state, payload],
+const categories = createReducer([], {
+  [getCategoriesSuccess]: (_, { payload }) => payload,
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export

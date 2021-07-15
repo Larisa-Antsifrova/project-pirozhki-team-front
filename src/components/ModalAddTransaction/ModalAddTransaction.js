@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import { modalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
-import { addTransactions } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
-
-import {
-  categoriesSelector,
-  tokenSelector,
-} from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenSelectors';
+import { addTransactionOperation } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenOperations';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ModalAddTransaction.scss';
@@ -18,41 +13,27 @@ import './transactionFormSelect.scss';
 import './transactionFormDatepicker.scss';
 
 const initialState = {
-  date: Number(moment(new Date()).format('D')),
-  month: moment(new Date()).format('MM'),
-  year: Number(moment(new Date()).format('YYYY')),
-  type: 'income',
+  date: moment(new Date()).format('yyyy-MM-DD'),
+  income: false,
   category: '',
-  description: '',
-  amount: '',
-  // balanceAfter: 0,
+  comment: '',
+  sum: '',
 };
 
 const TransactionForm = () => {
+  const dispatch = useDispatch();
+
   const [transactionItem, setTransactionItem] = useState(initialState);
   const [startDate, setStartDate] = useState(new Date());
-  const [optionsList, setOptionsList] = useState([]);
   const [checkedBox, setCheckedBox] = useState(false);
   const [errors, setErrors] = useState({});
+  // const [optionsList, setOptionsList] = useState([]);
 
-  const token = useSelector(tokenSelector);
-  const categoriesList = useSelector(categoriesSelector);
-
-  const dispatch = useDispatch();
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
-  const onAddTransaction = () => dispatch(addTransactions());
-
-  const getCategoriesNames = list => {
-    const namesList = list.map(item => ({
-      name: item.name,
-      // label: item.name.charAt(0).toUpperCase() + item.name.slice(1),
-    }));
-    return namesList;
-  };
 
   useEffect(() => {
-    setOptionsList(getCategoriesNames(categoriesList));
-  }, [categoriesList]);
+    // setOptionsList(categoriesList);
+  }, []);
 
   const handleInputAmount = ({ target }) => {
     const { name, value } = target;
@@ -81,20 +62,20 @@ const TransactionForm = () => {
 
   const handleCheckboxChange = () => {
     setCheckedBox(state => !state);
-    const typeValue = !checkedBox ? 'expense' : 'income';
-    setTransactionItem(state => ({ ...state, type: typeValue }));
+    const incomeValue = !checkedBox ? true : false;
+    setTransactionItem(state => ({ ...state, income: incomeValue }));
   };
 
-  const validate = (amount, category, type, description) => {
+  const validate = (sum, category, income, comment) => {
     const errors = {};
-    if (amount.length === 0) {
-      errors.amount = 'Введите число!';
+    if (sum.length === 0) {
+      errors.sum = 'Введите число!';
     }
-    if (type === 'expense' && category === '') {
+    if (income === true && category === '') {
       errors.category = 'Категория не выбрана!';
     }
-    if (description.length > 24) {
-      errors.description = 'Делай описание лаконичнее!';
+    if (comment.length > 24) {
+      errors.comment = 'Делай описание лаконичнее!';
     }
     setErrors(errors);
     return !!Object.keys(errors).length;
@@ -102,33 +83,34 @@ const TransactionForm = () => {
 
   const handleDate = date => {
     setStartDate(date);
-    const formatedDate = moment(date).format('DD/MMMM/yyyy');
-    const dateD = moment(formatedDate).date();
-    const month = moment(formatedDate).format('MMMM');
-    const year = moment(formatedDate).year();
+    const formatedDate = moment(date).format('yyyy-MM-DD');
     setTransactionItem(state => ({
       ...state,
-      date: dateD,
-      month: month,
-      year: year,
+      date: formatedDate,
     }));
   };
+
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    const { type, amount, category, description } = transactionItem;
+    const { income, sum, category, comment } = transactionItem;
 
-    const validateResult = validate(amount, category, type, description);
+    const validateResult = validate(sum, category, income, comment);
 
     if (!validateResult) {
       if (event.target[1].checked) {
         transactionItem.category = transactionItem.category.value;
       }
-      transactionItem.amount = Number(transactionItem.amount);
-      setTransactionItem(initialState);
+      transactionItem.sum = Number(transactionItem.sum);
+
+      dispatch(addTransactionOperation(transactionItem));
       console.log(transactionItem);
-      onAddTransaction(transactionItem, token);
       onToggleModal();
     }
     return validateResult;
@@ -157,12 +139,12 @@ const TransactionForm = () => {
             </label>
           </label>
         </div>
-        {transactionItem.type === 'income' ? null : (
+        {transactionItem.income === false ? null : (
           <div className="form__errorsWrapper">
             <Select
               className="select"
               classNamePrefix="selectprefix"
-              options={optionsList}
+              options={options}
               noOptionsMessage={() => 'Категория не найдена'}
               placeholder="Выберите категорию"
               isSearchable={true}
@@ -181,12 +163,12 @@ const TransactionForm = () => {
               type="text"
               className="form__amount"
               placeholder="0.00"
-              name="amount"
-              value={transactionItem.amount}
+              name="sum"
+              value={transactionItem.sum}
               onChange={handleInputAmount}
             />
-            {errors.amount && (
-              <span className="form__amountError">{errors.amount}</span>
+            {errors.sum && (
+              <span className="form__amountError">{errors.sum}</span>
             )}
           </div>
           <DatePicker
@@ -202,13 +184,13 @@ const TransactionForm = () => {
             type="text"
             className="form__description"
             placeholder="Комментарий"
-            name="description"
-            value={transactionItem.description}
+            name="comment"
+            value={transactionItem.comment}
             onChange={handleInput}
             maxLength="24"
           />
-          {errors.description && (
-            <span className="form__descriptionError">{errors.description}</span>
+          {errors.comment && (
+            <span className="form__descriptionError">{errors.comment}</span>
           )}
         </div>
         <button className="form__add_btn">Добавить</button>

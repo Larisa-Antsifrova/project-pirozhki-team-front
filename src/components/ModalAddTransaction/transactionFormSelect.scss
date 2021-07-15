@@ -4,6 +4,10 @@
   outline: none;
   margin-bottom: 40px;
   box-shadow: none;
+
+  @media (min-width: 768px) {
+    width: 411px;
+  }
 }
 
 .select .selectprefix__indicator-separator {
@@ -52,6 +56,10 @@
   border-radius: 20px;
   overflow: hidden;
   padding: 16px 0;
+
+  @media (min-width: 768px) {
+    width: 411px;
+  }
 }
 
 .select .selectprefix__menu-list {
@@ -78,5 +86,5 @@
 
 .select .selectprefix__option:hover {
   background-color: #fff;
-  color: #24cca7;
+  color: #ff6596;
 }
