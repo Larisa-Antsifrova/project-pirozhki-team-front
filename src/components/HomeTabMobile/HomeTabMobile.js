@@ -1,8 +1,8 @@
 import React from 'react';
-import './HomeTabMobile.scss';
+
 import cn from 'classnames';
-// import { useSelector } from 'react-redux';
-// import { totals } from '../../redux/finance/financeSelectors';
+
+import './HomeTabMobile.scss';
 
 const HomeTabMobile = ({ category, income, date, comment, sum }) => {
   const incomingDate = new Date(date);

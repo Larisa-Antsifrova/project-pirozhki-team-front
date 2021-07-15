@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Currency from '../../components/Currency/Currency';
+
 import './CurrencyTabPage.scss';
 
 const CurrencyTabPage = () => {

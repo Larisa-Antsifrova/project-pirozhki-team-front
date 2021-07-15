@@ -1,6 +1,8 @@
 import React from 'react';
-import './HomeTab.scss';
+
 import cn from 'classnames';
+
+import './HomeTab.scss';
 
 const HomeTab = ({ category, income, date, comment, sum }) => {
   let incomingDate = new Date(date);

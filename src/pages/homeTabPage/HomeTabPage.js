@@ -1,11 +1,9 @@
 import React from 'react';
-// import Currency from '../../components/Currency/Currency';
+import { useMediaPredicate } from 'react-media-hook';
+
 import HomeTabContainer from '../../components/HomeTab';
 import HomeTabMobileContainer from '../../components/HomeTabMobile';
-// import Navigation from '../../components/Navigation';
-// import Balance from '../../components/Balance';
-// import ButtonAddTransactions from '../../components/ButtonAddTransactions';
-import { useMediaPredicate } from 'react-media-hook';
+
 import './HomeTabPage.scss';
 
 const HomeTabPage = () => {

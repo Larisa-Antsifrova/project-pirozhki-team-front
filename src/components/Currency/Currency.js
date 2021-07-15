@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
 import { fetchCurrencies } from '../../http/currency-service';
+
 import './Currency.scss';
 
 const Currency = () => {

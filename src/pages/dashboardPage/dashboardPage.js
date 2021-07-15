@@ -16,7 +16,6 @@ import DiagramTabPage from '../diagramTabPage/DiagramTabPage';
 import CurrencyTabPage from '../currencyTabPage';
 
 import './dashboardPage.scss';
-import currencyTabPage from '../currencyTabPage';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
