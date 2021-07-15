@@ -39,7 +39,7 @@ const DiagramTab = () => {
     <>
       {isLoading ? (
         <div className="diagramTabSpinner">
-          <SmallSpinner />
+          <SmallSpinner color={'#4a56e2'} size={80} />
         </div>
       ) : (
         <div className="diagramTab">
