@@ -102,7 +102,7 @@ export default function RegisterForm() {
             />
 
             <button
-              className="authBtnCurrent"
+              className="authBtnCurrent hbtn hb-fill-middle-rev-bg"
               type="submit"
               disabled={!isValid && !dirty}
             >
