@@ -77,7 +77,7 @@ export default function RegisterForm() {
             />
 
             <button className="authBtnCurrent" type="submit">
-              Вход
+              Войти
             </button>
           </Form>
         </Formik>
