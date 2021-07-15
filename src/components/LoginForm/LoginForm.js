@@ -27,11 +27,7 @@ export default function RegisterForm() {
       .lowercase()
       .email('Неверный формат записи почты')
       .required('Обязательное поле'),
-    password: yup
-      .string()
-      .min(6, 'Не менее 6 символов')
-      .max(12, 'Не более 12 символов')
-      .required('Обязательное поле'),
+    password: yup.string().required('Обязательное поле'),
   });
 
   const onSubmit = (
@@ -48,8 +44,12 @@ export default function RegisterForm() {
       setErrors({ submit: error.message });
     }
   };
-
-  const notify = () => toast.error('Неверные почта или пароль');
+  const clearWaitingQueue = () => {
+    toast.clearWaitingQueue();
+  };
+  const notify = () => {
+    toast.error('Неверные почта или пароль');
+  };
   return (
     <>
       <div className="formContainer">

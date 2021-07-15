@@ -8,22 +8,24 @@ import authSelectors from '../../redux/auth/authSelectors';
 const Notify = () => {
   const isError = useSelector(authSelectors.getIsError);
 
-  return isError ? (
-    <ToastContainer
-      position="top-right"
-      autoClose={3000}
-      limit={1}
-      hideProgressBar
-      newestOnTop={false}
-      closeButton={false}
-      transition={Zoom}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss={false}
-      draggable
-      pauseOnHover
-    />
-  ) : null;
+  return (
+    isError && (
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        limit={1}
+        hideProgressBar
+        newestOnTop={false}
+        closeButton={false}
+        transition={Zoom}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
+    )
+  );
 };
 
 export default Notify;

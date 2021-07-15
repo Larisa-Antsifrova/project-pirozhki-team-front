@@ -22,29 +22,19 @@ const App = () => {
           </WithAuthRedirect>
 
           <WithAuthRedirect
-            path="/auth"
+            path="/auth/login"
             type="guest"
             redirectTo="/dashboard/home"
           >
-            <Switch>
-              <WithAuthRedirect
-                path="/auth/login"
-                type="guest"
-                redirectTo="/dashboard/home"
-              >
-                <AuthPage />
-              </WithAuthRedirect>
+            <AuthPage />
+          </WithAuthRedirect>
 
-              <WithAuthRedirect
-                path="/auth/register"
-                type="guest"
-                redirectTo="/dashboard/home"
-              >
-                <AuthPage />
-              </WithAuthRedirect>
-
-              <Redirect to="/auth/login" />
-            </Switch>
+          <WithAuthRedirect
+            path="/auth/register"
+            type="guest"
+            redirectTo="/dashboard/home"
+          >
+            <AuthPage />
           </WithAuthRedirect>
 
           <WithAuthRedirect
