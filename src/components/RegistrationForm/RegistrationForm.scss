@@ -90,44 +90,67 @@
     background-color: $white-color;
     border: 1px solid $indigo-accent-color;
   }
-}
 
-.hb-fill-middle-rev-bg::before {
-  position: absolute;
-  content: '';
-  background: $green-accent-color-color;
-  transition-duration: 0.3s;
-  z-index: -1;
-  inset: auto auto 0px 0px;
-  width: 100%;
-  height: 50%;
-  opacity: 1;
-}
+  &::before {
+    position: absolute;
+    content: '';
+    transition-duration: 0.3s;
+    z-index: -1;
+    inset: auto auto 0px 0px;
+    width: 100%;
+    height: 50%;
+    opacity: 1;
+  }
 
-.hb-fill-middle-rev-bg:hover::before {
-  width: 100%;
-  height: 0%;
-  opacity: 1;
-}
+  &Current::before {
+    background: $green-accent-color-color;
+  }
 
-.hb-fill-middle-rev-bg:hover {
-  background: transparent;
-  color: $green-accent-color-color;
-  transition: all 0.3s ease 0s;
-}
+  &Redirect::before {
+    background: $white-color;
+  }
 
-.hb-fill-middle-rev-bg::after {
-  position: absolute;
-  content: '';
-  background: $green-accent-color-color;
-  transition-duration: 0.3s;
-  z-index: -1;
-  inset: 0px auto auto 0px;
-  width: 100%;
-  height: 50%;
-  opacity: 1;
-}
+  &:hover::before {
+    width: 100%;
+    height: 0%;
+    opacity: 1;
+  }
 
-.hb-fill-middle-rev-bg:hover::after {
-  height: 0px;
+  &:hover {
+    transition: all 0.3s ease 0s;
+  }
+
+  &Current:hover {
+    background: $white-color;
+    color: $green-accent-color-color;
+  }
+
+  &Redirect:hover {
+    background: $indigo-accent-color;
+    color: $white-color;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+
+    transition-duration: 0.3s;
+    z-index: -1;
+    inset: 0px auto auto 0px;
+    width: 100%;
+    height: 50%;
+    opacity: 1;
+  }
+
+  &Current::after {
+    background: $green-accent-color-color;
+  }
+
+  &Redirect::after {
+    background: $white-color;
+  }
+
+  &:hover::after {
+    height: 0px;
+  }
 }
