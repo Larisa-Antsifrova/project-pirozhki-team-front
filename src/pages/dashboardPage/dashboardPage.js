@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
-import Navigation from '../../components/Navigation';
 import { useMediaPredicate } from 'react-media-hook';
-import Header from '../../components/Header';
-import Balance from '../../components/Balance';
-import ButtonAddTransactions from '../../components/ButtonAddTransactions';
-import Currency from '../../components/Currency/Currency';
-import Container from '../../components/Container';
-import DiagramTab from '../../components/DiagramTab/DiagramTab';
-import './dashboardPage.scss';
 import { Switch, Route } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
+
+import Container from '../../components/Container';
+
+import Header from '../../components/Header';
+import Navigation from '../../components/Navigation';
+import Balance from '../../components/Balance';
+import Currency from '../../components/Currency/Currency';
+
 import HomeTabPage from '../homeTabPage';
+import DiagramTabPage from '../diagramTabPage/DiagramTabPage';
 import CurrencyTabPage from '../currencyTabPage';
+
+import './dashboardPage.scss';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -25,14 +27,28 @@ const DashboardPage = () => {
       <Header />
       <Container>
         <div className="dashboard">
-          <div className="oneBlock">
-            {/* <Navigation /> */}
+          <div className="dashboardStaticData">
+            <div className="dashboardNavigationAndBalance">
+              <Navigation />
+              <Balance />
+            </div>
+            {biggerThan767 && (
+              <div>
+                <Currency />
+              </div>
+            )}
+          </div>
+          {/* <div className="dashboard">
+          <div className="oneBlock"> */}
+          <div className="dashboardRoutedComponent">
             <Switch>
               <Route path="/dashboard/home" component={HomeTabPage} />
-              {/* <Route path="/dashboard/diagram" component={DiagramTab} /> */}
+              <Route path="/dashboard/diagram" component={DiagramTabPage} />
               <Route path="/dashboard/currency" component={CurrencyTabPage} />
             </Switch>
           </div>
+          {/* </div>
+        </div> */}
         </div>
       </Container>
     </>
