@@ -39,6 +39,12 @@
   }
 }
 
+.userName {
+  margin-right: 14.5px;
+  font-size: 18px;
+  color: $gray-text-color-header;
+}
+
 .modalContent {
   position: absolute;
   inset: 50% auto auto 50%;

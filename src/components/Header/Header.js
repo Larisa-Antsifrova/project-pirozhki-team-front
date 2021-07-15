@@ -1,13 +1,15 @@
 import React from 'react';
-import './Header.scss';
-import sprite from '../../images/sprite.svg';
-import { useMediaPredicate } from 'react-media-hook';
+
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import ModalLogout from '../ModalLogout/ModalLogout';
 import Container from '../Container';
 
+import sprite from '../../images/sprite.svg';
+import './Header.scss';
+
 const Header = () => {
-  const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   return (
     <header className="header">
       <Container>
