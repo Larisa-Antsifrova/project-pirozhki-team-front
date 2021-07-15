@@ -37,6 +37,8 @@
   min-height: 175px;
   padding: 10px 20px 22px 20px;
 
+  font-size: 16px;
+
   background-color: $indigo-accent-color;
 
   background-image: url('../../images/bg-currency.svg');
@@ -75,7 +77,6 @@
   text-align: right;
 }
 
-.currencyErrorMessage,
 .currencyLoader {
   text-align: center;
 }

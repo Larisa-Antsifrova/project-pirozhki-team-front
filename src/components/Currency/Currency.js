@@ -11,6 +11,7 @@ const Currency = () => {
     async function getCurrency() {
       try {
         const result = await fetchCurrencies();
+
         setIsLoaded(true);
         setCurrency(result);
       } catch (e) {
@@ -32,14 +33,15 @@ const Currency = () => {
       <div className="currencyBody">
         {!isLoaded && <div className="currencyLoader">Loading...</div>}
         {error && (
-          <div className="currencyErrorMessage">
+          <div>
             <p>— Что мы говорим Богу валют?</p>
             <p>— Не сегодня!</p>
           </div>
         )}
-        {currency.map(({ ccy, buy, sale }) => {
+        {currency?.map(({ ccy, buy, sale }) => {
           const buyFixed = parseFloat(buy).toFixed(2);
           const saleFixed = parseFloat(sale).toFixed(2);
+
           return (
             <div className="currencyDetails" key={ccy}>
               <p className="ccy">{ccy}</p>
