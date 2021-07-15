@@ -1,1 +1,142 @@
 @import 'stylesheet/shared.scss';
+
+.authWrapper {
+  min-height: 100vh;
+  width: 100vw;
+
+  background-color: $white-color;
+
+  @include for-size(tablet) {
+    padding: 60px 0;
+
+    background-color: $background-color;
+    background-image: url('../../images/bg-pink-spot.svg'),
+      url('../../images/bg-lilac-spot.svg');
+    background-position: top right, bottom left;
+    background-repeat: no-repeat;
+    background-size: 50vw;
+  }
+
+  @include for-size(desktop) {
+    position: relative;
+    min-height: auto;
+    height: 100vh;
+
+    background-size: 50vw 50vh, 45vw;
+  }
+}
+
+.authBackdrop {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
+}
+
+.authContainer {
+  @include for-size(desktop) {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.heroWrapper {
+  display: flex;
+  width: 100%;
+  max-width: 540px;
+  height: 250px;
+
+  margin: 0 auto 50px;
+
+  @include for-size(desktop) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: calc(100vh - 120px);
+    margin: 0;
+  }
+}
+
+.heroBlocks {
+  width: 50%;
+
+  @include for-size(desktop) {
+    width: 100%;
+  }
+}
+
+.heroImage {
+  @extend .heroBlocks;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include for-size(desktop) {
+    height: 70%;
+    margin-bottom: 30px;
+
+    background-position: bottom;
+  }
+
+  &Register {
+    @extend .heroImage;
+    background-image: url('../../images/register-page-img-tablet.png');
+
+    @include for-size(desktop) {
+      background-image: url('../../images/register-page-img-desktop.png');
+    }
+  }
+
+  &Login {
+    @extend .heroImage;
+    background-image: url('../../images/login-page-img-tablet.png');
+
+    @include for-size(desktop) {
+      background-image: url('../../images/login-page-img-desktop.png');
+    }
+  }
+}
+
+.heroTitle {
+  @extend .heroBlocks;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.heroTitleText {
+  font-family: $secondary-font;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.5;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include for-size(phone) {
+    min-height: 100vh;
+  }
+
+  @include for-size(tablet) {
+    min-height: auto;
+  }
+
+  @include for-size(desktop) {
+    width: 60%;
+    height: calc(100vh - 120px);
+
+    justify-content: flex-end;
+  }
+}
