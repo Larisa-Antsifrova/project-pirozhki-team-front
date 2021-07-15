@@ -24,7 +24,7 @@ const DashboardPage = () => {
 
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
 
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -34,9 +34,9 @@ const DashboardPage = () => {
           <div className="dashboardStaticData">
             <div className="dashboardNavigationAndBalance">
               <Navigation />
-              {location.pathname !== '/dashboard/currency' && <Balance />}
+              {pathname !== '/dashboard/currency' && <Balance />}
             </div>
-            {biggerThan767 && location.pathname !== '/dashboard/currency' && (
+            {biggerThan767 && pathname !== '/dashboard/currency' && (
               <div>
                 <Currency />
               </div>
