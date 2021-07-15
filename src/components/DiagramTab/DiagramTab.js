@@ -7,7 +7,7 @@ import {
 } from '../../redux/finance/financeSelectors';
 import { getStatisticsData } from '../../redux/finance/financeOperations';
 import { MONTH, NO_TRANSACTION } from '../../helpers/constants';
-import Spinner from '../Spinner';
+import SmallSpinner from '../SmallSpinner';
 import Chart from '../Chart';
 import Table from '../Table';
 import SelectMonthYear from '../SelectMonthYear';
@@ -38,7 +38,9 @@ const DiagramTab = () => {
   return (
     <>
       {isLoading ? (
-        <Spinner />
+        <div className="diagramTabSpinner">
+          <SmallSpinner />
+        </div>
       ) : (
         <div className="diagramTab">
           <h2 className="diagramTabTitle">Статистика</h2>

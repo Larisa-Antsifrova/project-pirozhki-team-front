@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SmallSpinner from '../SmallSpinner';
 
 import { fetchCurrencies } from '../../http/currency-service';
 
@@ -33,7 +34,11 @@ const Currency = () => {
         <p className="sale">Продажа</p>
       </div>
       <div className="currencyBody">
-        {!isLoaded && <div className="currencyLoader">Loading...</div>}
+        {!isLoaded && (
+          <div className="currencySpinner">
+            <SmallSpinner color={'#ffffff'} size={50} />
+          </div>
+        )}
         {error && (
           <div>
             <p>— Что мы говорим Богу валют?</p>
