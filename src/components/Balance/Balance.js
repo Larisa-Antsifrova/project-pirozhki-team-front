@@ -1,14 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './Balance.scss';
+import { totals } from '../../redux/finance/financeSelectors';
 
 const Balance = () => {
-  const balance = useSelector(state => state.finance.totalBalance);
+  const total = useSelector(totals);
+
   return (
     <div className="balance">
       <p className="balanceTitle">Ваш баланс</p>
       <p className="balanceTotal">
-        <span className="balanceSymbol">$</span> {balance} 24000.00
+        <span className="balanceSymbol">$</span> {total && total.balance}
       </p>
     </div>
   );

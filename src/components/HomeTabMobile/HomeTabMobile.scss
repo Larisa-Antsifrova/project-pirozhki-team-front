@@ -1,0 +1,44 @@
+@import 'stylesheet/shared.scss';
+
+.transactionCardsWrapper {
+  margin-top: 30px;
+}
+
+.transactionCard {
+  padding: 0;
+  background-color: $white-color;
+  border-radius: 10px;
+  list-style-type: none;
+  border-left: 5px solid $rose-color;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.transactionCard li {
+  padding: 10px 20px;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.transactionCard li:not(:last-child) {
+  border-bottom: 1px solid $gray-table-string-color;
+}
+
+.borderLeftGreen {
+  border-left: 5px solid $green-accent-color-color;
+}
+
+.elementName {
+  font-weight: bold;
+  font-size: 18px;
+}
+.elementPrice {
+  font-weight: bold;
+  font-size: 16px;
+  color: $rose-color;
+}
+.elementPriceGreen {
+  color: $green-accent-color-color;
+}
