@@ -16,6 +16,7 @@ import DiagramTabPage from '../diagramTabPage/DiagramTabPage';
 import CurrencyTabPage from '../currencyTabPage';
 
 import './dashboardPage.scss';
+import currencyTabPage from '../currencyTabPage';
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const DashboardPage = () => {
           <div className="dashboardStaticData">
             <div className="dashboardNavigationAndBalance">
               <Navigation />
-              <Balance />
+              {!(<Route path="/dashboard/currency" />) && <Balance />}
             </div>
             {biggerThan767 && (
               <div>
@@ -38,8 +39,6 @@ const DashboardPage = () => {
               </div>
             )}
           </div>
-          {/* <div className="dashboard">
-          <div className="oneBlock"> */}
           <div className="dashboardRoutedComponent">
             <Switch>
               <Route path="/dashboard/home" component={HomeTabPage} />
@@ -47,8 +46,6 @@ const DashboardPage = () => {
               <Route path="/dashboard/currency" component={CurrencyTabPage} />
             </Switch>
           </div>
-          {/* </div>
-        </div> */}
         </div>
       </Container>
     </>

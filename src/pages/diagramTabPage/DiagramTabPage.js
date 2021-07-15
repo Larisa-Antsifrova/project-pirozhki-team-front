@@ -4,7 +4,8 @@ import DiagramTab from '../../components/DiagramTab/DiagramTab';
 const DiagramTabPage = () => {
   return (
     <>
-      <DiagramTab />
+      <div>Дима всё знает</div>
+      {/* <DiagramTab /> */}
     </>
   );
 };
