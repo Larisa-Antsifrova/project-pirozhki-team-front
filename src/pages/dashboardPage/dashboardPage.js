@@ -3,6 +3,7 @@ import { useMediaPredicate } from 'react-media-hook';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
+import { useLocation } from 'react-router-dom';
 
 import Container from '../../components/Container';
 
@@ -22,6 +23,9 @@ const DashboardPage = () => {
   useEffect(() => dispatch(fetchTransactions()), [dispatch]);
 
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
+
+  const location = useLocation();
+
   return (
     <>
       <Header />
@@ -30,9 +34,9 @@ const DashboardPage = () => {
           <div className="dashboardStaticData">
             <div className="dashboardNavigationAndBalance">
               <Navigation />
-              {!(<Route path="/dashboard/currency" />) && <Balance />}
+              {location.pathname !== '/dashboard/currency' && <Balance />}
             </div>
-            {biggerThan767 && (
+            {biggerThan767 && location.pathname !== '/dashboard/currency' && (
               <div>
                 <Currency />
               </div>
