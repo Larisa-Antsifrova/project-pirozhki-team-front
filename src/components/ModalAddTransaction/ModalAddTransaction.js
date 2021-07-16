@@ -11,6 +11,7 @@ import {
   expenseCategories,
 } from '../../redux/categories/categoriesSelectors';
 import { addTransaction } from '../../redux/transaction/transactionOperations';
+import { fetchTransactions } from '../../redux/finance/financeOperations';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ModalAddTransaction.scss';
@@ -27,26 +28,28 @@ const initialState = {
 
 const TransactionForm = () => {
   const dispatch = useDispatch();
+  useEffect(() => dispatch(fetchCategories()), [dispatch]);
 
   const incomeCategoriesList = useSelector(incomeCategories);
-  console.log('incomeCategoriesList', incomeCategoriesList);
-
   const expenseCategoriesList = useSelector(expenseCategories);
-  console.log('expenseCategoriesList', expenseCategoriesList);
 
   const [transactionItem, setTransactionItem] = useState(initialState);
   const [startDate, setStartDate] = useState(new Date());
   const [checkedBox, setCheckedBox] = useState(false);
   const [errors, setErrors] = useState({});
 
-  console.log('transactionItem', transactionItem);
-
-  useEffect(() => dispatch(fetchCategories()), [dispatch]);
-
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
+
+  const handleCheckboxChange = () => {
+    setCheckedBox(state => !state);
+
+    setTransactionItem(state => ({ ...state, category: '' }));
+    setTransactionItem(state => ({ ...state, income: checkedBox }));
+  };
 
   const handleInputAmount = ({ target }) => {
     const { name, value } = target;
+
     if (Number(value) || value.length === 0) {
       setTransactionItem(state => ({
         ...state,
@@ -57,6 +60,7 @@ const TransactionForm = () => {
 
   const handleInput = ({ target }) => {
     const { name, value } = target;
+
     setTransactionItem(state => ({
       ...state,
       [name]: value,
@@ -70,32 +74,6 @@ const TransactionForm = () => {
     }));
   };
 
-  const handleCheckboxChange = () => {
-    setCheckedBox(state => !state);
-
-    setTransactionItem(state => ({ ...state, income: checkedBox }));
-  };
-
-  const validate = (sum, category, income, comment) => {
-    const errors = {};
-
-    if (sum.length === 0) {
-      errors.sum = 'Введите число!';
-    }
-
-    if (income === true && category === '') {
-      errors.category = 'Категория не выбрана!';
-    }
-
-    if (comment.length > 24) {
-      errors.comment = 'Делай описание лаконичнее!';
-    }
-
-    setErrors(errors);
-
-    return !!Object.keys(errors).length;
-  };
-
   const handleDate = date => {
     setStartDate(date);
 
@@ -107,48 +85,39 @@ const TransactionForm = () => {
     }));
   };
 
+  // const validate = (sum, category, income, comment) => {
+  //   const errors = {};
+
+  //   if (sum.length === 0) {
+  //     errors.sum = 'Введите число!';
+  //   }
+
+  //   if (income === true && category === '') {
+  //     errors.category = 'Категория не выбрана!';
+  //   }
+
+  //   if (comment.length > 24) {
+  //     errors.comment = 'Делай описание лаконичнее!';
+  //   }
+
+  //   setErrors(errors);
+
+  //   return !!Object.keys(errors).length;
+  // };
+
   const handleSubmit = event => {
     event.preventDefault();
 
-    const {
-      date,
-      income,
-      sum,
-      category: { value: category },
-      comment,
-    } = transactionItem;
+    const newTransaction = {
+      ...transactionItem,
+      category: transactionItem.category.value,
+      sum: Number(transactionItem.sum),
+    };
 
-    // const validateResult = validate(sum, category, income, comment);
+    dispatch(addTransaction(newTransaction));
+    dispatch(fetchTransactions());
 
-    // if (!validateResult) {
-    //   if (event.target[1].checked) {
-    //     transactionItem.category = transactionItem.category.value;
-    //   }
-
-    transactionItem.sum = Number(transactionItem.sum);
-
-    dispatch(
-      addTransaction({
-        date,
-        income,
-        sum,
-        category,
-        comment,
-      }),
-    );
-
-    console.log('Sent transaction', {
-      date,
-      income,
-      sum,
-      category,
-      comment,
-    });
-
-    // onToggleModal();
-    // }
-    // console.log('validateResult', validateResult);
-    // return validateResult;
+    setTransactionItem(initialState);
   };
 
   return (
