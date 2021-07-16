@@ -5,13 +5,12 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import { modalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
-import { addTransactionOperation } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenOperations';
 import { fetchCategories } from '../../redux/categories/categoriesOperations';
 import {
-  categories,
   incomeCategories,
   expenseCategories,
 } from '../../redux/categories/categoriesSelectors';
+import { addTransaction } from '../../redux/transaction/transactionOperations';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ModalAddTransaction.scss';
@@ -20,7 +19,7 @@ import './transactionFormDatepicker.scss';
 
 const initialState = {
   date: moment(new Date()).format('yyyy-MM-DD'),
-  income: false,
+  income: true,
   category: '',
   comment: '',
   sum: '',
@@ -29,24 +28,22 @@ const initialState = {
 const TransactionForm = () => {
   const dispatch = useDispatch();
 
+  const incomeCategoriesList = useSelector(incomeCategories);
+  console.log('incomeCategoriesList', incomeCategoriesList);
+
+  const expenseCategoriesList = useSelector(expenseCategories);
+  console.log('expenseCategoriesList', expenseCategoriesList);
+
   const [transactionItem, setTransactionItem] = useState(initialState);
   const [startDate, setStartDate] = useState(new Date());
   const [checkedBox, setCheckedBox] = useState(false);
   const [errors, setErrors] = useState({});
-  // const [optionsList, setOptionsList] = useState([]);
 
-  const onToggleModal = () => dispatch(modalAddTransactionOpen());
+  console.log('transactionItem', transactionItem);
 
   useEffect(() => dispatch(fetchCategories()), [dispatch]);
 
-  const cat = useSelector(categories);
-  console.log('Categories list', cat);
-
-  const incomeCat = useSelector(incomeCategories);
-  console.log('incomeCategories', incomeCat);
-
-  const expenseCat = useSelector(expenseCategories);
-  console.log('expenseCategories', expenseCat);
+  const onToggleModal = () => dispatch(modalAddTransactionOpen());
 
   const handleInputAmount = ({ target }) => {
     const { name, value } = target;
@@ -75,58 +72,83 @@ const TransactionForm = () => {
 
   const handleCheckboxChange = () => {
     setCheckedBox(state => !state);
-    const incomeValue = !checkedBox ? true : false;
-    setTransactionItem(state => ({ ...state, income: incomeValue }));
+
+    setTransactionItem(state => ({ ...state, income: checkedBox }));
   };
 
   const validate = (sum, category, income, comment) => {
     const errors = {};
+
     if (sum.length === 0) {
       errors.sum = 'Введите число!';
     }
+
     if (income === true && category === '') {
       errors.category = 'Категория не выбрана!';
     }
+
     if (comment.length > 24) {
       errors.comment = 'Делай описание лаконичнее!';
     }
+
     setErrors(errors);
+
     return !!Object.keys(errors).length;
   };
 
   const handleDate = date => {
     setStartDate(date);
+
     const formatedDate = moment(date).format('yyyy-MM-DD');
+
     setTransactionItem(state => ({
       ...state,
       date: formatedDate,
     }));
   };
 
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
-
   const handleSubmit = event => {
     event.preventDefault();
 
-    const { income, sum, category, comment } = transactionItem;
+    const {
+      date,
+      income,
+      sum,
+      category: { value: category },
+      comment,
+    } = transactionItem;
 
-    const validateResult = validate(sum, category, income, comment);
+    // const validateResult = validate(sum, category, income, comment);
 
-    if (!validateResult) {
-      if (event.target[1].checked) {
-        transactionItem.category = transactionItem.category.value;
-      }
-      transactionItem.sum = Number(transactionItem.sum);
+    // if (!validateResult) {
+    //   if (event.target[1].checked) {
+    //     transactionItem.category = transactionItem.category.value;
+    //   }
 
-      dispatch(addTransactionOperation(transactionItem));
-      console.log(transactionItem);
-      onToggleModal();
-    }
-    return validateResult;
+    transactionItem.sum = Number(transactionItem.sum);
+
+    dispatch(
+      addTransaction({
+        date,
+        income,
+        sum,
+        category,
+        comment,
+      }),
+    );
+
+    console.log('Sent transaction', {
+      date,
+      income,
+      sum,
+      category,
+      comment,
+    });
+
+    // onToggleModal();
+    // }
+    // console.log('validateResult', validateResult);
+    // return validateResult;
   };
 
   return (
@@ -152,24 +174,27 @@ const TransactionForm = () => {
             </label>
           </label>
         </div>
-        {transactionItem.income === false ? null : (
-          <div className="form__errorsWrapper">
-            <Select
-              className="select"
-              classNamePrefix="selectprefix"
-              options={options}
-              noOptionsMessage={() => 'Категория не найдена'}
-              placeholder="Выберите категорию"
-              isSearchable={true}
-              name="category"
-              value={transactionItem.category}
-              onChange={handleSelect}
-            />
-            {errors.category && (
-              <span className="form__categoryError">{errors.category}</span>
-            )}
-          </div>
-        )}
+        <div className="form__errorsWrapper">
+          <Select
+            className="select"
+            classNamePrefix="selectprefix"
+            options={
+              transactionItem.income
+                ? incomeCategoriesList
+                : expenseCategoriesList
+            }
+            noOptionsMessage={() => 'Категория не найдена'}
+            placeholder="Выберите категорию"
+            isSearchable={true}
+            name="category"
+            value={transactionItem.category}
+            onChange={handleSelect}
+          />
+          {errors.category && (
+            <span className="form__categoryError">{errors.category}</span>
+          )}
+        </div>
+
         <div className="form__acBox">
           <div className="form__errorsWrapper">
             <input

@@ -10,8 +10,11 @@ export const addTransaction = transaction => async dispatch => {
   dispatch(addTransactionRequest());
 
   try {
-    const response = await axios.post('/transactions', transaction);
-    dispatch(addTransactionSuccess(response));
+    const {
+      data: { data },
+    } = await axios.post('/transactions', transaction);
+
+    dispatch(addTransactionSuccess(data));
   } catch (error) {
     dispatch(addTransactionError(error.message));
   }
