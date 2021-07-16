@@ -10,6 +10,7 @@ import Notify from '../Notify/Notify';
 import { getIsError } from '../../redux/auth/authSelectors';
 
 import TextInput from '../TextInput';
+import Button from '../Button';
 import operation from '../../redux/auth/authOperations';
 import sprite from '../../images/sprite.svg';
 import '../RegistrationForm/RegistrationForm.scss';
@@ -47,7 +48,6 @@ export default function RegisterForm() {
       resetForm({});
       setStatus({ success: true });
     } catch (error) {
-      toast.error('Неверные почта или пароль');
       setStatus({ success: false });
       setSubmitting(false);
       setErrors({ submit: error.message });
@@ -87,9 +87,7 @@ export default function RegisterForm() {
               placeholder="Пароль"
             />
 
-            <button className="authBtnCurrent" type="submit">
-              Вход
-            </button>
+            <Button className="authBtnCurrent" type="submit" text="Вход" />
           </Form>
         </Formik>
         <NavLink to="/auth/register" exact className="authBtnRedirect">
