@@ -85,25 +85,25 @@ const TransactionForm = () => {
     }));
   };
 
-  // const validate = (sum, category, income, comment) => {
-  //   const errors = {};
+  const validate = ({ sum, category, comment }) => {
+    const errors = {};
 
-  //   if (sum.length === 0) {
-  //     errors.sum = 'Введите число!';
-  //   }
+    if (!sum) {
+      errors.sum = 'Введите число!';
+    }
 
-  //   if (income === true && category === '') {
-  //     errors.category = 'Категория не выбрана!';
-  //   }
+    if (!category) {
+      errors.category = 'Категория не выбрана!';
+    }
 
-  //   if (comment.length > 24) {
-  //     errors.comment = 'Делай описание лаконичнее!';
-  //   }
+    if (comment.length > 100) {
+      errors.comment = 'Делай описание лаконичнее!';
+    }
 
-  //   setErrors(errors);
+    setErrors(errors);
 
-  //   return !!Object.keys(errors).length;
-  // };
+    return !!Object.keys(errors).length;
+  };
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -112,8 +112,16 @@ const TransactionForm = () => {
       ...transactionItem,
       category: transactionItem.category.value,
       sum: Number(transactionItem.sum),
+      comment: transactionItem.comment ? transactionItem.comment : 'No comment',
     };
 
+    const hasErrors = validate(newTransaction);
+
+    if (hasErrors) {
+      return;
+    }
+
+    console.log('newTransaction', newTransaction);
     dispatch(addTransaction(newTransaction));
     dispatch(fetchTransactions());
 
@@ -194,7 +202,7 @@ const TransactionForm = () => {
             name="comment"
             value={transactionItem.comment}
             onChange={handleInput}
-            maxLength="24"
+            maxLength="100"
           />
           {errors.comment && (
             <span className="form__descriptionError">{errors.comment}</span>
