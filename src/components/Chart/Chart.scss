@@ -1,16 +1,19 @@
+@import 'stylesheet/shared.scss';
+
 .chartPie {
   position: relative;
   width: 280px;
   height: 280px;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     width: 320px;
     height: 320px;
     margin-right: 35px;
     margin-bottom: 0;
   }
-  @media screen and (min-width: 1024px) {
+
+  @include for-size(desktop) {
     margin-right: 30px;
     margin-bottom: 0;
   }
@@ -22,7 +25,7 @@
   width: 280px;
   height: 280px;
 
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     width: 320px;
     height: 320px;
   }

@@ -1,8 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import isModalAddTransactionOpenActions from './isModalAddTransactionOpenActions';
+import { modalAddTransactionOpen } from './isModalAddTransactionOpenActions';
 
-const isModalAddTransactionOpen = createReducer(false, {
-  [isModalAddTransactionOpenActions]: (state, _) => !state,
+export const isAddTransactionModalOpen = createReducer(false, {
+  [modalAddTransactionOpen]: (state, _) => !state,
 });
-
-export default isModalAddTransactionOpen;

@@ -84,7 +84,7 @@ export default function RegisterForm() {
             />
 
             <button className="authBtnCurrent" type="submit" onClick={notify}>
-              Вход
+              Войти
             </button>
           </Form>
         </Formik>

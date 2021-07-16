@@ -1,11 +1,11 @@
-@import '../../stylesheet/vars';
+@import 'stylesheet/shared.scss';
 
 .table {
   width: 280px;
   font-size: 16px;
   border-collapse: collapse;
 
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     width: 350px;
   }
 
@@ -28,16 +28,18 @@
       border-radius: 0 30px 30px 0;
       text-align: right;
       padding: 15px;
-      @media screen and (min-width: 768px) {
+
+      @include for-size(tablet) {
         padding: 15px 30px;
       }
     }
   }
   & tbody td {
     border-bottom: 1px solid $gray-table-string-color;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 1px 0px $white-background-color-second;
     padding: 10px 15px;
-    @media screen and (min-width: 768px) {
+
+    @include for-size(tablet) {
       padding: 15px 30px;
     }
   }

@@ -1,11 +1,13 @@
+@import 'stylesheet/shared.scss';
+
 .diagramTab {
-  padding: 30px 20px;
+  padding-bottom: 35px;
 
   .diagramTabChartTable {
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
       flex-direction: row;
     }
   }
@@ -14,7 +16,7 @@
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
       flex-direction: row;
       justify-content: flex-end;
     }
