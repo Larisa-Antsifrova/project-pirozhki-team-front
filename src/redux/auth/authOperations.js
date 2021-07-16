@@ -20,7 +20,7 @@ const register = user => async dispatch => {
     token.set(accessToken);
     dispatch(authActions.registerSuccess(data.data));
   } catch (error) {
-    dispatch(authActions.registerError(error));
+    dispatch(authActions.registerError(error.message));
   }
 };
 
@@ -32,7 +32,7 @@ const login = user => async dispatch => {
     token.set(accessToken);
     dispatch(authActions.loginSuccess(data.data));
   } catch (error) {
-    dispatch(authActions.loginError(error));
+    dispatch(authActions.loginError(error.message));
   }
 };
 
@@ -51,6 +51,7 @@ const getCurrentUserInfo = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
+
   if (!persistedToken) {
     return;
   }

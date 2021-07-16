@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router';
-import authSelectors from '../redux/auth/authSelectors';
+import { getIsAuthenticated } from '../redux/auth/authSelectors';
 
 export default function WithAuthRedirect({
   type,
@@ -9,13 +9,15 @@ export default function WithAuthRedirect({
   redirectTo,
   ...routeProps
 }) {
-  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
+  // const isLoggedIn = true
+  const isLoggedIn = useSelector(getIsAuthenticated);
   return (
     <Route {...routeProps}>
       {(type === 'guest' && isLoggedIn) ||
       (type === 'private' && !isLoggedIn) ? (
         <Redirect to={redirectTo} />
       ) : (
+        // children
         children
       )}
     </Route>

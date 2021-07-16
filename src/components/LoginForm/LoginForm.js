@@ -1,8 +1,13 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Notify from '../Notify/Notify';
+import { getIsError } from '../../redux/auth/authSelectors';
 
 import TextInput from '../TextInput';
 import operation from '../../redux/auth/authOperations';
@@ -11,6 +16,13 @@ import '../RegistrationForm/RegistrationForm.scss';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const isAuth = useSelector(getIsError);
+
+  useEffect(() => {
+    if (isAuth) {
+      toast.error('Неверные почта или пароль');
+    }
+  }, [isAuth]);
 
   const INITIAL_VALUES = {
     email: '',
@@ -23,11 +35,7 @@ export default function RegisterForm() {
       .lowercase()
       .email('Неверный формат записи почты')
       .required('Обязательное поле'),
-    password: yup
-      .string()
-      .min(6, 'Не менее 6 символов')
-      .max(12, 'Не более 12 символов')
-      .required('Обязательное поле'),
+    password: yup.string().required('Обязательное поле'),
   });
 
   const onSubmit = (
@@ -39,6 +47,7 @@ export default function RegisterForm() {
       resetForm({});
       setStatus({ success: true });
     } catch (error) {
+      toast.error('Неверные почта или пароль');
       setStatus({ success: false });
       setSubmitting(false);
       setErrors({ submit: error.message });
@@ -54,6 +63,8 @@ export default function RegisterForm() {
           </svg>
           <span className="formHeaderText">Wallet</span>
         </p>
+
+        <Notify />
 
         <Formik
           initialValues={INITIAL_VALUES}
@@ -77,7 +88,7 @@ export default function RegisterForm() {
             />
 
             <button className="authBtnCurrent" type="submit">
-              Войти
+              Вход
             </button>
           </Form>
         </Formik>
