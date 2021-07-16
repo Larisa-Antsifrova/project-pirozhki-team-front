@@ -11,13 +11,15 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReducer';
+
 import {
   modalAddTransactionOpenReducer,
-  categories,
   transactionAdd,
 } from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
+
 import auth from './auth/authReducer';
 import finance from './finance/financeReducer';
+import { categories } from './categories/categoriesReducer';
 import isLoading from './isLoading/isLoadingReducer';
 
 const middleware = [
@@ -41,7 +43,7 @@ const store = configureStore({
     auth: persistReducer(persistConfig, auth),
     finance,
     isLoading,
-    categories: categories,
+    categories,
     transaction: transactionAdd,
   },
   devTools: process.env.NODE_ENV === 'development',
