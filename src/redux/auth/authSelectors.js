@@ -5,7 +5,6 @@ export const getUserName = state =>
     : state.auth.user.name;
 export const getUserEmail = state => state.auth.user.email;
 export const getIsError = state => state.auth.error;
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getIsAuthenticated,

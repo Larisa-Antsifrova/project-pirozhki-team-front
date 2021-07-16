@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import authSelectors from '../../redux/auth/authSelectors';
+import { getIsError } from '../../redux/auth/authSelectors';
 
 const Notify = () => {
-  const isError = useSelector(authSelectors.getIsError);
+  const isError = useSelector(getIsError);
 
   return (
     isError && (

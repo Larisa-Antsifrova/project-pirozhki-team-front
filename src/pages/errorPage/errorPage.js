@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import authSelectors from '../../redux/auth/authSelectors';
+import { getIsAuthenticated } from '../../redux/auth/authSelectors';
 import Container from '../../components/Container';
 import './errorPage.scss';
 
 const ErrorPage = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
+  const isLoggedIn = useSelector(getIsAuthenticated);
   return (
     <Container>
       <div className="heroTitle">
