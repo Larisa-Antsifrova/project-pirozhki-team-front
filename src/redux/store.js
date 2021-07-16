@@ -10,17 +10,14 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReducer';
-
-import {
-  modalAddTransactionOpenReducer,
-  transactionAdd,
-} from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
-
+// Reducers
 import auth from './auth/authReducer';
 import finance from './finance/financeReducer';
+import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReducer';
+import { isAddTransactionModalOpen } from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
 import { categories } from './categories/categoriesReducer';
 import isLoading from './isLoading/isLoadingReducer';
+import { transaction } from './transaction/transactionReducers';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -39,12 +36,12 @@ const persistConfig = {
 const store = configureStore({
   reducer: {
     isModalLogoutOpen: isModalLogoutOpenReducer,
-    isModalAddTransactionOpen: modalAddTransactionOpenReducer,
+    isAddTransactionModalOpen,
     auth: persistReducer(persistConfig, auth),
     finance,
     isLoading,
     categories,
-    transaction: transactionAdd,
+    transaction,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,

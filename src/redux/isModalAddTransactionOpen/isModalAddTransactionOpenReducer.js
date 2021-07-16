@@ -1,16 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {
-  modalAddTransactionOpen,
-  addTransactionsSuccess,
-} from './isModalAddTransactionOpenActions';
+import { modalAddTransactionOpen } from './isModalAddTransactionOpenActions';
 
-const modalAddTransactionOpenReducer = createReducer(false, {
+export const isAddTransactionModalOpen = createReducer(false, {
   [modalAddTransactionOpen]: (state, _) => !state,
 });
-
-const transactionAdd = createReducer([], {
-  [addTransactionsSuccess]: (state, { payload }) => [...state, payload],
-});
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export { modalAddTransactionOpenReducer, transactionAdd };
