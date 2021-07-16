@@ -1,16 +1,20 @@
+@import 'stylesheet/shared.scss';
+
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: absolute;
-  padding: 20px 0 20px 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: auto;
   width: 540px;
+  padding: 20px 0 20px 0;
   padding-bottom: 60px;
-  background-color: #fff;
+
+  background-color: $white-color;
   border-radius: 20px;
   z-index: 3;
 }
@@ -22,7 +26,7 @@
   bottom: 0;
   left: 0;
   z-index: -1;
-  background: #00000040;
+  background: $modal-background-color;
 }
 
 .form__title {
@@ -30,7 +34,7 @@
   font-weight: 400;
   font-size: 24px;
   text-align: center;
-  color: #000000;
+  color: $black-color;
   margin-bottom: 40px;
 }
 
@@ -41,7 +45,7 @@
     background-image: url('../../images/close.png');
     background-repeat: no-repeat;
     border: none;
-    background-color: #fff;
+    background-color: $white-color;
     background-position: center;
     display: block;
     position: absolute;
@@ -78,7 +82,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fff;
+  background: $white-color;
   border: 1px solid #e0e0e0;
   border-radius: 30px;
 }
@@ -88,7 +92,7 @@
   content: url('../../images/add-transaction-icon-plus.png');
   width: 44px;
   height: 44px;
-  background-color: #24cca7;
+  background-color: $green-accent-color-color;
   border-radius: 50%;
   top: 50%;
   left: 20px;
@@ -96,7 +100,7 @@
   cursor: pointer;
   transition-property: transform, background-color;
   transition-duration: 0.3s;
-  color: #fff;
+  color: $white-color;
   text-align: center;
   line-height: 54px;
 }
@@ -104,7 +108,7 @@
 .form__checkbox_input:checked + .form__checkbox_span::before {
   content: url('../../images/add-transaction-icon-minus.png');
   transform: translate(20px, -50%);
-  background-color: #ff6596;
+  background-color: $rose-color;
   line-height: 38px;
 }
 
@@ -183,7 +187,7 @@
   font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: #000000;
+  color: $black-color;
 }
 
 .form__calendar:focus {
@@ -207,7 +211,7 @@
 }
 
 .form__description::placeholder {
-  color: #bdbdbd;
+  color: $gray-text-color-header;
 }
 
 .form__amount,
@@ -231,16 +235,16 @@
 }
 
 .form__add_btn {
-  background-color: #24cca7;
+  background-color: $green-accent-color-color;
   border: none;
-  color: #ffffff;
+  color: $white-color;
   margin-bottom: 20px;
 }
 
 .form__cancel_btn {
-  background-color: #ffffff;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
+  background-color: $white-color;
+  border: 1px solid $indigo-accent-color;
+  color: $indigo-accent-color;
 }
 
 .form__add_btn,
@@ -249,21 +253,21 @@
 }
 
 .form__add_btn:hover {
-  border: 1px solid #24cca7;
-  background-color: #fff;
-  color: #24cca7;
+  border: 1px solid $green-accent-color-color;
+  background-color: $white-color;
+  color: $green-accent-color-color;
 }
 
 .form__cancel_btn:hover {
-  background-color: #4a56e2;
-  color: #fff;
+  background-color: $indigo-accent-color;
+  color: $white-color;
 }
 
 .form__categoryError,
 .form__amountError,
 .form__descriptionError {
   position: absolute;
-  color: #ff0000;
+  color: $rose-color;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -299,7 +303,7 @@
     bottom: 0;
     left: 0;
     z-index: 2;
-    background: #00000040;
+    background: $modal-background-color;
   }
 
   .form__categoryError,
