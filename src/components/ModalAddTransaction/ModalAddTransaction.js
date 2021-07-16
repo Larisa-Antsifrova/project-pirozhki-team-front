@@ -125,6 +125,7 @@ const TransactionForm = () => {
     dispatch(fetchTransactions());
 
     setTransactionItem(initialState);
+    setCheckedBox(false);
   };
 
   return (
