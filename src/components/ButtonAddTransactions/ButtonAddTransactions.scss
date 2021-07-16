@@ -1,20 +1,19 @@
 @import 'stylesheet/shared.scss';
 
-.add-transactions-container {
-  position: relative;
-}
-
 .add-transactions__button {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+
   display: block;
   padding: 12px;
   width: 44px;
   height: 44px;
+
   border-radius: 50%;
   box-shadow: 0px 6px 15px #24cca780;
-  background-color: $diagram-color-8;
+  background-color: $green-accent-color-color;
+  transition: background-color $time-transforming $timing-function;
 
   @media (min-width: 768px) {
     right: 40px;
@@ -25,6 +24,13 @@
     right: 85px;
     bottom: 40px;
   }
+}
+
+.add-transactions__button:hover,
+.add-transactions__button:focus,
+.add-transactions__button:active {
+  background-color: $green-accent-color-dark;
+  transition: background-color $time-transforming $timing-function;
 }
 
 .add-button-icon {

@@ -4,29 +4,59 @@ import {
   getStatistics,
   costsIncomeTotals,
   isLoadingStatistic,
+  getFirstTransactionDate,
 } from '../../redux/finance/financeSelectors';
 import { getStatisticsData } from '../../redux/finance/financeOperations';
 import { MONTH, NO_TRANSACTION } from '../../helpers/constants';
+import { getYear, isEmpty } from '../../helpers/operation';
 import SmallSpinner from '../SmallSpinner';
 import Chart from '../Chart';
 import Table from '../Table';
 import SelectMonthYear from '../SelectMonthYear';
 import './DiagramTab.scss';
 
-const year = [2020, 2021, 2023];
-
 const DiagramTab = () => {
+  const todayYear = getYear(new Date());
+
+  const [seletcMonth, setSeletcMonth] = useState(null);
+  const [seletcYear, setSeletcYear] = useState(null);
+  const [year, setYaer] = useState([todayYear]);
+
   const dispatch = useDispatch();
   const statistics = useSelector(getStatistics);
   const costsIncome = useSelector(costsIncomeTotals);
   const isLoading = useSelector(isLoadingStatistic);
 
-  const [seletcMonth, setSeletcMonth] = useState(null);
-  const [seletcYear, setSeletcYear] = useState(null);
+  const firstTransactionDate = useSelector(getFirstTransactionDate);
 
   useEffect(() => {
     dispatch(getStatisticsData(seletcMonth, seletcYear));
   }, [dispatch, seletcYear, seletcMonth]);
+
+  useEffect(() => {
+    if (firstTransactionDate && !isEmpty(firstTransactionDate)) {
+      const transactionYear = getYear(new Date(firstTransactionDate));
+      const difference = todayYear - transactionYear;
+
+      const setYear = () => {
+        if (year.includes(transactionYear)) {
+          return;
+        }
+        if (transactionYear === todayYear) {
+          return;
+        }
+        setYaer(prevArray => [...prevArray, transactionYear]);
+        for (let i = 1; i <= difference; i++) {
+          if (year.includes(transactionYear + i)) {
+            return;
+          }
+          setYaer(prevArray => [...prevArray, transactionYear + i]);
+        }
+      };
+
+      setYear();
+    }
+  }, [firstTransactionDate, todayYear, year]);
 
   const onSelectMonth = itemTitle => {
     const monthNum = MONTH.indexOf(itemTitle) + 1;
@@ -60,7 +90,7 @@ const DiagramTab = () => {
                 />
                 <SelectMonthYear
                   title={seletcYear ? seletcYear : 'Год'}
-                  list={year}
+                  list={year.sort((a, b) => a - b)}
                   onChange={onSelectYear}
                 />
               </div>

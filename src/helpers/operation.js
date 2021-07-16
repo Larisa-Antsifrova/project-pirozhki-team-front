@@ -14,3 +14,6 @@ export const numberToLocalString = num => {
 
 export const getMonth = today => String(today.getMonth() + 1).padStart(2, '0');
 export const getYear = today => today.getFullYear();
+export const isEmpty = obj => {
+  return Object.keys(obj).length === 0;
+};
