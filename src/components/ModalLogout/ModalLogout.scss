@@ -1,21 +1,18 @@
-@import '../../stylesheet/vars';
+@import 'stylesheet/shared.scss';
 
 .logoutBtn {
   font-size: 18px;
-  color: #bdbdbd;
+  color: $gray-text-color-header;
 
   height: auto;
   width: auto;
   border-radius: 0;
   margin: 0;
 
-  @media screen and (max-width: 767px) {
-    .logoutText {
-      display: none;
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .logoutText {
+  .logoutText {
+    display: none;
+
+    @include for-size(tablet) {
       display: inline-block;
       vertical-align: middle;
     }
@@ -33,7 +30,7 @@
     height: 18px;
     vertical-align: middle;
     margin-bottom: 2px;
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
       margin-right: 10px;
     }
   }
@@ -45,19 +42,22 @@
   color: $gray-text-color-header;
 }
 
-.modalContent {
+.modalLogoutContent {
   position: absolute;
   inset: 50% auto auto 50%;
-  width: 100%;
-  max-width: 450px;
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
+  max-width: 280px;
+  border: 1px solid $gray-table-string-color;
+  background: $white-color;
   overflow: auto;
   border-radius: 20px;
   outline: none;
   padding: 20px;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+
+  @include for-size(tablet) {
+    max-width: 480px;
+  }
 
   .caption {
     text-align: center;
@@ -70,18 +70,13 @@
     align-items: center;
 
     & button {
-      width: 400px;
+      width: 280px;
       height: 50px;
       border-radius: 20px;
+      max-width: 100%;
 
-      @media screen and (max-width: 768px) {
-        width: 300px;
-        max-width: 100%;
-      }
-
-      @media screen and (max-width: 320px) {
-        width: 300px;
-        max-width: 100%;
+      @include for-size(tablet) {
+        width: 400px;
       }
     }
 

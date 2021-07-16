@@ -43,7 +43,7 @@ const ModalLogout = () => {
         onRequestClose={onToggleModal}
         contentLabel="Example Modal"
         ariaHideApp={false}
-        className="modalContent"
+        className="modalLogoutContent"
       >
         <h2 className="caption">Вы реально хотите выйти?</h2>
         <div className="modalBtn">
