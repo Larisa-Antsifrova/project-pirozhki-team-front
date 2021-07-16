@@ -1,27 +1,29 @@
 import { useDispatch, useSelector } from 'react-redux';
 import ReactModal from 'react-modal';
-import './ModalLogout.scss';
 import { useMediaPredicate } from 'react-media-hook';
+
+import operations from '../../redux/auth/authOperations';
 import { getUserName } from '../../redux/auth/authSelectors';
-import sprite from '../../images/sprite.svg';
 import isModalLogoutOpenActions from '../../redux/isModalLogoutOpen/isModalLogoutOpenActions';
 import selectors from '../../redux/isModalLogoutOpen/isModalLogoutOpenSelectors';
-import operations from '../../redux/auth/authOperations';
+
+import sprite from '../../images/sprite.svg';
+import './ModalLogout.scss';
 
 const ModalLogout = () => {
   const dispatch = useDispatch();
-  const isModalOpen = useSelector(state => selectors.isModalLogoutOpen(state));
-  const onToggleModal = () => dispatch(isModalLogoutOpenActions());
 
+  const isModalOpen = useSelector(state => selectors.isModalLogoutOpen(state));
+  const userName = useSelector(getUserName);
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
 
-  const logout = () => {
-    dispatch(operations.logout());
-    onToggleModal();
-    console.log('Ура вы вышли из этой финансовой пирамиды');
-  };
+  const onToggleModal = () => dispatch(isModalLogoutOpenActions());
 
-  const userName = useSelector(getUserName);
+  const onLogout = () => {
+    dispatch(operations.logout());
+
+    onToggleModal();
+  };
 
   return (
     <>
@@ -32,12 +34,12 @@ const ModalLogout = () => {
             <use href={`${sprite}#stick`} />
           </svg>
         )}
-
         <svg className="logoutIcon">
           <use href={`${sprite}#logout-icon`} />
         </svg>
         <span className="logoutText">Выйти</span>
       </button>
+
       <ReactModal
         isOpen={isModalOpen}
         onRequestClose={onToggleModal}
@@ -45,12 +47,13 @@ const ModalLogout = () => {
         ariaHideApp={false}
         className="modalLogoutContent"
       >
-        <h2 className="caption">Вы реально хотите выйти?</h2>
-        <div className="modalBtn">
-          <button className="btnYes" onClick={logout}>
+        <h2 className="caption">Вы хотите выйти?</h2>
+
+        <div className="modalBtnGroup">
+          <button className="modalBtnConfirm" onClick={onLogout}>
             Да
           </button>
-          <button className="btnNo" onClick={onToggleModal}>
+          <button className="modalBtnCancel" onClick={onToggleModal}>
             Нет
           </button>
         </div>
