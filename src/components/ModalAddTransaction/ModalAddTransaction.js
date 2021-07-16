@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import { modalAddTransactionOpen } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenActions';
 import { addTransactionOperation } from '../../redux/isModalAddTransactionOpen/isModalAddTransactionOpenOperations';
+import { fetchCategories } from '../../redux/categories/categoriesOperations';
+import {
+  categories,
+  incomeCategories,
+  expenseCategories,
+} from '../../redux/categories/categoriesSelectors';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ModalAddTransaction.scss';
@@ -31,9 +37,16 @@ const TransactionForm = () => {
 
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
 
-  useEffect(() => {
-    // setOptionsList(categoriesList);
-  }, []);
+  useEffect(() => dispatch(fetchCategories()), [dispatch]);
+
+  const cat = useSelector(categories);
+  console.log('Categories list', cat);
+
+  const incomeCat = useSelector(incomeCategories);
+  console.log('incomeCategories', incomeCat);
+
+  const expenseCat = useSelector(expenseCategories);
+  console.log('expenseCategories', expenseCat);
 
   const handleInputAmount = ({ target }) => {
     const { name, value } = target;

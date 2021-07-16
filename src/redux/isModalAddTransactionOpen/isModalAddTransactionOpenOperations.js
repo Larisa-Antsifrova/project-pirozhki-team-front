@@ -4,9 +4,6 @@ import {
   addTransactionsRequest,
   addTransactionsSuccess,
   addTransactionsError,
-  getCategoriesRequest,
-  getCategoriesSuccess,
-  getCategoriesError,
 } from '../isModalAddTransactionOpen/isModalAddTransactionOpenActions';
 
 const addTransactionOperation = transaction => async dispatch => {
@@ -20,16 +17,5 @@ const addTransactionOperation = transaction => async dispatch => {
   }
 };
 
-const getCategoriesOperation = () => async dispatch => {
-  dispatch(getCategoriesRequest());
-
-  try {
-    const response = await axios.get('/categories/hardcoded');
-    dispatch(getCategoriesSuccess(response));
-  } catch (error) {
-    dispatch(getCategoriesError(error.message));
-  }
-};
-
 // eslint-disable-next-line import/no-anonymous-default-export
-export { addTransactionOperation, getCategoriesOperation };
+export { addTransactionOperation };
