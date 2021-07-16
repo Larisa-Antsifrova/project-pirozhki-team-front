@@ -15,8 +15,6 @@ const ButtonAddTransactions = () => {
 
   const isModalAddTransactionOpen = useSelector(onModalAddTransactionOpen);
 
-  console.log('isModalAddTransactionOpen', isModalAddTransactionOpen);
-
   return (
     <>
       <div className="add-transactions-container">
