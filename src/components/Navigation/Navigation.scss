@@ -2,10 +2,15 @@
 
 .navigation {
   display: flex;
-  justify-content: space-between;
-  margin: 13px 67px;
+  justify-content: space-evenly;
+  padding: 10px 0px;
   @include for-size(tablet) {
     flex-direction: column;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  @include for-size(desktop) {
+    margin-bottom: 30px;
   }
 }
 
@@ -16,7 +21,7 @@
   text-decoration: none;
   font-weight: 400;
   font-size: 18px;
-  margin: 10px;
+  padding: 5px 3px;
 }
 .navActiveLink {
   font-weight: 700;
