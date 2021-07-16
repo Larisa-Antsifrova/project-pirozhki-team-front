@@ -1,4 +1,4 @@
-@import '../../stylesheet/vars';
+@import 'stylesheet/shared.scss';
 
 .dropdownWrapper {
   position: relative;
@@ -6,7 +6,7 @@
   margin-bottom: 20px;
   user-select: none;
 
-  @media screen and (min-width: 768px) {
+  @include for-size(tablet) {
     justify-content: space-between;
     min-width: 165px;
   }
@@ -22,21 +22,20 @@
 
     width: 280px;
     height: 50px;
-    border: 1px solid #000000;
+    border: 1px solid $black-color;
     box-sizing: border-box;
     border-radius: 30px;
     font-size: 16px;
     padding: 8px 14px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: $time-transforming $timing-function;
 
     &:hover {
       color: $rose-color;
       font-weight: 700;
     }
 
-    @media screen and (min-width: 768px) {
-      justify-content: space-between;
+    @include for-size(tablet) {
       width: 165px;
     }
 
@@ -57,21 +56,21 @@
   }
 
   .dropdownList {
-    z-index: -1;
-    opacity: 0;
+    display: flex;
     flex-direction: column;
     position: absolute;
     width: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(50px);
-    border: 1px solid black;
+    z-index: -1;
+    opacity: 0;
+    backdrop-filter: $backdrop-blur;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid $black-color;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     transition: all 0.3s ease-in-out;
 
     &.dropdownListOpen {
       opacity: 1;
-      display: flex;
       z-index: 1;
     }
 
