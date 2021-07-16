@@ -13,11 +13,13 @@
     padding-right: 30px;
   }
   @include for-size(desktop) {
+    height: 900px;
     display: block;
     padding-top: 40px;
     margin-bottom: 0;
-    border-right: 1px solid $gray-table-string-color;
-    box-shadow: 0px 1px 0px $white-background-color-second;
+    border-right: 1px solid $gray-block-border-line-color;
+    box-shadow: inset -1px 0px 0px $black-box-shadow-color,
+      1px 0px 0px $white-background-color-second;
   }
 }
 
