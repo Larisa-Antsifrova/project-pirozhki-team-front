@@ -1,3 +1,5 @@
+@import 'stylesheet/shared.scss';
+
 .diagramTab {
   padding-bottom: 35px;
 
@@ -5,7 +7,7 @@
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
       flex-direction: row;
     }
   }
@@ -14,10 +16,15 @@
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 768px) {
+    @include for-size(tablet) {
       flex-direction: row;
       justify-content: flex-end;
     }
+
+    // @media screen and (min-width: 768px) {
+    //   flex-direction: row;
+    //   justify-content: flex-end;
+    // }
   }
 }
 
