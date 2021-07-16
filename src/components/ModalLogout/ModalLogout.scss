@@ -1,99 +1,142 @@
-@import '../../stylesheet/vars';
+@import 'stylesheet/shared.scss';
 
 .logoutBtn {
-  font-size: 18px;
-  color: #bdbdbd;
-
   height: auto;
   width: auto;
-  border-radius: 0;
   margin: 0;
 
-  @media screen and (max-width: 767px) {
-    .logoutText {
-      display: none;
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .logoutText {
-      display: inline-block;
-      vertical-align: middle;
-    }
-  }
+  font-size: 18px;
 
-  .stickIcon {
-    width: 1px;
-    height: 30px;
-    vertical-align: middle;
-    margin-right: 15px;
-  }
+  color: $gray-text-color-header;
+  border-radius: 0;
 
-  .logoutIcon {
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-    margin-bottom: 2px;
-    @media screen and (min-width: 768px) {
-      margin-right: 10px;
+  transition: color $time-transforming $timing-function;
+
+  &:hover {
+    color: $rose-color;
+
+    transition: color $time-transforming $timing-function;
+
+    .logoutIcon {
+      fill: $rose-color;
+      transition: fill $time-transforming $timing-function;
     }
   }
 }
 
+.logoutIcon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+
+  fill: $gray-text-color-header;
+  transition: fill $time-transforming $timing-function;
+
+  @include for-size(tablet) {
+    margin-right: 10px;
+  }
+}
+
+.logoutText {
+  display: none;
+
+  @include for-size(tablet) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.stickIcon {
+  width: 1px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
 .userName {
-  margin-right: 14.5px;
+  margin-right: 15px;
   font-size: 18px;
   color: $gray-text-color-header;
 }
 
-.modalContent {
+.modalLogoutContent {
   position: absolute;
   inset: 50% auto auto 50%;
-  width: 100%;
-  max-width: 450px;
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
-  border-radius: 20px;
-  outline: none;
-  padding: 20px;
-  margin-right: -50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 280px;
+  padding: 30px;
 
-  .caption {
-    text-align: center;
+  overflow: auto;
+
+  background: $white-color;
+  border-radius: 20px;
+  border: 1px solid $gray-table-string-color;
+
+  outline: none;
+
+  @include for-size(tablet) {
+    max-width: 480px;
+    padding: 40px 65px 60px;
+  }
+}
+
+.caption {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modalBtn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  margin: 0 auto;
+
+  text-transform: uppercase;
+
+  border-radius: 20px;
+
+  &Confirm {
+    @extend .modalBtn;
+
     margin-bottom: 20px;
+
+    color: $indigo-accent-color;
+    background: $white-color;
+    border: 1px solid $indigo-accent-color;
+
+    transition: color $time-transforming $timing-function,
+      background-color $time-transforming $timing-function;
+
+    &:hover {
+      color: $white-color;
+      background-color: $indigo-accent-color;
+
+      transition: color $time-transforming $timing-function,
+        background-color $time-transforming $timing-function;
+    }
   }
 
-  .modalBtn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &Cancel {
+    @extend .modalBtn;
 
-    & button {
-      width: 400px;
-      height: 50px;
-      border-radius: 20px;
+    color: $white-color;
+    background-color: $green-accent-color-color;
 
-      @media screen and (max-width: 768px) {
-        width: 300px;
-        max-width: 100%;
-      }
+    transition: color $time-transforming $timing-function,
+      border$time-transforming $timing-function,
+      background-color $time-transforming $timing-function;
 
-      @media screen and (max-width: 320px) {
-        width: 300px;
-        max-width: 100%;
-      }
-    }
+    &:hover {
+      color: $green-accent-color-color;
+      border: 1px solid $green-accent-color-color;
+      background-color: $white-color;
 
-    .btnNo {
-      color: $white-color;
-      background-color: $green-accent-color-color;
-    }
-
-    .btnYes {
-      margin-bottom: 20px;
-      background: $white-color;
-      color: $indigo-accent-color;
-      border: 1px solid $indigo-accent-color;
+      transition: color $time-transforming $timing-function,
+        border$time-transforming $timing-function,
+        background-color $time-transforming $timing-function;
     }
   }
 }
