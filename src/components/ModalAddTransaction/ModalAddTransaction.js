@@ -121,7 +121,6 @@ const TransactionForm = () => {
       return;
     }
 
-    console.log('newTransaction', newTransaction);
     dispatch(addTransaction(newTransaction));
     dispatch(fetchTransactions());
 
