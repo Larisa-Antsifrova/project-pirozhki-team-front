@@ -76,7 +76,11 @@ const DiagramTab = () => {
           <h2 className="diagramTabTitle">Статистика</h2>
           <div className="diagramTabChartTable">
             <Chart
-              tempData={statistics.length > 0 ? statistics : NO_TRANSACTION}
+              tempData={
+                statistics.length > 0
+                  ? statistics.filter(stat => !stat.income)
+                  : NO_TRANSACTION
+              }
               totalBalance={costsIncome.balance}
             />
             <div className="tableContainer">
@@ -96,7 +100,11 @@ const DiagramTab = () => {
               </div>
               <div>
                 <Table
-                  tempData={statistics.length > 0 ? statistics : NO_TRANSACTION}
+                  tempData={
+                    statistics.length > 0
+                      ? statistics.filter(stat => !stat.income)
+                      : NO_TRANSACTION
+                  }
                   costsIncome={costsIncome}
                 />
               </div>
