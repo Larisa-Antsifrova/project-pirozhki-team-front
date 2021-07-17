@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
 import WithAuthRedirect from './components/WithAuthRedirect';
@@ -17,9 +17,12 @@ const App = () => {
     <div className="appBackdrop">
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <WithAuthRedirect exact path="/" type="guest" redirectTo="/auth">
-            <Redirect to="/auth/login" />
-          </WithAuthRedirect>
+          <WithAuthRedirect
+            exact
+            path="/"
+            type="guest"
+            redirectTo="/auth/login"
+          />
 
           <WithAuthRedirect
             path="/auth/login"
