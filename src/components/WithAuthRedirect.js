@@ -9,7 +9,6 @@ export default function WithAuthRedirect({
   redirectTo,
   ...routeProps
 }) {
-  // const isLoggedIn = true
   const isLoggedIn = useSelector(getIsAuthenticated);
   return (
     <Route {...routeProps}>
@@ -17,7 +16,6 @@ export default function WithAuthRedirect({
       (type === 'private' && !isLoggedIn) ? (
         <Redirect to={redirectTo} />
       ) : (
-        // children
         children
       )}
     </Route>

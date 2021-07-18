@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
 import TextInput from '../TextInput';
+import Button from '../Button';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';
 
@@ -86,7 +87,7 @@ export default function RegisterForm() {
         validateOnChange
         onSubmit={onSubmit}
       >
-        {({ values, handleChange, isValid, dirty }) => (
+        {({ values, handleChange }) => (
           <Form className="authForm">
             <TextInput
               icon="#email-field-icon"
@@ -116,13 +117,18 @@ export default function RegisterForm() {
               placeholder="Ваше Имя"
             />
 
-            <button
+            <Button
+              className="authBtnCurrent"
+              type="submit"
+              text="Регистрация"
+            />
+            {/* <button
               className="authBtnCurrent"
               type="submit"
               disabled={!isValid && !dirty}
             >
               Регистрация
-            </button>
+            </button> */}
           </Form>
         )}
       </Formik>
