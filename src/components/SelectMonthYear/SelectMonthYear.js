@@ -1,39 +1,23 @@
-import { useState } from 'react';
-import { ReactComponent as DropDownIcon } from '../../images/drop-down-icon.svg';
-import { ReactComponent as DropUpIcon } from '../../images/drop-up-icon.svg';
+import Select from 'react-select';
 import './SelectMonthYear.scss';
 
-const SelectMonthYear = ({ title, list, onChange }) => {
-  const [dropdownTitle, setDropdownTitle] = useState(title);
-  const [isOpen, setOpen] = useState(false);
-
-  const handleListItemClick = listItemTitle => {
-    setDropdownTitle(listItemTitle);
-    setOpen(!isOpen);
-    onChange(listItemTitle);
-  };
-
+const SelectMonthYear = ({ month, year, onSelectMonth, onSelectYear }) => {
   return (
-    <div
-      className="dropdownWrapper"
-      onPointerEnter={() => setOpen(true)}
-      onPointerLeave={() => setOpen(false)}
-    >
-      <div className={`dropdownHeader ${isOpen && 'dropdownHeaderActive'}`}>
-        <span className="dropdownHeaderTitle">{dropdownTitle}</span>
-        {isOpen ? <DropUpIcon /> : <DropDownIcon />}
-      </div>
-      <div className={`dropdownList ${isOpen && 'dropdownListOpen'}`}>
-        {list.map((item, index) => (
-          <button
-            key={index}
-            className="dropdownListItem"
-            onClick={() => handleListItemClick(item)}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+    <div className="dropdownWrapper">
+      <Select
+        options={month}
+        className="selectMonthYear"
+        classNamePrefix="selectMonthYearPrefix"
+        placeholder="Месяц"
+        onChange={onSelectMonth}
+      />
+      <Select
+        options={year}
+        className="selectMonthYear"
+        classNamePrefix="selectMonthYearPrefix"
+        placeholder="Год"
+        onChange={onSelectYear}
+      />
     </div>
   );
 };

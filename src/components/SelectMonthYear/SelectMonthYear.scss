@@ -1,97 +1,50 @@
 @import 'stylesheet/shared.scss';
 
 .dropdownWrapper {
-  position: relative;
-  min-width: 280px;
-  margin-bottom: 20px;
-  user-select: none;
-
   @include for-size(tablet) {
-    justify-content: space-between;
-    min-width: 165px;
-  }
-
-  &:not(:last-child) {
-    margin-right: 20px;
-  }
-
-  .dropdownHeader {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
+    margin-bottom: 20px;
+  }
+  .selectMonthYear {
     width: 280px;
-    height: 50px;
-    border: 1px solid $black-color;
-    box-sizing: border-box;
-    border-radius: 30px;
-    font-size: 16px;
-    padding: 8px 14px;
-    cursor: pointer;
-    transition: $time-transforming $timing-function;
-
-    &:hover {
-      color: $rose-color;
-      font-weight: 700;
-    }
+    margin-bottom: 20px;
 
     @include for-size(tablet) {
       width: 165px;
-    }
-
-    &.dropdownHeaderActive {
-      border-bottom: 1px transparent solid;
-      border-bottom-left-radius: 0px;
-      border-bottom-right-radius: 0px;
-      border-bottom: 0;
+      justify-content: space-between;
       margin-bottom: 0px;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
     }
 
-    svg {
-      width: 30px;
-      height: 30px;
-      stroke-width: 1;
-      margin-left: 8px;
+    .selectMonthYearPrefix__indicator-separator {
+      display: none;
     }
-  }
-
-  .dropdownList {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-    opacity: 0;
-    backdrop-filter: $backdrop-blur;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid $black-color;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    transition: all 0.3s ease-in-out;
-
-    &.dropdownListOpen {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .dropdownListItem {
-      border: none;
-      background: none;
-
-      font-family: inherit;
-      font-size: 16px;
+    .selectMonthYearPrefix__control {
+      height: 50px;
+      border: 1px solid $black-color;
+      border-radius: 30px;
+      background: inherit;
       padding: 8px 14px;
-      color: black;
       cursor: pointer;
-      outline: none;
+    }
 
-      &:last-child {
-        border-bottom: none;
-      }
+    .selectMonthYearPrefix__placeholder {
+      font-family: 'Circe', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: inherit;
+    }
+    .selectMonthYearPrefix__dropdown-indicator {
+      color: inherit;
+    }
 
-      &:hover {
-        color: $rose-color;
-      }
+    .selectMonthYearPrefix__menu {
+      backdrop-filter: $backdrop-blur;
+      background: rgba(255, 255, 255, 0.9);
     }
   }
 }

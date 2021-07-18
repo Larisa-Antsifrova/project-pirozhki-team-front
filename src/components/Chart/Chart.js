@@ -33,8 +33,6 @@ const Chart = ({ tempData, totalBalance }) => {
       <Pie
         className="canvasTop"
         plugins={centerText}
-        height={320}
-        width={320}
         data={{
           labels: tempData.map(el => ` ${el.category}`),
           datasets: [
