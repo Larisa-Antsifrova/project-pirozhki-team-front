@@ -1,7 +1,15 @@
 @import 'stylesheet/shared.scss';
 
 .diagramTab {
+  position: relative;
   padding-bottom: 35px;
+
+  .diagramTabTitle {
+    font-family: $secondary-font;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+  }
 
   .diagramTabChartTable {
     display: flex;
@@ -9,6 +17,16 @@
 
     @include for-size(tablet) {
       flex-direction: row;
+    }
+  }
+
+  .chartContent {
+    width: 280px;
+    height: 280px;
+
+    @include for-size(tablet) {
+      width: 320px;
+      height: 320px;
     }
   }
 
