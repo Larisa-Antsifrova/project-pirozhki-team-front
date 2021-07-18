@@ -50,7 +50,6 @@ export default function RegisterForm() {
     try {
       dispatch(operation.errorInit());
       dispatch(operation.login({ email: email.toLowerCase(), password }));
-      resetForm({});
       setStatus({ success: true });
     } catch (error) {
       setStatus({ success: false });
