@@ -12,6 +12,10 @@ const token = {
   },
 };
 
+const errorInit = () => async dispatch => {
+  dispatch(authActions.logoutSuccess());
+};
+
 const register = user => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
@@ -68,4 +72,4 @@ const getCurrentUserInfo = () => async (dispatch, getState) => {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { register, login, logout, getCurrentUserInfo };
+export default { register, login, logout, getCurrentUserInfo, errorInit };

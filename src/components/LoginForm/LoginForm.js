@@ -17,13 +17,17 @@ import '../RegistrationForm/RegistrationForm.scss';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
-  const isAuth = useSelector(getIsError);
+  const isError = useSelector(getIsError);
 
   useEffect(() => {
-    if (isAuth) {
+    dispatch(operation.errorInit());
+  }, []);
+
+  useEffect(() => {
+    if (isError) {
       toast.error('Неверные почта или пароль');
     }
-  }, [isAuth]);
+  }, [isError]);
 
   const INITIAL_VALUES = {
     email: '',
@@ -44,6 +48,7 @@ export default function RegisterForm() {
     { setSubmitting, setErrors, setStatus, resetForm },
   ) => {
     try {
+      dispatch(operation.errorInit());
       dispatch(operation.login({ email: email.toLowerCase(), password }));
       resetForm({});
       setStatus({ success: true });
@@ -64,7 +69,7 @@ export default function RegisterForm() {
           <span className="formHeaderText">Wallet</span>
         </p>
 
-        <Notify />
+        {isError && <Notify />}
 
         <Formik
           initialValues={INITIAL_VALUES}
