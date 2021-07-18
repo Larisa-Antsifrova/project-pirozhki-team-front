@@ -26,7 +26,7 @@ export default function RegisterForm() {
 
   useEffect(() => {
     if (isError) {
-      toast.error('Неверные почта или пароль');
+      toast.error('Эта почта уже занята');
     }
   }, [isError]);
 
