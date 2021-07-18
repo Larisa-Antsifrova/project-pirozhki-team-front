@@ -17,7 +17,12 @@ const App = () => {
     <div className="appBackdrop">
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <WithAuthRedirect exact path="/" type="guest" redirectTo="/auth">
+          <WithAuthRedirect
+            exact
+            path="/"
+            type="guest"
+            redirectTo="/auth/login"
+          >
             <AuthPage />
           </WithAuthRedirect>
 
