@@ -27,6 +27,15 @@ const App = () => {
           </WithAuthRedirect>
 
           <WithAuthRedirect
+            exact
+            path="/auth"
+            type="guest"
+            redirectTo="/auth/login"
+          >
+            <AuthPage />
+          </WithAuthRedirect>
+
+          <WithAuthRedirect
             path="/auth/login"
             type="guest"
             redirectTo="/dashboard/home"

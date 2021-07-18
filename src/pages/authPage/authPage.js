@@ -22,9 +22,9 @@ const AuthPage = () => {
                 <div className="heroWrapper">
                   <div
                     className={
-                      currentPage.pathname.includes('/auth/login')
-                        ? 'heroImageLogin'
-                        : 'heroImageRegister'
+                      currentPage.pathname.includes('/auth/register')
+                        ? 'heroImageRegister'
+                        : 'heroImageLogin'
                     }
                   ></div>
                   <div className="heroTitle">
