@@ -46,15 +46,15 @@
       backdrop-filter: $backdrop-blur;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 5px;
-    }
 
-    .selectMonthYearPrefix__option--is-selected {
-      background-color: $indigo-other-color;
+      .selectMonthYearPrefix__option--is-selected {
+        color: $indigo-other-color;
+        background-color: $white-color;
+      }
     }
 
     .selectMonthYearPrefix__menu-list::-webkit-scrollbar {
       width: 10px;
-      height: 100px;
     }
     .selectMonthYearPrefix__menu-list::-webkit-scrollbar-track {
       background: inherit;
