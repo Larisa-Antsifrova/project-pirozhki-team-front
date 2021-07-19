@@ -4,11 +4,22 @@ import { getDaysInMonth, getMonth, getYear } from '../../helpers/operation';
 
 axios.defaults.baseURL = 'https://awesome-wallet-app.herokuapp.com';
 
-export const fetchTransactions = () => async dispatch => {
+export const fetchTransactions = (year, month) => async dispatch => {
+  const today = new Date();
+  const mm = getMonth(today);
+  const yyyy = getYear(today);
+  const startDate = `${year ? year : yyyy}-${month ? month : mm}-01`;
+  const endDate = `${year ? year : yyyy}-${month ? month : mm}-${getDaysInMonth(
+    +`${year ? year : yyyy}`,
+    +`${month ? month : mm}`,
+  )}`;
+
   dispatch(financeActions.fetchTransactionsRequest());
 
   try {
-    const { data } = await axios.get('/transactions');
+    const { data } = await axios.get(
+      `/transactions?startDate=${startDate}&endDate=${endDate}`,
+    );
     dispatch(financeActions.fetchTransactionsSuccess(data.data));
   } catch (error) {
     dispatch(financeActions.fetchTransactionsError());
@@ -33,5 +44,16 @@ export const getStatisticsData = (month, year) => async dispatch => {
     dispatch(financeActions.statisticsSuccess(data.data));
   } catch (error) {
     dispatch(financeActions.statisticsError());
+  }
+};
+
+export const deleteTransaction = id => async dispatch => {
+  dispatch(financeActions.deleteTransactionRequest());
+
+  try {
+    await axios.delete(`/transactions/${id}`);
+    dispatch(financeActions.deleteTransactionSuccess(id));
+  } catch (error) {
+    dispatch(financeActions.deleteTransactionError(error.message));
   }
 };

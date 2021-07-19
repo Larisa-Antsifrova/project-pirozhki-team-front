@@ -4,6 +4,8 @@ import financeActions from './financeActions';
 
 const transactions = createReducer([], {
   [financeActions.fetchTransactionsSuccess]: (_, { payload }) => payload,
+  [financeActions.deleteTransactionSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 const statistics = createReducer(null, {
   [financeActions.statisticsSuccess]: (_, { payload }) => payload,
