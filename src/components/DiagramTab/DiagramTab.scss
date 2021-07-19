@@ -1,7 +1,7 @@
 @import 'stylesheet/shared.scss';
 
 .diagramTab {
-  position: relative;
+  // position: relative;
   padding-bottom: 35px;
 
   .diagramTabTitle {
@@ -21,12 +21,19 @@
   }
 
   .chartContent {
+    position: relative;
     width: 280px;
     height: 280px;
 
     @include for-size(tablet) {
       width: 320px;
       height: 320px;
+    }
+
+    .diagramTabSpinner {
+      position: absolute;
+      top: 35%;
+      left: 35%;
     }
   }
 
@@ -39,12 +46,4 @@
       justify-content: flex-end;
     }
   }
-}
-
-.diagramTabSpinner {
-  color: #6e78e8;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
