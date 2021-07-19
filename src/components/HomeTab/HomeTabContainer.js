@@ -15,6 +15,21 @@ const HomeTabContainer = () => {
   const totalList = useSelector(totals);
   console.log(transactionsList);
 
+  const total = useSelector(totals);
+
+  let balance = total?.balance;
+  let prevSum = 0;
+
+  const calculateLeftBalance = (sum, income) => {
+    const currentBalance = balance;
+    const currentSum = prevSum;
+
+    balance = balance - prevSum;
+    prevSum = income ? sum : -sum;
+
+    return currentBalance - currentSum;
+  };
+
   return (
     <>
       {/* {isLoading ? (
@@ -54,6 +69,7 @@ const HomeTabContainer = () => {
                     category={category}
                     income={income}
                     date={date}
+                    balance={calculateLeftBalance(sum, income)}
                   />
                 );
               },

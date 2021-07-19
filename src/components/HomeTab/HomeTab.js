@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './HomeTab.scss';
 
-const HomeTab = ({ category, income, date, comment, sum }) => {
+const HomeTab = ({ category, income, date, comment, sum, balance }) => {
   let incomingDate = new Date(date);
   const options = {
     year: '2-digit',
@@ -38,7 +38,7 @@ const HomeTab = ({ category, income, date, comment, sum }) => {
           <span>{sum}</span>
         </p>
         <p className={cn('dataElement', 'dataElementBalance')}>
-          <span>5 000.00</span>
+          <span>{balance}</span>
         </p>
       </div>
     </>
