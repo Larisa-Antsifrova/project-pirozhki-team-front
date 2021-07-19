@@ -23,8 +23,10 @@ const DashboardPage = () => {
   useEffect(() => dispatch(fetchTransactions()), [dispatch]);
 
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
-
   const { pathname } = useLocation();
+  const balanceOffAtCurrency = pathname !== '/dashboard/currency';
+  const balanceOffAtDiagramMobile =
+    pathname === '/dashboard/diagram' && !biggerThan767;
 
   return (
     <>
@@ -34,7 +36,9 @@ const DashboardPage = () => {
           <div className="dashboardStaticData">
             <div className="dashboardNavigationAndBalance">
               <Navigation />
-              {pathname !== '/dashboard/currency' && <Balance />}
+              {balanceOffAtCurrency && !balanceOffAtDiagramMobile && (
+                <Balance />
+              )}
             </div>
             {biggerThan767 && pathname !== '/dashboard/currency' && (
               <div>
