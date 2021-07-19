@@ -3,7 +3,6 @@ import { getMonth, getYear } from '../../helpers/operation';
 import './SelectMonthYear.scss';
 
 const SelectMonthYear = ({ month, year, onSelectMonth, onSelectYear }) => {
-  console.log(month.find(m => m.value === getMonth(new Date())));
   return (
     <div className="dropdownWrapper">
       <Select
