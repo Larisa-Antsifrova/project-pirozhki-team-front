@@ -62,9 +62,7 @@ const DiagramTab = () => {
   }, [firstTransactionDate, todayYear, year]);
 
   const onSelectMonth = itemTitle => {
-    const month = MONTH.map(m => m.value);
-    const monthNum = month.indexOf(itemTitle.value) + 1;
-    setSeletcMonth(`${monthNum < 10 ? `0${monthNum}` : monthNum}`);
+    setSeletcMonth(itemTitle.value);
   };
 
   const onSelectYear = itemTitle => setSeletcYear(itemTitle.value);
@@ -96,11 +94,7 @@ const DiagramTab = () => {
               />
             </div>
             <div>
-              {isLoading ? (
-                <div className="diagramTabSpinner">
-                  <SmallSpinner color={'#4a56e2'} size={80} />
-                </div>
-              ) : (
+              {statistics && (
                 <Table
                   tempData={statistics.length > 0 ? statistics : NO_TRANSACTION}
                   costsIncome={costsIncome}

@@ -30,6 +30,10 @@
       background: inherit;
       padding: 8px 14px;
       cursor: pointer;
+
+      &--is-focused {
+        border: 1px $indigo-other-color solid;
+      }
     }
 
     .selectMonthYearPrefix__placeholder {
@@ -45,6 +49,30 @@
     .selectMonthYearPrefix__menu {
       backdrop-filter: $backdrop-blur;
       background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+
+      .selectMonthYearPrefix__option--is-selected {
+        color: $indigo-other-color;
+        background-color: $white-color;
+      }
+    }
+
+    .selectMonthYearPrefix__menu-list::-webkit-scrollbar {
+      width: 10px;
+    }
+    .selectMonthYearPrefix__menu-list::-webkit-scrollbar-track {
+      background: inherit;
+    }
+    .selectMonthYearPrefix__menu-list::-webkit-scrollbar-thumb {
+      background: rgba(110, 120, 232, 0.8);
+      border-radius: 30px;
+    }
+    .selectMonthYearPrefix__menu-list::-webkit-scrollbar-thumb:hover {
+      background: $indigo-accent-color;
     }
   }
+}
+
+.css-yk16xz-control {
+  box-shadow: none;
 }
