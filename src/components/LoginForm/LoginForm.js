@@ -21,7 +21,7 @@ export default function RegisterForm() {
 
   useEffect(() => {
     dispatch(operation.errorInit());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isError) {
