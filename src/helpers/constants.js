@@ -18,6 +18,6 @@ export const NO_TRANSACTION = [
     category: 'Нет транзакций за этот период',
     income: false,
     sum: 0,
-    color: '#e9e9e9',
+    color: '#ffffff',
   },
 ];
