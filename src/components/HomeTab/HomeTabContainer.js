@@ -13,7 +13,6 @@ import './HomeTab.scss';
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
   const totalList = useSelector(totals);
-  console.log(transactionsList);
 
   const total = useSelector(totals);
 
