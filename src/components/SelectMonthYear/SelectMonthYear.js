@@ -1,7 +1,9 @@
 import Select from 'react-select';
+import { getMonth, getYear } from '../../helpers/operation';
 import './SelectMonthYear.scss';
 
 const SelectMonthYear = ({ month, year, onSelectMonth, onSelectYear }) => {
+  console.log(month.find(m => m.value === getMonth(new Date())));
   return (
     <div className="dropdownWrapper">
       <Select
@@ -9,6 +11,7 @@ const SelectMonthYear = ({ month, year, onSelectMonth, onSelectYear }) => {
         className="selectMonthYear"
         classNamePrefix="selectMonthYearPrefix"
         placeholder="Месяц"
+        defaultValue={month.find(m => m.value === getMonth(new Date()))}
         onChange={onSelectMonth}
       />
       <Select
@@ -17,6 +20,7 @@ const SelectMonthYear = ({ month, year, onSelectMonth, onSelectYear }) => {
         classNamePrefix="selectMonthYearPrefix"
         placeholder="Год"
         onChange={onSelectYear}
+        defaultValue={year.find(m => m.value === getYear(new Date()))}
       />
     </div>
   );
