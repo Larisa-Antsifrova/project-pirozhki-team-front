@@ -21,6 +21,7 @@ const App = () => {
             exact
             path="/"
             type="guest"
+            restricted
             redirectTo="/auth/login"
           >
             <AuthPage />
@@ -30,6 +31,7 @@ const App = () => {
             exact
             path="/auth"
             type="guest"
+            restricted
             redirectTo="/auth/login"
           >
             <AuthPage />
