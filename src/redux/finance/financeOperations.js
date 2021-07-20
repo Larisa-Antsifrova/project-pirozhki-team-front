@@ -4,11 +4,22 @@ import { getDaysInMonth, getMonth, getYear } from '../../helpers/operation';
 
 axios.defaults.baseURL = 'https://awesome-wallet-app.herokuapp.com';
 
-export const fetchTransactions = () => async dispatch => {
+export const fetchTransactions = (month, year) => async dispatch => {
+  const today = new Date();
+  const mm = getMonth(today);
+  const yyyy = getYear(today);
+  const startDate = `${year ? year : yyyy}-${month ? month : mm}-01`;
+  const endDate = `${year ? year : yyyy}-${month ? month : mm}-${getDaysInMonth(
+    +`${year ? year : yyyy}`,
+    +`${month ? month : mm}`,
+  )}`;
+
   dispatch(financeActions.fetchTransactionsRequest());
 
   try {
-    const { data } = await axios.get('/transactions');
+    const { data } = await axios.get(
+      `/transactions?startDate=${startDate}&endDate=${endDate}`,
+    );
     dispatch(financeActions.fetchTransactionsSuccess(data.data));
   } catch (error) {
     dispatch(financeActions.fetchTransactionsError());
