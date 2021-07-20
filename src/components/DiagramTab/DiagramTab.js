@@ -79,7 +79,11 @@ const DiagramTab = () => {
               </div>
             ) : (
               <Chart
-                tempData={statistics.length > 0 ? statistics : NO_TRANSACTION}
+                tempData={
+                  statistics.length > 0
+                    ? statistics.filter(stat => !stat.income)
+                    : NO_TRANSACTION
+                }
                 totalBalance={costsIncome.balance}
               />
             )}
@@ -96,7 +100,11 @@ const DiagramTab = () => {
             <div>
               {statistics && (
                 <Table
-                  tempData={statistics.length > 0 ? statistics : NO_TRANSACTION}
+                  tempData={
+                    statistics.length > 0
+                      ? statistics.filter(stat => !stat.income)
+                      : NO_TRANSACTION
+                  }
                   costsIncome={costsIncome}
                 />
               )}
