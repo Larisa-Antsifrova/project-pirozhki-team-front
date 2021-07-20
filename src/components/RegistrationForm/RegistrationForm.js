@@ -4,6 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Notify from '../Notify/Notify';
+import { getIsError } from '../../redux/auth/authSelectors';
+
 import sprite from '../../images/sprite.svg';
 import './RegistrationForm.scss';
 import TextInput from '../TextInput';
@@ -11,20 +16,19 @@ import Button from '../Button';
 import PasswordStrengthMeter from '../PasswordStrengthMeter';
 import operation from '../../redux/auth/authOperations';
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Notify from '../Notify/Notify';
-import { getIsError } from '../../redux/auth/authSelectors';
-
 export default function RegisterForm() {
   const dispatch = useDispatch();
-  const isAuth = useSelector(getIsError);
+  const isError = useSelector(getIsError);
 
   useEffect(() => {
-    if (isAuth) {
-      toast.error('Неверные почта или пароль');
+    dispatch(operation.errorInit());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error('Эта почта уже занята');
     }
-  }, [isAuth]);
+  }, [isError]);
 
   const INITIAL_VALUES = {
     email: '',
@@ -58,11 +62,11 @@ export default function RegisterForm() {
     try {
       const newUser = { email: email.toLowerCase(), password, name };
 
+      dispatch(operation.errorInit());
       dispatch(operation.register(newUser));
       resetForm({});
       setStatus({ success: true });
     } catch (error) {
-      toast.error('Неверные почта или пароль');
       setStatus({ success: false });
       setSubmitting(false);
       setErrors({ submit: error.message });
@@ -78,7 +82,7 @@ export default function RegisterForm() {
         <span className="formHeaderText">Wallet</span>
       </p>
 
-      <Notify />
+      {isError && <Notify />}
 
       <Formik
         initialValues={INITIAL_VALUES}
@@ -122,13 +126,6 @@ export default function RegisterForm() {
               type="submit"
               text="Регистрация"
             />
-            {/* <button
-              className="authBtnCurrent"
-              type="submit"
-              disabled={!isValid && !dirty}
-            >
-              Регистрация
-            </button> */}
           </Form>
         )}
       </Formik>

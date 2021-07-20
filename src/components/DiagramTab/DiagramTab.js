@@ -20,7 +20,7 @@ const DiagramTab = () => {
 
   const [seletcMonth, setSeletcMonth] = useState(null);
   const [seletcYear, setSeletcYear] = useState(null);
-  const [year, setYaer] = useState([todayYear]);
+  const [year, setYaer] = useState([{ value: todayYear, label: todayYear }]);
 
   const dispatch = useDispatch();
   const statistics = useSelector(getStatistics);
@@ -31,7 +31,7 @@ const DiagramTab = () => {
 
   useEffect(() => {
     dispatch(getStatisticsData(seletcMonth, seletcYear));
-  }, [dispatch, seletcYear, seletcMonth]);
+  }, [dispatch, seletcMonth, seletcYear]);
 
   useEffect(() => {
     if (firstTransactionDate && !isEmpty(firstTransactionDate)) {
@@ -50,7 +50,10 @@ const DiagramTab = () => {
           if (year.includes(transactionYear + i)) {
             return;
           }
-          setYaer(prevArray => [...prevArray, transactionYear + i]);
+          setYaer(prevArray => [
+            ...prevArray,
+            { value: transactionYear + i, select: transactionYear + i },
+          ]);
         }
       };
 
@@ -59,46 +62,43 @@ const DiagramTab = () => {
   }, [firstTransactionDate, todayYear, year]);
 
   const onSelectMonth = itemTitle => {
-    const monthNum = MONTH.indexOf(itemTitle) + 1;
-    setSeletcMonth(`${monthNum < 10 ? `0${monthNum}` : monthNum}`);
+    setSeletcMonth(itemTitle.value);
   };
 
-  const onSelectYear = itemTitle => setSeletcYear(itemTitle);
+  const onSelectYear = itemTitle => setSeletcYear(itemTitle.value);
 
   return (
     <>
-      {isLoading ? (
-        <div className="diagramTabSpinner">
-          <SmallSpinner color={'#4a56e2'} size={80} />
-        </div>
-      ) : (
-        <div className="diagramTab">
-          <h2 className="diagramTabTitle">Статистика</h2>
-          <div className="diagramTabChartTable">
-            <Chart
-              tempData={
-                statistics.length > 0
-                  ? statistics.filter(stat => !stat.income)
-                  : NO_TRANSACTION
-              }
-              totalBalance={costsIncome.balance}
-            />
-            <div className="tableContainer">
-              <div className="dropdownContainer">
-                <SelectMonthYear
-                  title={
-                    seletcMonth ? MONTH[parseInt(seletcMonth - 1)] : 'Месяц'
-                  }
-                  list={MONTH}
-                  onChange={onSelectMonth}
-                />
-                <SelectMonthYear
-                  title={seletcYear ? seletcYear : 'Год'}
-                  list={year.sort((a, b) => a - b)}
-                  onChange={onSelectYear}
-                />
+      <div className="diagramTab">
+        <h2 className="diagramTabTitle">Статистика</h2>
+        <div className="diagramTabChartTable">
+          <div className="chartContent">
+            {isLoading ? (
+              <div className="diagramTabSpinner">
+                <SmallSpinner color={'#4a56e2'} size={80} />
               </div>
-              <div>
+            ) : (
+              <Chart
+                tempData={
+                  statistics.length > 0
+                    ? statistics.filter(stat => !stat.income)
+                    : NO_TRANSACTION
+                }
+                totalBalance={costsIncome.balance}
+              />
+            )}
+          </div>
+          <div className="tableContainer">
+            <div className="dropdownContainer">
+              <SelectMonthYear
+                month={MONTH}
+                year={year}
+                onSelectMonth={onSelectMonth}
+                onSelectYear={onSelectYear}
+              />
+            </div>
+            <div>
+              {statistics && (
                 <Table
                   tempData={
                     statistics.length > 0
@@ -107,11 +107,11 @@ const DiagramTab = () => {
                   }
                   costsIncome={costsIncome}
                 />
-              </div>
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

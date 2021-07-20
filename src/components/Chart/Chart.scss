@@ -4,7 +4,6 @@
   position: relative;
   width: 280px;
   height: 280px;
-  margin-bottom: 20px;
 
   @include for-size(tablet) {
     width: 320px;
@@ -20,7 +19,7 @@
 }
 .canvasTop {
   position: absolute;
-  top: 0px;
+  top: -30px;
   left: 0px;
   width: 280px;
   height: 280px;

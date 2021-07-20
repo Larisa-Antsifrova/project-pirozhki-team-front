@@ -24,9 +24,10 @@ body {
 
 .appBackdrop {
   min-height: 100vh;
-
   background-color: $white-background-color;
-  backdrop-filter: $backdrop-blur;
+  @include for-size(tablet) {
+    backdrop-filter: $backdrop-blur;
+  }
 }
 
 img {
