@@ -49,7 +49,7 @@ const HomeTab = ({
           <span>{balance}</span>
         </p>
       </div>
-      <p onClick={deleteTransaction}>Удалить</p>
+      <button onClick={deleteTransaction}>Удалить</button>
     </>
   );
 };
