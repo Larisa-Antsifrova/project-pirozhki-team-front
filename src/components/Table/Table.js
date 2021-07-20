@@ -17,7 +17,7 @@ const Table = ({ tempData, costsIncome }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ category, sum, color }) => (
+          {data?.map(({ category, sum, color }) => (
             <tr key={category}>
               <td className="tableCategories">
                 <span

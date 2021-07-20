@@ -45,7 +45,7 @@ export default function RegisterForm() {
 
   const onSubmit = (
     { email, password },
-    { setSubmitting, setErrors, setStatus, resetForm },
+    { setSubmitting, setErrors, setStatus },
   ) => {
     try {
       dispatch(operation.errorInit());
