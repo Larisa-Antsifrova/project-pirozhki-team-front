@@ -20,7 +20,8 @@ export const fetchTransactions = (month, year) => async dispatch => {
     const { data } = await axios.get(
       `/transactions?startDate=${startDate}&endDate=${endDate}`,
     );
-    dispatch(financeActions.fetchTransactionsSuccess(data.data));
+    dispatch(financeActions.fetchTransactionsSuccess(data.data.transactions));
+    dispatch(financeActions.totalBalanceSuccess(data.data.totals));
   } catch (error) {
     dispatch(financeActions.fetchTransactionsError());
   }
