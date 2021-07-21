@@ -66,4 +66,22 @@
 .transactionsListData {
   max-height: 40vh;
   overflow: auto;
+  border-bottom: 2px solid $indigo-other-color;
+  @include for-size(desktop) {
+    max-height: 67vh;
+  }
+}
+
+.transactionsListData::-webkit-scrollbar {
+  width: 10px;
+}
+.transactionsListData::-webkit-scrollbar-track {
+  background: inherit;
+}
+.transactionsListData::-webkit-scrollbar-thumb {
+  background: rgba(110, 120, 232, 0.8);
+  border-radius: 30px;
+}
+.transactionsListData::-webkit-scrollbar-thumb:hover {
+  background: $indigo-accent-color;
 }
