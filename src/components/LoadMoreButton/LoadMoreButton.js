@@ -17,20 +17,6 @@ export const LoadMoreButton = () => {
 
   const LoadMore = () => {
     dispatch(fetchTransactions(month));
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
     console.log(month);
     setMonth(month => {
       const finalMonth = month - 1;
@@ -38,10 +24,27 @@ export const LoadMoreButton = () => {
     });
   };
 
+  const monthNames = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
+
+  const nameOfNextMonth = month > 9 ? month : month - 0;
+  console.log(nameOfNextMonth);
   return (
     <>
       <button className="loadMoreButton" onClick={LoadMore}>
-        Загрузить транзакции за {}
+        Загрузить транзакции за {monthNames[nameOfNextMonth]}
       </button>
     </>
   );
