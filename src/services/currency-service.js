@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { apiAxios } from '../http/api-axios';
 
 export async function fetchCurrencies() {
   try {
@@ -15,7 +15,7 @@ export async function fetchCurrencies() {
 
     const {
       data: { data },
-    } = await axios.get('https://awesome-wallet-app.herokuapp.com/currency');
+    } = await apiAxios.get('/currency');
 
     const time = Date.now();
     localStorage.setItem('currencyRates', JSON.stringify({ data, time }));
