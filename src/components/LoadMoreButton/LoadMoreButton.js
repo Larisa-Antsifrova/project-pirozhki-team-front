@@ -11,18 +11,18 @@ export const LoadMoreButton = () => {
   const correctCurrentMonth =
     currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
 
-  // console.log(currentMonth);
-  // console.log(correctCurrentMonth);
-
   const dispatch = useDispatch();
 
   const [month, setMonth] = useState(correctCurrentMonth);
+  console.log(month);
 
   const LoadMore = () => {
     dispatch(fetchTransactions(month));
     setMonth(month => {
       const finalMonth = month - 1;
-      return finalMonth >= 10 ? finalMonth : `0${finalMonth}`;
+      const checkLastMonth = finalMonth === 0 ? 12 : finalMonth;
+
+      return checkLastMonth >= 10 ? checkLastMonth : `0${checkLastMonth}`;
     });
   };
 
@@ -42,7 +42,6 @@ export const LoadMoreButton = () => {
   ];
 
   const nameOfNextMonth = month > 9 ? month : month - 0;
-  console.log(nameOfNextMonth);
 
   return (
     <>
