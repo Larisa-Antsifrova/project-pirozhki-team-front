@@ -12,7 +12,6 @@ import './HomeTab.scss';
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
   const total = useSelector(totals);
-  // const isLoading = useSelector(state => state.finance.isLoadingTransaction);
 
   let balance = total.balance;
   let prevSum = 0;
