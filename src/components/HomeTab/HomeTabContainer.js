@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
 // import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
@@ -15,6 +14,7 @@ const HomeTabContainer = () => {
   const totalList = useSelector(totals);
 
   const total = useSelector(totals);
+  // const isLoading = useSelector(state => state.finance.isLoadingTransaction);
 
   let balance = total.balance;
   let prevSum = 0;
