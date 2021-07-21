@@ -7,6 +7,10 @@ const transactions = createReducer([], {
     return state.length > 0 ? [...state, ...payload] : [...payload];
     // return ...state, payload;
   },
+  [financeActions.addTransactionSuccess]: (state, { payload }) => [
+    payload,
+    ...state,
+  ],
 });
 
 const totalBalance = createReducer(
@@ -25,9 +29,24 @@ const isLoadingStatistic = createReducer(true, {
   [financeActions.statisticsError]: () => false,
 });
 
+const isLoadingTransaction = createReducer(true, {
+  [financeActions.totalBalanceRequest]: () => true,
+  [financeActions.totalBalanceSuccess]: () => false,
+  [financeActions.totalBalanceError]: () => false,
+
+  [financeActions.fetchTransactionsRequest]: () => true,
+  [financeActions.fetchTransactionsSuccess]: () => false,
+  [financeActions.fetchTransactionsError]: () => false,
+
+  [financeActions.addTransactionRequest]: () => true,
+  [financeActions.addTransactionSuccess]: () => false,
+  [financeActions.addTransactionError]: () => false,
+});
+
 export default combineReducers({
   transactions,
   totalBalance,
   statistics,
   isLoadingStatistic,
+  isLoadingTransaction,
 });
