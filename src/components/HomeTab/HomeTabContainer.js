@@ -18,7 +18,7 @@ const HomeTabContainer = () => {
 
   const total = useSelector(totals);
 
-  let balance = total?.balance;
+  let balance = total.balance;
   let prevSum = 0;
 
   const calculateLeftBalance = (sum, income) => {
@@ -28,7 +28,7 @@ const HomeTabContainer = () => {
     balance = balance - prevSum;
     prevSum = income ? sum : -sum;
 
-    return currentBalance - currentSum;
+    return String(currentBalance - currentSum);
   };
 
   const dispatch = useDispatch();

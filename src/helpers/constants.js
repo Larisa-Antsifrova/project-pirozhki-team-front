@@ -1,16 +1,16 @@
 export const MONTH = [
-  { value: 'Январь', label: 'Январь' },
-  { value: 'Февраль', label: 'Февраль' },
-  { value: 'Март', label: 'Март' },
-  { value: 'Апрель', label: 'Апрель' },
-  { value: 'Май', label: 'Май' },
-  { value: 'Июнь', label: 'Июнь' },
-  { value: 'Июль', label: 'Июль' },
-  { value: 'Август', label: 'Август' },
-  { value: 'Сентябрь', label: 'Сентябрь' },
-  { value: 'Октябрь', label: 'Октябрь' },
-  { value: 'Ноябрь', label: 'Ноябрь' },
-  { value: 'Декабрь', label: 'Декабрь' },
+  { label: 'Январь', value: '01' },
+  { label: 'Февраль', value: '02' },
+  { label: 'Март', value: '03' },
+  { label: 'Апрель', value: '04' },
+  { label: 'Май', value: '05' },
+  { label: 'Июнь', value: '06' },
+  { label: 'Июль', value: '07' },
+  { label: 'Август', value: '08' },
+  { label: 'Сентябрь', value: '09' },
+  { label: 'Октябрь', value: '10' },
+  { label: 'Ноябрь', value: '11' },
+  { label: 'Декабрь', value: '12  ' },
 ];
 
 export const NO_TRANSACTION = [
@@ -18,6 +18,6 @@ export const NO_TRANSACTION = [
     category: 'Нет транзакций за этот период',
     income: false,
     sum: 0,
-    color: '#e9e9e9',
+    color: '#ffffff',
   },
 ];

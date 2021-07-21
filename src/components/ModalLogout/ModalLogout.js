@@ -1,17 +1,29 @@
 import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useMediaPredicate } from 'react-media-hook';
 
 import operations from '../../redux/auth/authOperations';
-import { getUserName } from '../../redux/auth/authSelectors';
+import { getUserName, getIsError } from '../../redux/auth/authSelectors';
 import isModalLogoutOpenActions from '../../redux/isModalLogoutOpen/isModalLogoutOpenActions';
 import selectors from '../../redux/isModalLogoutOpen/isModalLogoutOpenSelectors';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Notify from '../Notify/Notify';
 
 import sprite from '../../images/sprite.svg';
 import './ModalLogout.scss';
 
 const ModalLogout = () => {
   const dispatch = useDispatch();
+  const isError = useSelector(getIsError);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error('Опс, что-то пошло не так');
+    }
+  }, [isError]);
 
   const isModalOpen = useSelector(state => selectors.isModalLogoutOpen(state));
   const userName = useSelector(getUserName);
@@ -40,6 +52,7 @@ const ModalLogout = () => {
         <span className="logoutText">Выйти</span>
       </button>
 
+      {isError && <Notify />}
       <ReactModal
         isOpen={isModalOpen}
         onRequestClose={onToggleModal}

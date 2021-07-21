@@ -7,6 +7,13 @@ const transactions = createReducer([], {
   [financeActions.deleteTransactionSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
+
+const totalBalance = createReducer(
+  {},
+  {
+    [financeActions.totalBalanceSuccess]: (_, { payload }) => payload,
+  },
+);
 const statistics = createReducer(null, {
   [financeActions.statisticsSuccess]: (_, { payload }) => payload,
 });
@@ -19,6 +26,7 @@ const isLoadingStatistic = createReducer(true, {
 
 export default combineReducers({
   transactions,
+  totalBalance,
   statistics,
   isLoadingStatistic,
 });

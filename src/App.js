@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Spinner from './components/Spinner';
-import WithAuthRedirect from './components/WithAuthRedirect';
+import WithAuthRedirect from './hoc/WithAuthRedirect';
 import operations from './redux/auth/authOperations';
 
 const DashboardPage = lazy(() => import('./pages/dashboardPage'));
@@ -21,6 +21,7 @@ const App = () => {
             exact
             path="/"
             type="guest"
+            restricted
             redirectTo="/auth/login"
           >
             <AuthPage />
@@ -30,6 +31,7 @@ const App = () => {
             exact
             path="/auth"
             type="guest"
+            restricted
             redirectTo="/auth/login"
           >
             <AuthPage />

@@ -13,6 +13,7 @@ export default function WithAuthRedirect({
   return (
     <Route {...routeProps}>
       {(type === 'guest' && isLoggedIn) ||
+      (type === 'guest' && !isLoggedIn && routeProps.restricted) ||
       (type === 'private' && !isLoggedIn) ? (
         <Redirect to={redirectTo} />
       ) : (
