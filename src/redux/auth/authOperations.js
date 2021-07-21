@@ -2,6 +2,7 @@ import axios from 'axios';
 import authActions from './authActions';
 import AuthService from '../../services/auth-service';
 import UserService from '../../services/user-service';
+import { API_URL } from '../../http/api-axios';
 
 const token = {
   set(token) {
@@ -20,6 +21,7 @@ const register = user => async dispatch => {
   dispatch(authActions.registerRequest());
   try {
     const { data } = await AuthService.register(user);
+    console.log('data register', data);
     const accessToken = data.data.accessToken;
     localStorage.setItem('token', accessToken);
     token.set(accessToken);
@@ -33,6 +35,7 @@ const login = user => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const { data } = await AuthService.login(user);
+    console.log('data login', data);
     const accessToken = data.data.accessToken;
     localStorage.setItem('token', accessToken);
     token.set(accessToken);
@@ -71,6 +74,21 @@ const getCurrentUserInfo = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserSucces(response.data));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
+  }
+};
+
+const checkAuth = () => async dispatch => {
+  try {
+    const { data } = await axios.get(`${API_URL}/auth/refresh`, {
+      withCredentials: true,
+    });
+    const accessToken = data.data.accessToken;
+    localStorage.setItem('token', accessToken);
+    token.set(accessToken);
+    dispatch(authActions.loginSuccess(data.data));
+  } catch (error) {
+    console.log('checkAuthError', error);
+    dispatch(authActions.loginError(error.message));
   }
 };
 
