@@ -14,7 +14,6 @@ export const LoadMoreButton = () => {
   const dispatch = useDispatch();
 
   const [month, setMonth] = useState(correctCurrentMonth);
-  console.log(month);
 
   const LoadMore = () => {
     dispatch(fetchTransactions(month));
