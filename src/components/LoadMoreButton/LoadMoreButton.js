@@ -9,7 +9,10 @@ export const LoadMoreButton = () => {
   const today = new Date();
   const currentMonth = getMonth(today) - 1;
   const correctCurrentMonth =
-    currentMonth > 10 ? currentMonth : `0${currentMonth}`;
+    currentMonth >= 10 ? currentMonth : `0${currentMonth}`;
+
+  // console.log(currentMonth);
+  // console.log(correctCurrentMonth);
 
   const dispatch = useDispatch();
 
@@ -17,10 +20,9 @@ export const LoadMoreButton = () => {
 
   const LoadMore = () => {
     dispatch(fetchTransactions(month));
-    console.log(month);
     setMonth(month => {
       const finalMonth = month - 1;
-      return finalMonth > 10 ? finalMonth : `0${finalMonth}`;
+      return finalMonth >= 10 ? finalMonth : `0${finalMonth}`;
     });
   };
 
@@ -41,10 +43,11 @@ export const LoadMoreButton = () => {
 
   const nameOfNextMonth = month > 9 ? month : month - 0;
   console.log(nameOfNextMonth);
+
   return (
     <>
       <button className="loadMoreButton" onClick={LoadMore}>
-        Загрузить транзакции за {monthNames[nameOfNextMonth]}
+        Загрузить транзакции за {monthNames[nameOfNextMonth - 1]}
       </button>
     </>
   );

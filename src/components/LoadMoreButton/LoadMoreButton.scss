@@ -11,9 +11,7 @@
   border-radius: 20px;
 }
 
-.loadMoreButton:hover,
-.loadMoreButton:focus,
-.loadMoreButton:active {
+.loadMoreButton:hover {
   background-color: $green-accent-color-dark;
   transition: background-color $time-transforming $timing-function;
 }
