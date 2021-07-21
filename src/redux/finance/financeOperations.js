@@ -27,6 +27,20 @@ export const fetchTransactions = (month, year) => async dispatch => {
   }
 };
 
+export const addTransaction = transaction => async dispatch => {
+  dispatch(financeActions.addTransactionRequest());
+
+  try {
+    const {
+      data: { data },
+    } = await axios.post('/transactions', transaction);
+
+    dispatch(financeActions.addTransactionSuccess(data));
+  } catch (error) {
+    dispatch(financeActions.addTransactionError(error.message));
+  }
+};
+
 export const getStatisticsData = (month, year) => async dispatch => {
   const today = new Date();
   const mm = getMonth(today);
