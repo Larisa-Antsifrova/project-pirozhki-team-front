@@ -10,7 +10,8 @@ import {
   incomeCategories,
   expenseCategories,
 } from '../../redux/categories/categoriesSelectors';
-import { addTransaction } from '../../redux/transaction/transactionOperations';
+// import { addTransaction } from '../../redux/transaction/transactionOperations';
+import { addTransaction } from '../../redux/finance/financeOperations';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
 
 import 'react-datepicker/dist/react-datepicker.css';

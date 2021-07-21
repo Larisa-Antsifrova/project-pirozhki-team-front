@@ -1,20 +1,23 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
 // import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
+import { fetchTransactions } from '../../redux/finance/financeOperations';
 
 import ButtonAddTransactions from '../ButtonAddTransactions';
 import HomeTab from './HomeTab';
-// import Spinner from '../Spinner';
+import Spinner from '../Spinner';
 import cn from 'classnames';
 
 import './HomeTab.scss';
 
 const HomeTabContainer = () => {
+  const dispatch = useDispatch();
   const transactionsList = useSelector(transactions);
   const totalList = useSelector(totals);
 
   const total = useSelector(totals);
+  const isLoading = useSelector(state => state.finance.isLoadingTransaction);
 
   let balance = total.balance;
   let prevSum = 0;
@@ -28,6 +31,12 @@ const HomeTabContainer = () => {
 
     return String(currentBalance - currentSum);
   };
+
+  console.log(transactionsList);
+
+  useEffect(() => {
+    dispatch(fetchTransactions());
+  }, [dispatch]);
 
   return (
     <>

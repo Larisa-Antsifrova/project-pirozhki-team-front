@@ -41,7 +41,6 @@ const store = configureStore({
     finance,
     isLoading,
     categories,
-    transaction,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,
