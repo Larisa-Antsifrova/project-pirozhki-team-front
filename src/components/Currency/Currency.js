@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SmallSpinner from '../SmallSpinner';
 
-import { fetchCurrencies } from '../../http/currency-service';
+import { fetchCurrencies } from '../../services/currency-service';
 
 import './Currency.scss';
 
