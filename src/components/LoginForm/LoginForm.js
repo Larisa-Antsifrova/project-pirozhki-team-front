@@ -91,7 +91,7 @@ export default function RegisterForm() {
               placeholder="Пароль"
             />
 
-            <Button className="authBtnCurrent" type="submit" text="Вход" />
+            <Button className="authBtnCurrent" type="submit" text="Войти" />
           </Form>
         </Formik>
         <NavLink to="/auth/register" exact className="authBtnRedirect">
