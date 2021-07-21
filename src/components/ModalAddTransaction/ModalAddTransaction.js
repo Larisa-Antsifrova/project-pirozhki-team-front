@@ -10,7 +10,6 @@ import {
   incomeCategories,
   expenseCategories,
 } from '../../redux/categories/categoriesSelectors';
-// import { addTransaction } from '../../redux/transaction/transactionOperations';
 import { addTransaction } from '../../redux/finance/financeOperations';
 import { fetchTransactions } from '../../redux/finance/financeOperations';
 
@@ -40,6 +39,7 @@ const TransactionForm = () => {
   const [errors, setErrors] = useState({});
 
   const onToggleModal = () => dispatch(modalAddTransactionOpen());
+  const isLoading = useSelector(state => state.finance.isLoadingTransaction);
 
   const handleCheckboxChange = () => {
     setCheckedBox(state => !state);
@@ -106,7 +106,7 @@ const TransactionForm = () => {
     return !!Object.keys(errors).length;
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     const newTransaction = {
@@ -122,8 +122,8 @@ const TransactionForm = () => {
       return;
     }
 
-    dispatch(addTransaction(newTransaction));
-    dispatch(fetchTransactions());
+    await dispatch(addTransaction(newTransaction));
+    await dispatch(fetchTransactions());
 
     setTransactionItem(initialState);
     setCheckedBox(false);
@@ -133,7 +133,11 @@ const TransactionForm = () => {
     <>
       <form className="form" autoComplete="off" onSubmit={handleSubmit}>
         <h2 className="form__title">Добавить транзакцию</h2>
-        <button className="form__closeBtn" onClick={onToggleModal} />
+        <button
+          type="button"
+          className="form__closeBtn"
+          onClick={onToggleModal}
+        />
         <div className="form__checkbox_wrapper">
           <label className="form__checkbox_label">
             <input
@@ -209,12 +213,15 @@ const TransactionForm = () => {
             <span className="form__descriptionError">{errors.comment}</span>
           )}
         </div>
-        <button className="form__add_btn">Добавить</button>
+        <button
+          className={isLoading ? 'form__add_btn_disabled' : 'form__add_btn'}
+        >
+          {isLoading ? 'Добавляем' : 'Добавить'}
+        </button>
         <button className="form__cancel_btn" onClick={onToggleModal}>
           Отмена
         </button>
       </form>
-      <div className="overlay" onClick={onToggleModal}></div>
     </>
   );
 };
