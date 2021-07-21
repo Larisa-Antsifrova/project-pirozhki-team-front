@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
 // import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
+import { fetchTransactions } from '../../redux/finance/financeOperations';
 
 import { deleteTransaction } from '../../redux/finance/financeOperations';
 
@@ -33,7 +34,10 @@ const HomeTabContainer = () => {
 
   const dispatch = useDispatch();
 
-  const onDeleteTransaction = id => dispatch(deleteTransaction(id));
+  const onDeleteTransaction = async id => {
+    await dispatch(deleteTransaction(id));
+    await dispatch(fetchTransactions());
+  };
 
   return (
     <>
