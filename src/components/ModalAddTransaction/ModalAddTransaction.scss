@@ -221,7 +221,8 @@
 }
 
 .form__add_btn,
-.form__cancel_btn {
+.form__cancel_btn,
+.form__add_btn_disabled {
   width: 300px;
   height: 50px;
   font-family: 'Circe', sans-serif;
@@ -234,11 +235,16 @@
   cursor: pointer;
 }
 
-.form__add_btn {
+.form__add_btn,
+.form__add_btn_disabled {
   background-color: $green-accent-color-color;
   border: none;
   color: $white-color;
   margin-bottom: 20px;
+}
+
+.form__add_btn_disabled {
+  background-color: $background-color;
 }
 
 .form__cancel_btn {

@@ -1,24 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
-// import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
+import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
 
 import { deleteTransaction } from '../../redux/finance/financeOperations';
 
 import ButtonAddTransactions from '../ButtonAddTransactions';
 import HomeTab from './HomeTab';
-// import Spinner from '../Spinner';
+
 import cn from 'classnames';
 
 import './HomeTab.scss';
 
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
-  const totalList = useSelector(totals);
-
   const total = useSelector(totals);
+  // const isLoading = useSelector(state => state.finance.isLoadingTransaction);
 
-  let balance = total?.balance;
+  let balance = total.balance;
   let prevSum = 0;
 
   const calculateLeftBalance = (sum, income) => {
@@ -28,7 +27,7 @@ const HomeTabContainer = () => {
     balance = balance - prevSum;
     prevSum = income ? sum : -sum;
 
-    return currentBalance - currentSum;
+    return String(currentBalance - currentSum);
   };
 
   const dispatch = useDispatch();
@@ -37,9 +36,6 @@ const HomeTabContainer = () => {
 
   return (
     <>
-      {/* {isLoading ? (
-        <Spinner />
-      ) : ( */}
       <>
         <div className={cn('tableHeader', 'tableHeaderCommon')}>
           <p className="tableHeaderElement">
@@ -67,7 +63,7 @@ const HomeTabContainer = () => {
               ({ id, comment, sum, category, income, date }) => {
                 return (
                   <HomeTab
-                    totals={totalList.balance}
+                    totals={total.balance}
                     key={id}
                     comment={comment}
                     sum={sum}
@@ -80,9 +76,9 @@ const HomeTabContainer = () => {
                 );
               },
             )}
+          <LoadMoreButton />
         </div>
       </>
-      {/* )} */}
       <ButtonAddTransactions />
     </>
   );
