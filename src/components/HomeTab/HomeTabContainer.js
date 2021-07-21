@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
+import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
 // import { getIsLoading } from '../../redux/isLoading/isLoadingSelectors';
 
 import ButtonAddTransactions from '../ButtonAddTransactions';
@@ -13,6 +14,8 @@ import './HomeTab.scss';
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
   const totalList = useSelector(totals);
+
+  console.log(transactionsList);
 
   const total = useSelector(totals);
 
@@ -73,6 +76,7 @@ const HomeTabContainer = () => {
                 );
               },
             )}
+          <LoadMoreButton />
         </div>
       </>
       {/* )} */}
