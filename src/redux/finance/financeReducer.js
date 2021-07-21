@@ -5,6 +5,13 @@ import financeActions from './financeActions';
 const transactions = createReducer([], {
   [financeActions.fetchTransactionsSuccess]: (_, { payload }) => payload,
 });
+
+const totalBalance = createReducer(
+  {},
+  {
+    [financeActions.totalBalanceSuccess]: (_, { payload }) => payload,
+  },
+);
 const statistics = createReducer(null, {
   [financeActions.statisticsSuccess]: (_, { payload }) => payload,
 });
@@ -17,6 +24,7 @@ const isLoadingStatistic = createReducer(true, {
 
 export default combineReducers({
   transactions,
+  totalBalance,
   statistics,
   isLoadingStatistic,
 });
