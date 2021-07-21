@@ -61,3 +61,14 @@ export const getStatisticsData = (month, year) => async dispatch => {
     dispatch(financeActions.statisticsError());
   }
 };
+
+export const deleteTransaction = id => async dispatch => {
+  dispatch(financeActions.deleteTransactionRequest());
+
+  try {
+    await axios.delete(`/transactions/${id}`);
+    dispatch(financeActions.deleteTransactionSuccess(id));
+  } catch (error) {
+    dispatch(financeActions.deleteTransactionError(error.message));
+  }
+};

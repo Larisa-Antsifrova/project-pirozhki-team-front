@@ -1,6 +1,12 @@
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
 import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
+
+import {
+  deleteTransaction,
+  fetchTransactions,
+} from '../../redux/finance/financeOperations';
 
 import ButtonAddTransactions from '../ButtonAddTransactions';
 import HomeTab from './HomeTab';
@@ -12,7 +18,6 @@ import './HomeTab.scss';
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
   const total = useSelector(totals);
-  // const isLoading = useSelector(state => state.finance.isLoadingTransaction);
 
   let balance = total.balance;
   let prevSum = 0;
@@ -25,6 +30,13 @@ const HomeTabContainer = () => {
     prevSum = income ? sum : -sum;
 
     return String(currentBalance - currentSum);
+  };
+
+  const dispatch = useDispatch();
+
+  const onDeleteTransaction = async id => {
+    await dispatch(deleteTransaction(id));
+    await dispatch(fetchTransactions());
   };
 
   return (
@@ -64,6 +76,7 @@ const HomeTabContainer = () => {
                     income={income}
                     date={date}
                     balance={calculateLeftBalance(sum, income)}
+                    deleteTransaction={() => onDeleteTransaction(id)}
                   />
                 );
               },

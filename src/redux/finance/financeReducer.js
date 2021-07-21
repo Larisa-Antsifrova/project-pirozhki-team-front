@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 import financeActions from './financeActions';
 
 const transactions = createReducer([], {
+  [financeActions.deleteTransactionSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
   [financeActions.fetchTransactionsSuccess]: (state, { payload }) => {
     return payload;
     // return state.length > 0 ? [...payload] : [...state, ...payload];

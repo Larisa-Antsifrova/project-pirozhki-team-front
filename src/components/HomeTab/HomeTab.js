@@ -4,7 +4,15 @@ import cn from 'classnames';
 
 import './HomeTab.scss';
 
-const HomeTab = ({ category, income, date, comment, sum, balance }) => {
+const HomeTab = ({
+  category,
+  income,
+  date,
+  comment,
+  sum,
+  balance,
+  deleteTransaction,
+}) => {
   let incomingDate = new Date(date);
   const options = {
     year: '2-digit',
@@ -41,6 +49,7 @@ const HomeTab = ({ category, income, date, comment, sum, balance }) => {
           <span>{balance}</span>
         </p>
       </div>
+      <button onClick={deleteTransaction}>Удалить</button>
     </>
   );
 };
