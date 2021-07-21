@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { transactions } from '../../redux/finance/financeSelectors';
+import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
 
 import HomeTabMobile from './HomeTabMobile';
 import ButtonAddTransactions from '../ButtonAddTransactions';
@@ -23,6 +24,7 @@ const HomeTabMobileContainer = () => {
             date={date}
           />
         ))}
+      <LoadMoreButton />
       <ButtonAddTransactions />
     </div>
   );
