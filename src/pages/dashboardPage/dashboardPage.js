@@ -19,8 +19,8 @@ import CurrencyTabPage from '../currencyTabPage';
 import './dashboardPage.scss';
 
 const DashboardPage = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => dispatch(fetchTransactions()), [dispatch]);
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(fetchTransactions()), [dispatch]);
 
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   const { pathname } = useLocation();

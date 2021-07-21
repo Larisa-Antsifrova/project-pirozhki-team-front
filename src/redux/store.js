@@ -17,7 +17,6 @@ import isModalLogoutOpenReducer from './isModalLogoutOpen/isModalLogoutOpenReduc
 import { isAddTransactionModalOpen } from './isModalAddTransactionOpen/isModalAddTransactionOpenReducer';
 import { categories } from './categories/categoriesReducer';
 import isLoading from './isLoading/isLoadingReducer';
-import { transaction } from './transaction/transactionReducers';
 
 const middleware = [
   ...getDefaultMiddleware({
