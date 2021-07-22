@@ -70,7 +70,7 @@
 .transactionsListData {
   max-height: 40vh;
   overflow: auto;
-  border-bottom: 2px solid $indigo-other-color;
+  border-bottom: 3px solid $green-accent-color-color;
   @include for-size(desktop) {
     max-height: 67vh;
   }
