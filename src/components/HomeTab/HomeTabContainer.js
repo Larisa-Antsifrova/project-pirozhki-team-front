@@ -91,7 +91,9 @@ const HomeTabContainer = () => {
               В этом месяце транзакций не было
             </div>
           )}
-          <LoadMoreButton />
+          <div className="loadMoreButtonContainer">
+            <LoadMoreButton />
+          </div>
         </div>
       </>
       <ButtonAddTransactions />
