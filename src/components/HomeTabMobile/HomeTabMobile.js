@@ -50,9 +50,7 @@ const HomeTabMobile = ({
         <span className="elementData">{balance}</span>
       </li>
       <button
-        className={cn(
-          income ? 'buttonMobileDeleteGreen' : 'buttonMobileDelete',
-        )}
+        className={income ? 'buttonMobileDelete' : 'buttonMobileDeleteExpense'}
         onClick={deleteTransaction}
       >
         Удалить

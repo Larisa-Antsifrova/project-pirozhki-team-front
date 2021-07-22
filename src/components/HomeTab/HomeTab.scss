@@ -98,17 +98,19 @@
   padding: 10px 20px;
   width: 100%;
 }
-.circleDeleteRose:hover {
-  fill: $rose-color;
-  transition: background-color $time-transforming $timing-function;
-}
-.circleDeleteGreen:hover {
-  fill: $green-accent-color-color;
-  transition: background-color $time-transforming $timing-function;
-}
-
-.buttonDeleteTransaction {
+.circleDelete {
   fill: $gray-text-color;
+  &:hover {
+    fill: $green-accent-color-color;
+    transition: fill $time-transforming $timing-function;
+  }
+  &Expense {
+    @extend .circleDelete;
+    &:hover {
+      fill: $rose-color;
+      transition: fill $time-transforming $timing-function;
+    }
+  }
 }
 .loadMoreButtonContainer {
   text-align: center;
