@@ -1,6 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { transactions, totals } from '../../redux/finance/financeSelectors';
+import {
+  transactions,
+  totals,
+  isLoadingTransaction,
+} from '../../redux/finance/financeSelectors';
 import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
 import SmallSpinner from '../SmallSpinner';
 
@@ -21,7 +25,7 @@ import './HomeTab.scss';
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
   const total = useSelector(totals);
-  const isLoading = useSelector(state => state.finance.isLoadingTransaction);
+  const isLoading = useSelector(isLoadingTransaction);
 
   let balance = total.balance;
   let prevSum = 0;
