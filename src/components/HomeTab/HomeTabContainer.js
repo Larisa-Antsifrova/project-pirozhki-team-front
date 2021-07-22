@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { transactions, totals } from '../../redux/finance/financeSelectors';
 import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
 
+import removeIcon from '../../images/remove.svg';
+
 import {
   deleteTransaction,
   fetchTransactions,
@@ -60,6 +62,9 @@ const HomeTabContainer = () => {
           </p>
           <p className="tableHeaderElementRight">
             <span>Баланс</span>
+          </p>
+          <p className="tableHeaderElementIcon">
+            <img src={removeIcon} alt="remove-icon" />
           </p>
         </div>
         <div className="transactionsListData">
