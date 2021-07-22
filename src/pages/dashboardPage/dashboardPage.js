@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { useMediaPredicate } from 'react-media-hook';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchTransactions } from '../../redux/finance/financeOperations';
+import {
+  fetchTransactions,
+  fetchBalance,
+} from '../../redux/finance/financeOperations';
 import { useLocation } from 'react-router-dom';
 
 import Container from '../../components/Container';
@@ -21,6 +24,8 @@ import './dashboardPage.scss';
 const DashboardPage = () => {
   const dispatch = useDispatch();
   useEffect(() => dispatch(fetchTransactions()), [dispatch]);
+
+  useEffect(() => dispatch(fetchBalance()), [dispatch]);
 
   const biggerThan767 = useMediaPredicate('(min-width: 768px)');
   const { pathname } = useLocation();
