@@ -23,13 +23,17 @@
   list-style-type: none;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 60px 40px 118px 118px 70px 70px;
+  grid-template-columns: 55px 35px 113px 113px 65px 65px 20px;
   grid-gap: 2vw;
   margin: 0;
 }
 
 .dataList {
   height: 54px;
+  width: 688px;
+  @include for-size(desktop) {
+    width: 700px;
+  }
 
   padding: 10px 21px 8px 20px;
 
@@ -84,4 +88,13 @@
 }
 .transactionsListData::-webkit-scrollbar-thumb:hover {
   background: $indigo-accent-color;
+}
+
+.circleDeleteRose:hover {
+  fill: $rose-color;
+  transition: background-color $time-transforming $timing-function;
+}
+.circleDeleteGreen:hover {
+  fill: $green-accent-color-color;
+  transition: background-color $time-transforming $timing-function;
 }
