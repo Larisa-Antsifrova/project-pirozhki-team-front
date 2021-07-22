@@ -52,10 +52,7 @@ const HomeTab = ({
         </p>
         <button className="buttonDeleteTransaction" onClick={deleteTransaction}>
           <ButtonDeleteIcon
-            className={cn(
-              'circleDelete',
-              income ? 'circleDeleteGreen' : 'circleDeleteRose',
-            )}
+            className={income ? 'circleDelete' : 'circleDeleteExpense'}
           />
         </button>
       </div>

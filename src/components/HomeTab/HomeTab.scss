@@ -69,10 +69,13 @@
 }
 .transactionsListData {
   max-height: 40vh;
-  overflow: auto;
+  width: 688px;
+  overflow-y: auto;
+  overflow-x: hidden;
   border-bottom: 3px solid $green-accent-color-color;
   @include for-size(desktop) {
     max-height: 67vh;
+    width: 700px;
   }
 }
 
@@ -90,15 +93,25 @@
   background: $indigo-accent-color;
 }
 
-.circleDeleteRose:hover {
-  fill: $rose-color;
-  transition: background-color $time-transforming $timing-function;
+.noAnyTransactions {
+  text-align: center;
+  padding: 10px 20px;
+  width: 100%;
 }
-.circleDeleteGreen:hover {
-  fill: $green-accent-color-color;
-  transition: background-color $time-transforming $timing-function;
-}
-
-.buttonDeleteTransaction {
+.circleDelete {
   fill: $gray-text-color;
+  &:hover {
+    fill: $green-accent-color-color;
+    transition: fill $time-transforming $timing-function;
+  }
+  &Expense {
+    @extend .circleDelete;
+    &:hover {
+      fill: $rose-color;
+      transition: fill $time-transforming $timing-function;
+    }
+  }
+}
+.loadMoreButtonContainer {
+  text-align: center;
 }

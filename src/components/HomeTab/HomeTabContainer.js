@@ -68,7 +68,7 @@ const HomeTabContainer = () => {
           </p>
         </div>
         <div className="transactionsListData">
-          {transactionsList &&
+          {transactionsList && transactionsList.length > 0 ? (
             transactionsList.map(
               ({ id, comment, sum, category, income, date }) => {
                 return (
@@ -85,8 +85,15 @@ const HomeTabContainer = () => {
                   />
                 );
               },
-            )}
-          <LoadMoreButton />
+            )
+          ) : (
+            <div className="noAnyTransactions">
+              В этом месяце транзакций не было
+            </div>
+          )}
+          <div className="loadMoreButtonContainer">
+            <LoadMoreButton />
+          </div>
         </div>
       </>
       <ButtonAddTransactions />

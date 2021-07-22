@@ -42,34 +42,26 @@
 .elementPriceGreen {
   color: $green-accent-color-color;
 }
+
 .buttonMobileDelete {
   width: 100%;
   align-items: center;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
-}
-.buttonMobileDelete:hover,
-.buttonMobileDelete:focus {
-  background-color: $rose-color;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 10px;
-  transition: background-color $time-transforming $timing-function;
-  color: $white-color;
-}
-.buttonMobileDeleteGreen {
-  width: 100%;
-  align-items: center;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.buttonMobileDeleteGreen:hover,
-.buttonMobileDeleteGreen:focus {
-  background-color: $green-accent-color-color;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 10px;
-  transition: background-color $time-transforming $timing-function;
-  color: $white-color;
+  &:hover,
+  &:focus {
+    background-color: $green-accent-color-color;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 10px;
+    transition: background-color $time-transforming $timing-function;
+    color: $white-color;
+  }
+  &Expense {
+    @extend .buttonMobileDelete;
+    &:hover,
+    &:focus {
+      background-color: $rose-color;
+    }
+  }
 }
