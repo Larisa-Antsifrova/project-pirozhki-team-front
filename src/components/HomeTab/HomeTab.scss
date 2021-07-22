@@ -68,6 +68,7 @@
   justify-self: right;
 }
 .transactionsListData {
+  position: relative;
   max-height: 40vh;
   width: 688px;
   overflow-y: auto;
@@ -76,6 +77,18 @@
   @include for-size(desktop) {
     max-height: 67vh;
     width: 700px;
+  }
+
+  .homeTabSpinner {
+    position: absolute;
+    z-index: -1;
+    top: -50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
