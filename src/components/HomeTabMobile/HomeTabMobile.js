@@ -4,7 +4,15 @@ import cn from 'classnames';
 
 import './HomeTabMobile.scss';
 
-const HomeTabMobile = ({ category, income, date, comment, sum }) => {
+const HomeTabMobile = ({
+  category,
+  income,
+  date,
+  comment,
+  sum,
+  balance,
+  deleteTransaction,
+}) => {
   const incomingDate = new Date(date);
   const options = {
     year: '2-digit',
@@ -39,8 +47,16 @@ const HomeTabMobile = ({ category, income, date, comment, sum }) => {
       </li>
       <li className="transactionCardElement">
         <span className="elementName">Баланс</span>
-        <span className="elementData">5000</span>
+        <span className="elementData">{balance}</span>
       </li>
+      <button
+        className={cn(
+          income ? 'buttonMobileDeleteGreen' : 'buttonMobileDelete',
+        )}
+        onClick={deleteTransaction}
+      >
+        Удалить
+      </button>
     </ul>
   );
 };

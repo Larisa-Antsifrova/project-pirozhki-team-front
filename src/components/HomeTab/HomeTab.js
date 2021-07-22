@@ -2,6 +2,8 @@ import React from 'react';
 
 import cn from 'classnames';
 
+import { ReactComponent as ButtonDeleteIcon } from '../../images/cancel-circle.svg';
+
 import './HomeTab.scss';
 
 const HomeTab = ({
@@ -48,8 +50,15 @@ const HomeTab = ({
         <p className={cn('dataElement', 'dataElementBalance')}>
           <span>{balance}</span>
         </p>
+        <button className="buttonDeleteTransaction" onClick={deleteTransaction}>
+          <ButtonDeleteIcon
+            className={cn(
+              'circleDelete',
+              income ? 'circleDeleteGreen' : 'circleDeleteRose',
+            )}
+          />
+        </button>
       </div>
-      <button onClick={deleteTransaction}>Удалить</button>
     </>
   );
 };
