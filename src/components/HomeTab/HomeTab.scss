@@ -85,3 +85,9 @@
 .transactionsListData::-webkit-scrollbar-thumb:hover {
   background: $indigo-accent-color;
 }
+
+.noAnyTransactions {
+  text-align: center;
+  padding: 10px 20px;
+  width: 100%;
+}

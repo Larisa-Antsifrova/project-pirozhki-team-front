@@ -13,7 +13,7 @@ const HomeTabMobileContainer = () => {
 
   return (
     <div className="transactionCardsWrapper">
-      {transactionsList &&
+      {transactionsList && transactionsList.length > 0 ? (
         transactionsList.map(({ id, comment, sum, category, income, date }) => (
           <HomeTabMobile
             key={id}
@@ -23,7 +23,12 @@ const HomeTabMobileContainer = () => {
             income={income}
             date={date}
           />
-        ))}
+        ))
+      ) : (
+        <div className="noAnyTransactions">
+          В этом месяце транзакций не было
+        </div>
+      )}
       <LoadMoreButton />
       <ButtonAddTransactions />
     </div>
