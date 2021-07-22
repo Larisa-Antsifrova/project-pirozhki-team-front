@@ -69,11 +69,13 @@
 }
 .transactionsListData {
   max-height: 40vh;
-  overflow-y: scroll;
+  width: 688px;
+  overflow-y: auto;
   overflow-x: hidden;
   border-bottom: 3px solid $green-accent-color-color;
   @include for-size(desktop) {
     max-height: 67vh;
+    width: 700px;
   }
 }
 
