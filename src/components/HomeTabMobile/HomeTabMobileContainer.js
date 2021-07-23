@@ -1,7 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { transactions, totals } from '../../redux/finance/financeSelectors';
+import {
+  transactions,
+  totals,
+  isLoadingTransaction,
+} from '../../redux/finance/financeSelectors';
 import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
+import SmallSpinner from '../SmallSpinner';
 
 import HomeTabMobile from './HomeTabMobile';
 import ButtonAddTransactions from '../ButtonAddTransactions';
@@ -16,6 +21,7 @@ import './HomeTabMobile.scss';
 const HomeTabMobileContainer = () => {
   const transactionsList = useSelector(transactions);
   const total = useSelector(totals);
+  const isLoading = useSelector(isLoadingTransaction);
 
   const dispatch = useDispatch();
 
@@ -55,6 +61,11 @@ const HomeTabMobileContainer = () => {
       ) : (
         <div className="noAnyTransactions">
           В этом месяце транзакций не было
+        </div>
+      )}
+      {isLoading && (
+        <div className="homeTabMobileSpinner">
+          <SmallSpinner color={'#4a56e2'} size={50} />
         </div>
       )}
       <LoadMoreButton />

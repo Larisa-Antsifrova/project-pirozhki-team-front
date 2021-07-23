@@ -1,7 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { transactions, totals } from '../../redux/finance/financeSelectors';
+import {
+  transactions,
+  totals,
+  isLoadingTransaction,
+} from '../../redux/finance/financeSelectors';
 import { LoadMoreButton } from '../LoadMoreButton/LoadMoreButton';
+import SmallSpinner from '../SmallSpinner';
 
 import removeIcon from '../../images/remove.svg';
 
@@ -20,6 +25,7 @@ import './HomeTab.scss';
 const HomeTabContainer = () => {
   const transactionsList = useSelector(transactions);
   const total = useSelector(totals);
+  const isLoading = useSelector(isLoadingTransaction);
 
   let balance = total.balance;
   let prevSum = 0;
@@ -68,6 +74,11 @@ const HomeTabContainer = () => {
           </p>
         </div>
         <div className="transactionsListData">
+          {isLoading && (
+            <div className="homeTabSpinner">
+              <SmallSpinner color={'#4a56e2'} size={50} />
+            </div>
+          )}
           {transactionsList && transactionsList.length > 0 ? (
             transactionsList.map(
               ({ id, comment, sum, category, income, date }) => {
@@ -91,6 +102,7 @@ const HomeTabContainer = () => {
               В этом месяце транзакций не было
             </div>
           )}
+
           <div className="loadMoreButtonContainer">
             <LoadMoreButton />
           </div>
