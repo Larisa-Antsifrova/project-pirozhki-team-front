@@ -127,6 +127,7 @@ const TransactionForm = () => {
 
     setTransactionItem(initialState);
     setCheckedBox(false);
+    handleDate(new Date());
   };
 
   return (
