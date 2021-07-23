@@ -8,7 +8,7 @@ const transactions = createReducer([], {
   [financeActions.fetchTransactionsSuccess]: (state, { payload }) => {
     return [...state, ...payload];
   },
-
+  [financeActions.logoutSuccess]: () => [],
   [financeActions.addTransactionSuccess]: (state, { payload }) => [
     payload,
     ...state,
