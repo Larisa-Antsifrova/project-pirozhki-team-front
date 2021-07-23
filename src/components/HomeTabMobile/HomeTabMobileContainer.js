@@ -13,7 +13,7 @@ import ButtonAddTransactions from '../ButtonAddTransactions';
 
 import {
   deleteTransaction,
-  fetchTransactions,
+  fetchBalance,
 } from '../../redux/finance/financeOperations';
 
 import './HomeTabMobile.scss';
@@ -40,7 +40,7 @@ const HomeTabMobileContainer = () => {
 
   const onDeleteTransaction = async id => {
     await dispatch(deleteTransaction(id));
-    await dispatch(fetchTransactions());
+    await dispatch(fetchBalance());
   };
 
   return (

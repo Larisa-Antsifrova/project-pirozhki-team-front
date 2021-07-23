@@ -6,10 +6,9 @@ const transactions = createReducer([], {
   [financeActions.deleteTransactionSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [financeActions.fetchTransactionsSuccess]: (state, { payload }) => {
-    return payload;
-    // return state.length > 0 ? [...payload] : [...state, ...payload];
-    // return ...state, payload;
+    return [...state, ...payload];
   },
+
   [financeActions.addTransactionSuccess]: (state, { payload }) => [
     payload,
     ...state,

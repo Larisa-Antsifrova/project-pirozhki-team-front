@@ -12,7 +12,7 @@ import removeIcon from '../../images/remove.svg';
 
 import {
   deleteTransaction,
-  fetchTransactions,
+  fetchBalance,
 } from '../../redux/finance/financeOperations';
 
 import ButtonAddTransactions from '../ButtonAddTransactions';
@@ -44,7 +44,7 @@ const HomeTabContainer = () => {
 
   const onDeleteTransaction = async id => {
     await dispatch(deleteTransaction(id));
-    await dispatch(fetchTransactions());
+    await dispatch(fetchBalance());
   };
 
   return (
