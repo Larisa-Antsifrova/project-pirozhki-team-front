@@ -10,8 +10,8 @@ const transactions = createReducer([], {
   },
 
   [financeActions.addTransactionSuccess]: (state, { payload }) => [
-    ...state,
     payload,
+    ...state,
   ],
 });
 
