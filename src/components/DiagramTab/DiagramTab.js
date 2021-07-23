@@ -26,8 +26,8 @@ const DiagramTab = () => {
   const statistics = useSelector(getStatistics);
   const costsIncome = useSelector(costsIncomeTotals);
   const isLoading = useSelector(isLoadingStatistic);
-
   const firstTransactionDate = useSelector(getFirstTransactionDate);
+  const filteredStatistics = statistics?.filter(stat => !stat.income);
 
   useEffect(() => {
     dispatch(getStatisticsData(seletcMonth, seletcYear));
@@ -80,8 +80,8 @@ const DiagramTab = () => {
             ) : (
               <Chart
                 tempData={
-                  statistics.length > 0
-                    ? statistics.filter(stat => !stat.income)
+                  filteredStatistics.length > 0
+                    ? filteredStatistics
                     : NO_TRANSACTION
                 }
                 totalBalance={costsIncome.balance}
@@ -101,8 +101,8 @@ const DiagramTab = () => {
               {statistics && (
                 <Table
                   tempData={
-                    statistics.length > 0
-                      ? statistics.filter(stat => !stat.income)
+                    filteredStatistics.length > 0
+                      ? filteredStatistics
                       : NO_TRANSACTION
                   }
                   costsIncome={costsIncome}
