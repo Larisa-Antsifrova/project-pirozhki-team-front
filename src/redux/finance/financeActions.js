@@ -12,6 +12,10 @@ const statisticsRequest = createAction('finance/statisticsRequest');
 const statisticsSuccess = createAction('finance/statisticsSuccess');
 const statisticsError = createAction('finance/statisticsError');
 
+const logoutRequest = createAction('finance/logoutRequest');
+const logoutSuccess = createAction('finance/logoutSuccess');
+const logoutError = createAction('finance/logoutError');
+
 const deleteTransactionRequest = createAction(
   'finance/deleteTransactionRequest',
 );
@@ -44,4 +48,7 @@ export default {
   statisticsRequest,
   statisticsSuccess,
   statisticsError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
 };

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import financeActions from '../finance/financeActions';
 import authActions from './authActions';
 
 axios.defaults.baseURL = 'https://awesome-wallet-app.herokuapp.com';
@@ -41,10 +42,11 @@ const login = user => async dispatch => {
 };
 
 const logout = () => async dispatch => {
-  dispatch(authActions.logoutRequest);
+  dispatch(authActions.logoutRequest());
   try {
     await axios.post('/auth/logout');
     token.unset();
+    dispatch(financeActions.logoutSuccess());
     dispatch(authActions.logoutSuccess());
   } catch (error) {
     dispatch(authActions.logoutError(error));
