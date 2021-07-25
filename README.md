@@ -1,6 +1,6 @@
 ![Banner](./app-stack-banner.jpg)
 
-# Wallet App: Web Application
+# Wallet App: Web Application v 1.0
 
 Current web application is powered by custom-developed
 [Awesome Wallet Web Server](https://awesome-wallet-app.herokuapp.com/api-docs/).
