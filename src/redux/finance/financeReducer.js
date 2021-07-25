@@ -19,8 +19,10 @@ const totalBalance = createReducer(
   {},
   {
     [financeActions.totalBalanceSuccess]: (_, { payload }) => payload,
+    [financeActions.totalBalanceLogoutSuccess]: () => [],
   },
 );
+
 const statistics = createReducer(null, {
   [financeActions.statisticsSuccess]: (_, { payload }) => payload,
 });

@@ -26,6 +26,9 @@ const deleteTransactionError = createAction('finance/deleteTransactionError');
 const totalBalanceRequest = createAction('finance/totalBalanceRequest');
 const totalBalanceSuccess = createAction('finance/totalBalanceSuccess');
 const totalBalanceError = createAction('finance/totalBalanceError');
+const totalBalanceLogoutSuccess = createAction(
+  'finance/totalBalanceLogoutSuccess',
+);
 
 const addTransactionRequest = createAction('transaction/addRequest');
 const addTransactionSuccess = createAction('transaction/addSuccess');
@@ -45,6 +48,7 @@ export default {
   totalBalanceRequest,
   totalBalanceSuccess,
   totalBalanceError,
+  totalBalanceLogoutSuccess,
   statisticsRequest,
   statisticsSuccess,
   statisticsError,

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form } from 'formik';
-import * as yup from 'yup';
+import { validationLoginShema } from '../../helpers/validations';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,15 +34,6 @@ export default function RegisterForm() {
     password: '',
   };
 
-  const validationShema = yup.object({
-    email: yup
-      .string()
-      .lowercase()
-      .email('Неверный формат записи почты')
-      .required('Обязательное поле'),
-    password: yup.string().required('Обязательное поле'),
-  });
-
   const onSubmit = (
     { email, password },
     { setSubmitting, setErrors, setStatus },
@@ -72,7 +63,7 @@ export default function RegisterForm() {
 
         <Formik
           initialValues={INITIAL_VALUES}
-          validationSchema={validationShema}
+          validationSchema={validationLoginShema}
           validateOnBlur
           validateOnChange
           onSubmit={onSubmit}

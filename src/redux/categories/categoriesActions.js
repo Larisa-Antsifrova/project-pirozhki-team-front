@@ -6,6 +6,9 @@ export const fetchCategoriesRequest = createAction(
 export const fetchCategoriesSuccess = createAction(
   'categories/fetchCategoriesSuccess',
 );
+export const fetchCategoriesLogout = createAction(
+  'categories/fetchCategoriesLogout',
+);
 export const fetchCategoriesError = createAction(
   'categories/fetchCategoriesError',
 );
