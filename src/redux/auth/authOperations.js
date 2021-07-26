@@ -73,7 +73,7 @@ const getCurrentUserInfo = () => async (dispatch, getState) => {
     const response = await axios.get('/user/current');
     dispatch(authActions.getCurrentUserSucces(response.data));
   } catch (error) {
-    logout();
+    dispatch(financeActions.logoutSuccess());
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
