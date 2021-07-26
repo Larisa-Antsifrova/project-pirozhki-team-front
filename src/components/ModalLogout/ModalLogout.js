@@ -21,7 +21,7 @@ const ModalLogout = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error('Опс, что-то пошло не так');
+      toast.error('Упс, что-то пошло не так');
     }
   }, [isError]);
 

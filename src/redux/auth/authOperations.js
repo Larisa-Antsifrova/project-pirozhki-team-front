@@ -68,10 +68,12 @@ const getCurrentUserInfo = () => async (dispatch, getState) => {
   token.set(persistedToken);
 
   dispatch(authActions.getCurrentUserRequest());
+
   try {
     const response = await axios.get('/user/current');
     dispatch(authActions.getCurrentUserSucces(response.data));
   } catch (error) {
+    logout();
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
